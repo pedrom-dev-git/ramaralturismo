@@ -1,0 +1,68 @@
+export default {
+  // Navbar
+  'nav.home': 'Inicio',
+  'nav.destinos': 'Destinos',
+  'nav.blog': 'Blog',
+  'nav.novidades': 'Novedades',
+  'nav.contato': 'Contacto',
+  'nav.menuLabel': 'Abrir menú',
+
+  // Hero
+  'hero.title': 'Explora Brasil con comodidad y seguridad',
+  'hero.subtitle': 'Transporte escolar y turismo personalizado en Santa Catarina',
+  'hero.cta': 'Solicitar Presupuesto',
+  'hero.tipo.turismo': 'Turismo',
+  'hero.tipo.escolar': 'Escolar',
+  'hero.tipo.corporativo': 'Corporativo',
+  'hero.origem': 'Origen',
+  'hero.destino': 'Destino',
+  'hero.escola': 'Escuela',
+  'hero.dataIda': 'Fecha de ida',
+  'hero.dataVolta': 'Fecha de regreso',
+  'hero.passageiros': 'Pasajeros',
+  'hero.buscar': 'Buscar',
+  'hero.selectSchool': 'Seleccione la escuela',
+  'hero.school1': 'Escola Municipal Tijucas',
+  'hero.school2': 'Colégio Santa Catarina',
+  'hero.school3': 'Escola Estadual Central',
+  'hero.school4': 'Otra',
+  'hero.msg.turismo': '¡Hola! Me gustaría solicitar un presupuesto de turismo.\n\nServicio: Turismo y Viajes\nOrigen: {origem}\nDestino: {destino}\nFecha de ida: {dataIda}\nFecha de regreso: {dataVolta}',
+  'hero.msg.escolar': '¡Hola! Me gustaría solicitar un presupuesto de transporte escolar.\n\nServicio: Transporte Escolar\nOrigen: {origem}\nEscuela: {escola}',
+  'hero.msg.corporativo': '¡Hola! Me gustaría solicitar un presupuesto de transporte corporativo.\n\nOrigen: {origem}\nDestino: {destino}\nPasajeros: {quantidade}',
+  'hero.msg.default': '¡Hola! Me gustaría solicitar un presupuesto.\n\nServicio: {tipo}\nOrigen: {origem}\nDestino: {destino}',
+
+  // Benefits
+  'benefits.title': '¿Por qué elegir nuestra van?',
+  'benefits.safety.title': 'Seguridad ante todo',
+  'benefits.safety.desc': 'Vehículo inspeccionado y certificado según las normas vigentes.',
+  'benefits.punctuality.title': 'Puntualidad',
+  'benefits.punctuality.desc': 'Compromiso con los horarios para que nunca llegues tarde.',
+  'benefits.comfort.title': 'Comodidad',
+  'benefits.comfort.desc': 'Aire acondicionado, espacio y confort para tu viaje.',
+  'benefits.speed.title': 'Atención rápida',
+  'benefits.speed.desc': 'Respuesta ágil para todas tus necesidades de transporte.',
+
+  // Partners
+  'partners.title': 'Nuestros Socios',
+
+  // Services
+  'services.title': 'Nuestros Servicios',
+  'services.school.title': 'Transporte Escolar',
+  'services.school.desc': 'Seguridad y puntualidad para el día a día de tu hijo.',
+  'services.tourism.title': 'Turismo y Viajes',
+  'services.tourism.desc': 'Comodidad y practicidad para viajes en grupo.',
+  'services.seeAll': 'Ver todos',
+  'services.learnMore': 'saber más',
+
+  // News
+  'news.title': 'Últimas Novedades',
+
+  // Footer
+  'footer.desc': 'Atención personalizada para transporte escolar y viajes en grupo en Santa Catarina.',
+  'footer.nav': 'Navegación',
+  'footer.contact': 'Contacto',
+  'footer.copyright': '© 2026 R. Amaral Turismo. Todos los derechos reservados.',
+
+  // WhatsApp
+  'whatsapp.label': 'Habla con nosotros por WhatsApp',
+} as const;

@@ -1,0 +1,8 @@
+node_modules/
+dist/
+playwright-report/
+test-results/
+.astro/
+assets/images/map-patterns/
+assets/images/map-variations/
+assets/images/map-variations.zip

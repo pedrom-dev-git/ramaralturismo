@@ -1,0 +1,449 @@
+---
+const whatsappNumber = "5548999503368";
+---
+
+<section class="relative md:-mt-[76px] not-prose">
+  <!-- Background decoration -->
+  <div class="absolute inset-0 pointer-events-none" aria-hidden="true">
+    <div class="absolute inset-0 bg-gradient-to-b from-primary/5 via-transparent to-transparent"></div>
+  </div>
+
+  <div class="relative max-w-7xl mx-auto px-4 sm:px-6">
+    <div class="pt-[76px]"></div>
+    <div class="py-12 md:py-20">
+      <div class="text-center pb-10 md:pb-16 max-w-5xl mx-auto">
+        <p class="text-base text-primary font-bold tracking-wide uppercase mb-4">R. Amaral Turismo</p>
+        <h1 class="text-5xl md:text-6xl font-bold leading-tight tracking-tighter mb-4">
+          Sua Jornada <br class="hidden md:block" />
+          <span class="text-primary">Começa Aqui!</span>
+        </h1>
+        <p class="text-xl text-medium-gray mb-6 max-w-3xl mx-auto">
+          Atendimento personalizado para transporte escolar e viagens em grupo.
+        </p>
+
+        <!-- CTA buttons -->
+        <div class="flex flex-col sm:flex-row justify-center gap-4 mb-8">
+          <a
+            href="#hero-form"
+            class="inline-flex items-center justify-center gap-2 bg-primary hover:bg-primary/90 text-white font-semibold py-3.5 px-8 rounded-full border border-primary transition duration-150 ease-in-out"
+          >
+            Solicitar Orçamento
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
+          </a>
+          <a
+            href="#servicos"
+            class="inline-flex items-center justify-center gap-2 border-2 border-gray-300 hover:border-primary text-dark-gray hover:text-primary font-semibold py-3.5 px-8 rounded-full transition duration-150 ease-in-out"
+          >
+            Nossos Serviços
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- Quote form card -->
+      <div class="max-w-4xl mx-auto">
+        <div class="bg-white rounded-xl shadow-xl p-6 md:p-10 border border-gray-100">
+          <h2 class="text-lg font-bold text-dark-gray mb-6 text-center">Faça seu orçamento agora</h2>
+
+          <form id="hero-form" class="flex flex-col gap-5">
+            <!-- Toggle pills: Tipo de Serviço -->
+            <div id="tipo-toggle" class="flex rounded-full bg-light-gray p-1 max-w-lg mx-auto w-full" role="radiogroup" aria-label="Tipo de Serviço">
+              <label class="flex-1 text-center cursor-pointer">
+                <input type="radio" name="tipo" value="turismo" checked class="sr-only" />
+                <span class="block px-3 py-2.5 text-xs md:text-sm font-semibold rounded-full transition-all bg-primary text-white shadow-sm">Turismo e Viagens</span>
+              </label>
+              <label class="flex-1 text-center cursor-pointer">
+                <input type="radio" name="tipo" value="escolar" class="sr-only" />
+                <span class="block px-3 py-2.5 text-xs md:text-sm font-semibold rounded-full transition-all text-medium-gray">Transporte Escolar</span>
+              </label>
+              <label class="flex-1 text-center cursor-pointer">
+                <input type="radio" name="tipo" value="corporativo" class="sr-only" />
+                <span class="block px-3 py-2.5 text-xs md:text-sm font-semibold rounded-full transition-all text-medium-gray">Corporativo</span>
+              </label>
+            </div>
+
+            <!-- Linha datas (turismo) -->
+            <div class="flex flex-col md:flex-row gap-4">
+              <div id="data-ini-wrapper" class="flex-1 flex flex-col gap-1.5">
+                <label for="data-ini-display" class="text-xs font-medium text-medium-gray px-1">Data de ida</label>
+                <input
+                  id="data-ini-display"
+                  type="text"
+                  readonly
+                  placeholder="DD/MM/AAAA"
+                  class="w-full border border-gray-200 rounded-lg px-4 py-3 text-sm cursor-pointer bg-white focus:border-primary focus:ring-1 focus:ring-primary/20 transition-colors"
+                />
+                <input id="data-ini" type="date" name="data_ini" class="sr-only" tabindex="-1" />
+              </div>
+
+              <div id="data-fim-wrapper" class="flex-1 flex flex-col gap-1.5">
+                <label for="data-fim-display" class="text-xs font-medium text-medium-gray px-1">Data de volta</label>
+                <input
+                  id="data-fim-display"
+                  type="text"
+                  readonly
+                  placeholder="DD/MM/AAAA"
+                  class="w-full border border-gray-200 rounded-lg px-4 py-3 text-sm cursor-pointer bg-white focus:border-primary focus:ring-1 focus:ring-primary/20 transition-colors"
+                />
+                <input id="data-fim" type="date" name="data_fim" class="sr-only" tabindex="-1" />
+              </div>
+            </div>
+
+            <!-- Linha 2: Origem + Destino + Botão -->
+            <div class="flex flex-col md:flex-row gap-4 items-stretch">
+              <div class="relative flex-1">
+                <input
+                  type="text"
+                  name="origem"
+                  id="origem-input"
+                  placeholder="Origem"
+                  autocomplete="off"
+                  required
+                  class="w-full border border-gray-200 rounded-lg px-4 py-3 text-sm focus:border-primary focus:ring-1 focus:ring-primary/20 transition-colors"
+                />
+                <div
+                  id="origem-dropdown"
+                  class="absolute top-full left-0 right-0 z-50 mt-1 bg-white border border-gray-200 rounded-lg shadow-lg max-h-52 overflow-y-auto hidden"
+                ></div>
+              </div>
+
+              <div class="relative flex-1" id="destino-text-wrapper">
+                <input
+                  type="text"
+                  name="destino"
+                  id="destino-input"
+                  placeholder="Destino"
+                  autocomplete="off"
+                  required
+                  class="w-full border border-gray-200 rounded-lg px-4 py-3 text-sm focus:border-primary focus:ring-1 focus:ring-primary/20 transition-colors"
+                />
+                <div
+                  id="destino-dropdown"
+                  class="absolute top-full left-0 right-0 z-50 mt-1 bg-white border border-gray-200 rounded-lg shadow-lg max-h-52 overflow-y-auto hidden"
+                ></div>
+              </div>
+
+              <div class="relative flex-1 hidden" id="quantidade-wrapper">
+                <input
+                  id="quantidade-input"
+                  type="number"
+                  name="quantidade"
+                  min="1"
+                  placeholder="Nº de passageiros"
+                  class="w-full border border-gray-200 rounded-lg px-4 py-3 text-sm bg-white focus:border-primary focus:ring-1 focus:ring-primary/20 transition-colors"
+                />
+              </div>
+
+              <div class="relative flex-1 hidden" id="escola-wrapper">
+                <select
+                  name="escola"
+                  id="escola-select"
+                  class="w-full border border-gray-200 rounded-lg px-4 py-3 text-sm bg-white focus:border-primary focus:ring-1 focus:ring-primary/20 transition-colors"
+                >
+                  <option value="">Selecione a escola</option>
+                  <option value="Escola Planeta">Escola Planeta</option>
+                  <option value="Premium Brilho do Sol">Premium Brilho do Sol</option>
+                  <option value="Alexandre Termes">Alexandre Termes</option>
+                  <option value="Cruz e Souza">Cruz e Souza</option>
+                  <option value="COC - Porto Belo">COC (Porto Belo)</option>
+                  <option value="Bom Jesus - Porto Belo">Bom Jesus (Porto Belo)</option>
+                  <option value="COC - Balneário Camboriú">COC (Balneário Camboriú)</option>
+                </select>
+              </div>
+
+              <!-- IMPORTANTE: botão WhatsApp DEVE ser verde (bg-green-500). NÃO alterar a cor. -->
+              <button
+                type="submit"
+                class="bg-green-500 hover:bg-green-600 text-white w-full py-3.5 rounded-full md:w-auto md:px-8 flex items-center justify-center shrink-0 self-end transition-colors gap-2 font-semibold text-sm border border-green-500"
+                aria-label="Solicitar orçamento no WhatsApp"
+              >
+                <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
+                  <path d="M12 0C5.373 0 0 5.373 0 12c0 2.12.553 4.11 1.519 5.838L.057 23.616l5.932-1.556A11.94 11.94 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818c-1.94 0-3.79-.508-5.417-1.466l-.388-.231-4.025 1.055 1.074-3.922-.253-.402A9.778 9.778 0 012.182 12 9.818 9.818 0 0112 2.182 9.818 9.818 0 0121.818 12 9.818 9.818 0 0112 21.818z"/>
+                </svg>
+                <span>Enviar</span>
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script define:vars={{ whatsappNumber }}>
+  const tipoRadios = document.querySelectorAll("input[name='tipo']");
+  const tipoToggle = document.getElementById("tipo-toggle");
+  const dataIniWrapper = document.getElementById("data-ini-wrapper");
+  const dataFimWrapper = document.getElementById("data-fim-wrapper");
+  const dataIniInput = document.getElementById("data-ini");
+  const dataFimInput = document.getElementById("data-fim");
+  const origemInput = document.getElementById("origem-input");
+  const destinoInput = document.getElementById("destino-input");
+  const origemDropdown = document.getElementById("origem-dropdown");
+  const destinoDropdown = document.getElementById("destino-dropdown");
+  const destinoTextWrapper = document.getElementById("destino-text-wrapper");
+  const escolaWrapper = document.getElementById("escola-wrapper");
+  const escolaSelect = document.getElementById("escola-select");
+  const quantidadeWrapper = document.getElementById("quantidade-wrapper");
+  const quantidadeInput = document.getElementById("quantidade-input");
+
+  // ── Autocomplete ──────────────────────────────────────────────────
+
+  function formatDisplayName(name) {
+    const parts = name.split(",");
+    return parts.slice(0, 2).map((p) => p.trim()).join(", ");
+  }
+
+  function createAutocomplete(input, dropdown) {
+    let debounceTimer = null;
+    let activeIndex = -1;
+    let enabled = false;
+
+    function getItems() {
+      return dropdown.querySelectorAll("button[type='button']");
+    }
+
+    function highlight(index) {
+      const items = getItems();
+      items.forEach((item, i) => {
+        item.classList.toggle("bg-light-blue", i === index);
+      });
+      activeIndex = index;
+    }
+
+    function closeDropdown() {
+      dropdown.classList.add("hidden");
+      dropdown.innerHTML = "";
+      activeIndex = -1;
+    }
+
+    async function fetchSuggestions(query) {
+      const url =
+        `https://nominatim.openstreetmap.org/search` +
+        `?q=${encodeURIComponent(query)}&countrycodes=br&format=json&limit=5&accept-language=pt-BR`;
+      const res = await fetch(url, {
+        headers: { "Accept-Language": "pt-BR" },
+      });
+      return res.json();
+    }
+
+    function onInput() {
+      if (!enabled) return;
+      clearTimeout(debounceTimer);
+      const q = input.value.trim();
+      if (q.length < 3) {
+        closeDropdown();
+        return;
+      }
+      debounceTimer = setTimeout(async () => {
+        try {
+          const results = await fetchSuggestions(q);
+          dropdown.innerHTML = "";
+          if (!results.length) {
+            closeDropdown();
+            return;
+          }
+          results.forEach((r, i) => {
+            const btn = document.createElement("button");
+            btn.type = "button";
+            btn.textContent = formatDisplayName(r.display_name);
+            btn.className =
+              "w-full text-left px-4 py-2.5 text-sm text-dark-gray hover:bg-light-blue transition-colors";
+            if (i === 0) btn.classList.add("rounded-t-lg");
+            if (i === results.length - 1) btn.classList.add("rounded-b-lg");
+            btn.addEventListener("mousedown", (e) => {
+              e.preventDefault();
+              input.value = btn.textContent;
+              closeDropdown();
+            });
+            dropdown.appendChild(btn);
+          });
+          dropdown.classList.remove("hidden");
+          activeIndex = -1;
+        } catch {
+          closeDropdown();
+        }
+      }, 350);
+    }
+
+    function onKeydown(e) {
+      if (!enabled || dropdown.classList.contains("hidden")) return;
+      const items = getItems();
+      if (e.key === "ArrowDown") {
+        e.preventDefault();
+        highlight(Math.min(activeIndex + 1, items.length - 1));
+      } else if (e.key === "ArrowUp") {
+        e.preventDefault();
+        highlight(Math.max(activeIndex - 1, 0));
+      } else if (e.key === "Enter") {
+        if (activeIndex >= 0 && items[activeIndex]) {
+          e.preventDefault();
+          input.value = items[activeIndex].textContent;
+          closeDropdown();
+        }
+      } else if (e.key === "Escape") {
+        closeDropdown();
+      }
+    }
+
+    function onBlur() {
+      setTimeout(() => closeDropdown(), 150);
+    }
+
+    return {
+      enable() {
+        if (enabled) return;
+        enabled = true;
+        input.addEventListener("input", onInput);
+        input.addEventListener("keydown", onKeydown);
+        input.addEventListener("blur", onBlur);
+      },
+      disable() {
+        enabled = false;
+        clearTimeout(debounceTimer);
+        closeDropdown();
+        input.removeEventListener("input", onInput);
+        input.removeEventListener("keydown", onKeydown);
+        input.removeEventListener("blur", onBlur);
+      },
+    };
+  }
+
+  const origemAC = createAutocomplete(origemInput, origemDropdown);
+  const destinoAC = createAutocomplete(destinoInput, destinoDropdown);
+
+  // ── Date picker: clique → calendário → display DD/MM/AAAA ──────
+  function formatDateBR(value) {
+    if (!value) return "";
+    const [y, m, d] = value.split("-");
+    return `${d}/${m}/${y}`;
+  }
+
+  const dataIniDisplay = document.getElementById("data-ini-display");
+  const dataFimDisplay = document.getElementById("data-fim-display");
+
+  function setupDatePicker(display, hidden) {
+    display.addEventListener("click", () => {
+      try { hidden.showPicker(); } catch { hidden.focus(); hidden.click(); }
+    });
+    hidden.addEventListener("change", () => {
+      display.value = formatDateBR(hidden.value);
+    });
+  }
+
+  setupDatePicker(dataIniDisplay, dataIniInput);
+  setupDatePicker(dataFimDisplay, dataFimInput);
+
+  // ── Alternância Escolar / Turismo ─────────────────────────────────
+
+  function showDateField(wrapper, input) {
+    wrapper.classList.remove("hidden");
+    input.required = true;
+  }
+
+  function hideDateField(wrapper, input, display) {
+    wrapper.classList.add("hidden");
+    input.required = false;
+    input.value = "";
+    if (display) display.value = "";
+  }
+
+  function getSelectedTipo() {
+    const checked = document.querySelector("input[name='tipo']:checked");
+    return checked ? checked.value : "";
+  }
+
+  function updateToggleStyles() {
+    tipoToggle.querySelectorAll("label").forEach((label) => {
+      const radio = label.querySelector("input");
+      const span = label.querySelector("span");
+      if (radio.checked) {
+        span.classList.remove("text-medium-gray");
+        span.classList.add("bg-primary", "text-white", "shadow-sm");
+      } else {
+        span.classList.remove("bg-primary", "text-white", "shadow-sm");
+        span.classList.add("text-medium-gray");
+      }
+    });
+  }
+
+  function applyTipoState() {
+    const tipo = getSelectedTipo();
+    const isTurismo = tipo === "turismo";
+    const isEscolar = tipo === "escolar";
+    const isCorporativo = tipo === "corporativo";
+
+    updateToggleStyles();
+
+    // Dates row: only turismo
+    if (isTurismo) {
+      showDateField(dataIniWrapper, dataIniInput);
+      showDateField(dataFimWrapper, dataFimInput);
+    } else {
+      hideDateField(dataIniWrapper, dataIniInput, dataIniDisplay);
+      hideDateField(dataFimWrapper, dataFimInput, dataFimDisplay);
+    }
+
+    // Origem: always visible and enabled
+    origemAC.enable();
+    origemInput.placeholder = isCorporativo ? "Cidade de partida" : (isEscolar ? "Origem" : "Cidade de partida");
+
+    // Destino text: turismo + corporativo
+    destinoTextWrapper.classList.toggle("hidden", isEscolar);
+    destinoInput.required = !isEscolar;
+    if (!isEscolar) {
+      destinoAC.enable();
+      destinoInput.placeholder = isCorporativo ? "Cidade de destino" : "Destino turístico";
+    } else {
+      destinoAC.disable();
+      destinoInput.value = "";
+    }
+
+    // School: only escolar
+    escolaWrapper.classList.toggle("hidden", !isEscolar);
+    escolaSelect.required = isEscolar;
+    if (!isEscolar) escolaSelect.value = "";
+
+    // Quantidade: only corporativo
+    quantidadeWrapper.classList.toggle("hidden", !isCorporativo);
+    quantidadeInput.required = isCorporativo;
+    if (!isCorporativo) quantidadeInput.value = "";
+  }
+
+  tipoRadios.forEach((radio) => {
+    radio.addEventListener("change", applyTipoState);
+  });
+
+  // Inicializar estado (turismo é default)
+  applyTipoState();
+
+  // ── Submit → WhatsApp ─────────────────────────────────────────────
+
+  document.getElementById("hero-form")?.addEventListener("submit", (e) => {
+    e.preventDefault();
+    const form = e.target;
+    const tipo = getSelectedTipo();
+    const origem = form.origem.value;
+    const isTurismo = tipo === "turismo";
+    const isEscolar = tipo === "escolar";
+
+    let msg;
+    if (isTurismo) {
+      const destino = form.destino.value;
+      msg = `Olá! Gostaria de solicitar um orçamento de turismo.\n\nServiço: Turismo e Viagens\nOrigem: ${origem}\nDestino: ${destino}\nData de ida: ${formatDateBR(form.data_ini.value)}\nData de volta: ${formatDateBR(form.data_fim.value)}`;
+    } else if (isEscolar) {
+      const escola = form.escola.value;
+      msg = `Olá! Gostaria de solicitar um orçamento de transporte escolar.\n\nServiço: Transporte Escolar\nOrigem: ${origem}\nEscola: ${escola}`;
+    } else if (tipo === "corporativo") {
+      const destino = form.destino.value;
+      const quantidade = quantidadeInput.value;
+      msg = `Olá! Gostaria de solicitar um orçamento para transporte corporativo.\n\nOrigem: ${origem}\nDestino: ${destino}\nPassageiros: ${quantidade}`;
+    } else {
+      const destino = form.destino.value;
+      msg = `Olá! Gostaria de solicitar um orçamento.\n\nServiço: ${tipo}\nOrigem: ${origem}\nDestino: ${destino}`;
+    }
+
+    window.open(`https://wa.me/${whatsappNumber}?text=${encodeURIComponent(msg)}`, "_blank");
+  });
+</script>

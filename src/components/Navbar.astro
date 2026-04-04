@@ -1,0 +1,94 @@
+---
+const links = [
+  { label: "Home", href: "#" },
+  { label: "Destinos", href: "#destinos" },
+  { label: "Blog", href: "#blog" },
+  { label: "Novidades", href: "#novidades" },
+  { label: "Contato", href: "#contato" },
+];
+---
+
+<header id="main-header" class="sticky top-0 z-40 w-full transition-all ease-in-out">
+  <div class="absolute inset-0 bg-white/90 backdrop-blur-sm"></div>
+  <div class="relative max-w-7xl mx-auto px-4 md:px-6 py-3 flex items-center justify-between">
+    <!-- Logo -->
+    <a href="/" class="flex items-center">
+      <img src="/logo-amaral.svg" alt="R. Amaral" class="h-10" />
+    </a>
+
+    <!-- Desktop nav -->
+    <nav class="hidden md:flex items-center" aria-label="Navegação principal">
+      <ul class="flex items-center gap-1">
+        {links.map((link) => (
+          <li>
+            <a
+              href={link.href}
+              class="text-dark-gray/80 hover:text-primary px-4 py-2 text-[0.9375rem] font-medium tracking-wide transition-colors"
+            >
+              {link.label}
+            </a>
+          </li>
+        ))}
+      </ul>
+    </nav>
+
+    <!-- CTA + Hamburger -->
+    <div class="flex items-center gap-3">
+      <a
+        href="#hero-form"
+        class="hidden md:inline-flex items-center gap-2 bg-primary hover:bg-primary/90 text-white text-sm font-semibold py-2.5 px-6 rounded-full transition-colors"
+      >
+        Solicitar Orçamento
+      </a>
+
+      <!-- Hamburger (animated) -->
+      <button
+        id="menu-toggle"
+        class="flex flex-col h-12 w-12 rounded-lg justify-center items-center cursor-pointer group md:hidden"
+        aria-label="Abrir menu"
+      >
+        <span aria-hidden="true" class="h-0.5 w-6 my-1 rounded-full bg-dark-gray transition-transform duration-200 group-[.expanded]:rotate-45 group-[.expanded]:translate-y-2.5"></span>
+        <span aria-hidden="true" class="h-0.5 w-6 my-1 rounded-full bg-dark-gray transition-opacity duration-200 group-[.expanded]:opacity-0"></span>
+        <span aria-hidden="true" class="h-0.5 w-6 my-1 rounded-full bg-dark-gray transition-transform duration-200 group-[.expanded]:-rotate-45 group-[.expanded]:-translate-y-2.5"></span>
+      </button>
+    </div>
+  </div>
+
+  <!-- Mobile menu -->
+  <nav
+    id="mobile-menu"
+    class="hidden md:hidden bg-white/95 backdrop-blur-sm border-t border-gray-100"
+    aria-label="Menu mobile"
+  >
+    <ul class="flex flex-col px-4 py-4 gap-1">
+      {links.map((link) => (
+        <li>
+          <a
+            href={link.href}
+            class="block text-dark-gray/80 hover:text-primary hover:bg-gray-50 px-4 py-3 text-lg font-medium rounded-lg transition-colors"
+          >
+            {link.label}
+          </a>
+        </li>
+      ))}
+      <li class="pt-3">
+        <a
+          href="#hero-form"
+          class="flex items-center justify-center gap-2 bg-primary hover:bg-primary/90 text-white font-semibold py-3 px-6 rounded-full transition-colors"
+        >
+          Solicitar Orçamento
+        </a>
+      </li>
+    </ul>
+  </nav>
+</header>
+
+<script>
+  const toggle = document.getElementById("menu-toggle");
+  const menu = document.getElementById("mobile-menu");
+
+  toggle?.addEventListener("click", () => {
+    toggle.classList.toggle("expanded");
+    menu?.classList.toggle("hidden");
+  });
+</script>
