@@ -6,3 +6,10 @@ test-results/
 assets/images/map-patterns/
 assets/images/map-variations/
 assets/images/map-variations.zip
+
+# wrangler files
+.wrangler
+.dev.vars*
+!.dev.vars.example
+.env*
+!.env.example

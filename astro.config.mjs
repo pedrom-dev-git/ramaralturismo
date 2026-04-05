@@ -3,9 +3,12 @@ import { defineConfig } from 'astro/config';
 import tailwindcss from '@tailwindcss/vite';
 import AstroPWA from '@vite-pwa/astro';
 
+import cloudflare from '@astrojs/cloudflare';
+
 // https://astro.build/config
 export default defineConfig({
   site: 'https://ramaral.com.br',
+
   integrations: [
     AstroPWA({
       registerType: 'autoUpdate',
@@ -27,6 +30,7 @@ export default defineConfig({
       },
     }),
   ],
+
   i18n: {
     defaultLocale: 'pt-BR',
     locales: ['pt-BR', 'en', 'es'],
@@ -34,7 +38,10 @@ export default defineConfig({
       prefixDefaultLocale: false,
     },
   },
+
   vite: {
     plugins: [tailwindcss()]
-  }
+  },
+
+  adapter: cloudflare()
 });
