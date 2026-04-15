@@ -1,0 +1,239 @@
+% R. Amaral Turismo — Cartão de Pagamento Interativo (2 páginas).
+% Build: make (usa pdflatex; ver Makefile).
+\documentclass[a4paper,12pt]{article}
+
+% --- Layout: full-bleed, sem margens. ----------------------------------------
+\usepackage[a4paper,margin=0pt,noheadfoot]{geometry}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[portuguese]{babel}
+\usepackage{lmodern}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage{tikz}
+\usepackage{qrcode}
+\usepackage{fancyqr}
+\usepackage{fontawesome5}
+\usepackage[hidelinks,unicode,pdfusetitle]{hyperref}
+\usetikzlibrary{calc,shadows.blur}
+\usepackage[most]{tcolorbox}
+\tcbuselibrary{skins,hooks}
+
+% --- Dados da empresa (gitignored). Fallback → empresa.example.tex ------------
+\IfFileExists{data/empresa.tex}{\input{data/empresa.tex}}{\input{data/empresa.example.tex}}
+
+% --- Paleta ------------------------------------------------------------------
+\definecolor{corPrim}{HTML}{\corPrimaria}
+\definecolor{corAcc}{HTML}{\corAcento}
+\definecolor{corDk}{HTML}{\corDark}
+\definecolor{corLt}{HTML}{\corClara}
+% Brand colors for social icons
+\definecolor{corWhats}{HTML}{25D366}
+\definecolor{corIG}{HTML}{E1306C}
+\definecolor{corPin}{HTML}{EA4335}
+\definecolor{corPix}{HTML}{32BCAD}
+\definecolor{pixdark}{HTML}{0B3D3A}
+
+\pagestyle{empty}
+\setlength{\parindent}{0pt}
+
+% --- Payload PIX EMV gerado por scripts/pix_emv.py. --------------------------
+% O script emite scripts/pix_payload.tex que define \pixpayload preservando
+% espaços e caracteres especiais (abordagem mais robusta que \openin/\read).
+\IfFileExists{scripts/pix_payload.tex}{\input{scripts/pix_payload.tex}}{%
+  \def\pixpayload{PIX_PAYLOAD_MISSING}}
+
+% =============================================================================
+% === BOTÃO CLICÁVEL ==========================================================
+% =============================================================================
+% Uso: \cartaobotao{url}{icone}{titulo}{subtitulo}
+% Usa a key nativa "hyperurl" do tcolorbox (skins library) — gera a anotação
+% /URI automaticamente, sem os problemas de \pdfendlink em modo vertical.
+% Uso: \cartaobotao{url}{icone_tex}{titulo}{subtitulo}
+% O 2º arg já pode vir colorido (\textcolor{...}{\faX}).
+\newcommand{\cartaobotao}[4]{%
+  \begin{tcolorbox}[
+    enhanced,
+    colback=white,
+    colframe=corPrim,
+    boxrule=1.2pt,
+    arc=5mm,
+    height=3.4cm,
+    width=\linewidth,
+    left=4mm, right=4mm, top=3mm, bottom=3mm,
+    drop shadow={black!25,xshift=0.3mm,yshift=-0.5mm},
+    halign=center, valign=center,
+    hyperurl={#1},
+  ]
+    {\fontsize{34}{34}\selectfont #2}\\[2mm]
+    {\bfseries\large\textcolor{corDk}{#3}}\\
+    {\small\textcolor{black!65}{#4}}
+  \end{tcolorbox}%
+}
+
+% Logo PIX aproximado: 4 losangos ao redor de um miolo (verde oficial #32BCAD).
+\newcommand{\pixlogo}[1][0.55]{%
+  \begin{tikzpicture}[scale=#1,baseline={(0,-0.1)}]
+    % Losango central
+    \fill[corPix] (0,0.25) -- (0.25,0) -- (0,-0.25) -- (-0.25,0) -- cycle;
+    % Pétalas diagonais
+    \fill[corPix] (0.55,0.55) -- (0.80,0.30) -- (0.55,0.05) -- (0.30,0.30) -- cycle;
+    \fill[corPix] (-0.55,0.55) -- (-0.30,0.30) -- (-0.55,0.05) -- (-0.80,0.30) -- cycle;
+    \fill[corPix] (0.55,-0.55) -- (0.30,-0.30) -- (0.55,-0.05) -- (0.80,-0.30) -- cycle;
+    \fill[corPix] (-0.55,-0.55) -- (-0.80,-0.30) -- (-0.55,-0.05) -- (-0.30,-0.30) -- cycle;
+  \end{tikzpicture}%
+}
+
+% =============================================================================
+% === DOCUMENTO ===============================================================
+% =============================================================================
+\begin{document}
+
+% ---------------------------------------------------------------- Página 1 ---
+\hypertarget{home}{}%
+\begin{tikzpicture}[remember picture,overlay]
+  \fill[corLt] (current page.south west) rectangle (current page.north east);
+  \fill[corPrim]
+    (current page.north west) rectangle
+    ([yshift=-3.2cm]current page.north east);
+  \fill[corAcc]
+    ([yshift=-3.2cm]current page.north west) rectangle
+    ([yshift=-3.3cm]current page.north east);
+\end{tikzpicture}
+
+\vspace*{0.9cm}
+\begin{center}
+  \IfFileExists{assets/logo-amaral.pdf}{%
+    \includegraphics[height=1.6cm]{assets/logo-amaral.pdf}%
+  }{%
+    \textcolor{white}{\Huge\bfseries\empresaFantasia}%
+  }
+  \\[4mm]
+  {\color{white}\small\bfseries CONTATO \& PAGAMENTO}
+\end{center}
+
+\vspace{1.6cm}
+
+% --- Grid 2×3 de botões ------------------------------------------------------
+\begin{center}
+\begin{minipage}{0.92\linewidth}
+  \renewcommand{\arraystretch}{1.4}
+  \begin{tabular}{@{}p{0.47\linewidth}@{\hspace{0.04\linewidth}}p{0.47\linewidth}@{}}
+    \cartaobotao{tel:\empresaTelefone}{\textcolor{corPrim}{\faMobile}}{Telefone}{\empresaTelefoneFmt}
+    &
+    \cartaobotao{https://wa.me/\empresaWhatsAppDigits}{\textcolor{corWhats}{\faWhatsapp}}{WhatsApp}{\empresaTelefoneFmt}
+    \\
+    \cartaobotao{mailto:\empresaEmail}{\textcolor{corPrim}{\faEnvelope}}{E-mail}{\empresaEmail}
+    &
+    \cartaobotao{\empresaInstagramURL}{\textcolor{corIG}{\faInstagram}}{Instagram}{@\empresaInstagram}
+    \\
+    \cartaobotao{\empresaMapsURL}{\textcolor{corPin}{\faMapMarker}}{Localização}{Tijucas -- SC}
+    &
+    % PIX: link interno para \hypertarget{pix} (p.2) via key hyperlink.
+    \begin{tcolorbox}[
+      enhanced,
+      colback=corAcc,
+      colframe=corAcc,
+      boxrule=0pt,
+      arc=5mm,
+      height=3.4cm,
+      width=\linewidth,
+      left=4mm,right=4mm,top=3mm,bottom=3mm,
+      drop shadow={black!30,xshift=0.3mm,yshift=-0.5mm},
+      halign=center,valign=center,
+      hyperlink={pix},
+    ]
+      {\fontsize{30}{30}\selectfont\colorbox{white}{\hspace{2mm}\pixlogo[0.8]\hspace{2mm}}}\\[2mm]
+      {\bfseries\large\textcolor{white}{Pagar com PIX}}\\
+      {\small\textcolor{white!85}{CNPJ \empresaCNPJFmt}}
+    \end{tcolorbox}
+    \\
+  \end{tabular}
+\end{minipage}
+\end{center}
+
+\vfill
+\begin{center}\small\color{black!55}
+  \empresaSite{} \quad $\bullet$ \quad Tijucas -- SC
+\end{center}
+\vspace{0.4cm}
+
+\newpage
+% ---------------------------------------------------------------- Página 2 ---
+\hypertarget{pix}{}%
+\begin{tikzpicture}[remember picture,overlay]
+  \fill[corDk] (current page.south west) rectangle (current page.north east);
+\end{tikzpicture}
+
+\vspace*{0.8cm}
+\begin{center}
+  {\color{white}\small\bfseries PAGAMENTO PIX}\\[2mm]
+  \IfFileExists{assets/logo-amaral.pdf}{%
+    \includegraphics[height=1.0cm]{assets/logo-amaral.pdf}%
+  }{%
+    \textcolor{white}{\large\bfseries\empresaFantasia}%
+  }
+\end{center}
+
+\vspace{0.5cm}
+
+% --- Mockup de celular -------------------------------------------------------
+\begin{center}
+\begin{tcolorbox}[
+  enhanced,
+  colback=white,
+  colframe=black!15,
+  boxrule=0.6pt,
+  arc=8mm,
+  width=0.80\linewidth,
+  left=7mm,right=7mm,top=7mm,bottom=7mm,
+  drop shadow={black!50,xshift=0pt,yshift=-1mm},
+  halign=center,
+]
+  {\small\bfseries\textcolor{corPrim}{\empresaFantasia}} \\[1mm]
+  {\footnotesize\color{black!55}Pagamento via PIX} \\[4mm]
+
+  % PIX logo (4 pétalas + miolo, verde oficial #32BCAD)
+  \pixlogo[1.0]\hspace{3mm}{\LARGE\bfseries\color{corPix} pix}
+
+  \vspace{5mm}
+
+  % QR Code — gerado externamente via qrencode (Makefile), incluído como PNG.
+  % Bypass da tokenização LaTeX que quebrava o payload PIX em iterações anteriores.
+  \includegraphics[height=5.5cm]{scripts/qrcode.png}
+
+  \vspace{4mm}
+
+  {\footnotesize\color{black!55}CHAVE (CNPJ)} \\[1mm]
+  {\Large\bfseries\color{corDk}\empresaCNPJFmt} \\[1mm]
+  {\footnotesize\color{black!60}\empresaRazao} \\[5mm]
+
+  {\footnotesize\itshape\color{black!65}
+   PRESSIONE, COPIE E COLE NO SEU APLICATIVO DO BANCO!}
+\end{tcolorbox}
+\end{center}
+
+\vspace{0.6cm}
+\begin{center}
+  \begin{tcolorbox}[
+    enhanced,
+    colback=white!10,
+    colframe=white!60,
+    boxrule=0.8pt,
+    arc=4mm,
+    width=0.35\linewidth,
+    left=3mm,right=3mm,top=2mm,bottom=2mm,
+    halign=center,
+    hyperlink={home},
+  ]
+    {\bfseries\color{white} $\leftarrow$ Voltar}
+  \end{tcolorbox}
+\end{center}
+
+\vfill
+\begin{center}\footnotesize\color{white!60}
+  \empresaSite
+\end{center}
+\vspace{0.4cm}
+
+\end{document}

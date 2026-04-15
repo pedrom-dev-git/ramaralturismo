@@ -1,0 +1,32 @@
+---
+import { locales, localizedPath, type Locale } from '../i18n';
+
+interface Props {
+  locale?: Locale;
+}
+
+const { locale = 'pt-BR' } = Astro.props;
+
+const labels: Record<Locale, string> = {
+  'pt-BR': 'PT',
+  en: 'EN',
+  es: 'ES',
+};
+---
+
+<div class="flex items-center gap-1" data-testid="language-switcher">
+  {locales.map((loc) => (
+    <a
+      href={localizedPath(loc)}
+      class:list={[
+        'px-2 py-1 text-xs font-semibold rounded transition-colors',
+        loc === locale
+          ? 'bg-primary text-white'
+          : 'text-white/60 hover:text-white hover:bg-white/10',
+      ]}
+      aria-current={loc === locale ? 'true' : undefined}
+    >
+      {labels[loc]}
+    </a>
+  ))}
+</div>

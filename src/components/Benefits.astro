@@ -1,0 +1,55 @@
+---
+import BenefitCard from "./BenefitCard.astro";
+import { t, type Locale } from '../i18n';
+
+interface Props {
+  locale?: Locale;
+}
+
+const { locale = 'pt-BR' } = Astro.props;
+
+const benefits = [
+  {
+    title: "Segurança em primeiro lugar",
+    description: "Veículo vistoriado e regularizado conforme as normas vigentes.",
+    icon: '<svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>',
+  },
+  {
+    title: "Pontualidade",
+    description: "Compromisso com horários para que você nunca se atrase.",
+    icon: '<svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>',
+  },
+  {
+    title: "Conforto",
+    description: "Ar-condicionado, espaço e comodidade para sua viagem.",
+    icon: '<svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M8 16a4 4 0 01-4-4V6a4 4 0 018 0v6a4 4 0 01-4 4zm0 0v2m0 4h.01M16 16a4 4 0 004-4V6a4 4 0 00-8 0v6a4 4 0 004 4zm0 0v2m0 4h.01"/></svg>',
+  },
+  {
+    title: "Atendimento rápido",
+    description: "Resposta ágil para todas as suas necessidades de transporte.",
+    icon: '<svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>',
+  },
+];
+---
+
+<section class="py-12 md:py-16 lg:py-20 scroll-mt-[72px]">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6">
+    <!-- Section header -->
+    <div class="text-center max-w-3xl mx-auto mb-8 md:mb-12">
+      <p class="text-base text-primary font-bold tracking-wide uppercase mb-2">Vantagens</p>
+      <h2 class="text-3xl md:text-4xl font-bold tracking-tighter mb-4">
+        {t(locale, 'benefits.title')}
+      </h2>
+      <p class="text-lg text-medium-gray">
+        Qualidade e compromisso em cada viagem que realizamos.
+      </p>
+    </div>
+
+    <!-- Grid -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 md:gap-y-12">
+      {benefits.map((b) => (
+        <BenefitCard title={b.title} description={b.description} icon={b.icon} />
+      ))}
+    </div>
+  </div>
+</section>

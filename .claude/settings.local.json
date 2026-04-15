@@ -1,0 +1,15 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npx playwright:*)",
+      "Bash(npm test:*)",
+      "Bash(node:*)",
+      "Bash(ls -la /home/kazpokemon/Desktop/git/projeto-turismo/assets/images/map-patterns/*.svg)",
+      "Bash(gh search:*)",
+      "WebSearch",
+      "WebFetch(domain:raw.githubusercontent.com)",
+      "Bash(pip install:*)",
+      "Bash(python3:*)"
+    ]
+  }
+}

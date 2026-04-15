@@ -1,0 +1,27 @@
+@import "tailwindcss";
+
+/* Prevent horizontal overflow from Swiper slides positioned outside viewport */
+html,
+body {
+  overflow-x: hidden;
+}
+
+@font-face {
+  font-family: "ALVATER Rough";
+  src: url("/fonts/ALVATER-Rough.otf") format("opentype");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@theme {
+  --color-primary: #0138AD;
+  --color-accent: #9D0013;
+  --color-dark: #143E58;
+  --color-light-gray: #F5F5F5;
+  --color-dark-gray: #333333;
+  --color-medium-gray: #666666;
+  --color-light-blue: #DCF0F7;
+
+  --font-sans: "Inter", sans-serif;
+}

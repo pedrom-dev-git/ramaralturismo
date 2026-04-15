@@ -1,0 +1,30 @@
+# Private data (telefone/email reais, Instagram pessoal, etc.)
+data/empresa.tex
+
+# LaTeX build artifacts
+build/
+*.aux
+*.log
+*.out
+*.fls
+*.fdb_latexmk
+*.synctex.gz
+*.toc
+*.nav
+*.snm
+
+# Keep the final PDF versioned for easy distribution
+# (cartao.pdf stays tracked)
+
+# Python
+__pycache__/
+*.pyc
+.pytest_cache/
+.ruff_cache/
+
+# EMV payload cache (derived artifact)
+scripts/pix_payload.txt
+
+# Converted logo (derived from public/logo-amaral.svg)
+assets/logo-amaral.pdf
+assets/logo-amaral.png

@@ -1,0 +1,12 @@
+# Overpass cache (regenerável)
+.osm-cache/
+
+# Python
+__pycache__/
+*.pyc
+.pytest_cache/
+.ruff_cache/
+
+# Node (se gerador .mjs for usado)
+node_modules/
+output/
