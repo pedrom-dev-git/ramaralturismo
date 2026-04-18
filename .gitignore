@@ -85,3 +85,9 @@ test-results/
 assets/images/map-patterns/
 assets/images/map-variations/
 assets/images/map-variations.zip
+
+# Lighthouse — raw JSON reports (verbose, ~500KB each)
+# Only .lighthouse/baseline-YYYY-MM.json (consolidated) is versioned
+.lighthouse/baseline-pt.json
+.lighthouse/baseline-en.json
+.lighthouse/baseline-es.json

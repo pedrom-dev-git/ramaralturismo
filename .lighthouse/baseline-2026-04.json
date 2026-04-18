@@ -1,0 +1,31 @@
+{
+  "date": "2026-04-18",
+  "commit": "8216a86",
+  "note": "Baseline pre-Sprint-3 push. Re-measure after Sprint 3 published.",
+  "scores": {
+    "/": {
+      "performance": 99,
+      "accessibility": 84,
+      "best-practices": 100,
+      "seo": 100,
+      "fetchTime": "2026-04-18T19:07:35.708Z",
+      "userAgent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/147.0.0.0 Safari/537.36"
+    },
+    "/en/": {
+      "performance": 99,
+      "accessibility": 84,
+      "best-practices": 100,
+      "seo": 100,
+      "fetchTime": "2026-04-18T19:08:11.718Z",
+      "userAgent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/147.0.0.0 Safari/537.36"
+    },
+    "/es/": {
+      "performance": 100,
+      "accessibility": 84,
+      "best-practices": 100,
+      "seo": 100,
+      "fetchTime": "2026-04-18T19:08:11.677Z",
+      "userAgent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/147.0.0.0 Safari/537.36"
+    }
+  }
+}
