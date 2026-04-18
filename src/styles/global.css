@@ -1,5 +1,10 @@
 @import "tailwindcss";
 
+/* Offset anchor scroll so sticky navbar (72px) does not cover the target */
+html {
+  scroll-padding-top: 72px;
+}
+
 /* Prevent horizontal overflow from Swiper slides positioned outside viewport */
 html,
 body {
