@@ -28,12 +28,6 @@ test.describe("i18n", () => {
       ).toBeVisible();
     });
 
-    test("partners section heading is in English", async ({ page }) => {
-      await expect(
-        page.getByRole("heading", { name: "Our Partners" })
-      ).toBeVisible();
-    });
-
     test("footer copyright is in English", async ({ page }) => {
       await expect(page.getByText("All rights reserved")).toBeVisible();
     });

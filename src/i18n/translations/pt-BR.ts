@@ -43,9 +43,6 @@ export default {
   'benefits.speed.title': 'Atendimento rápido',
   'benefits.speed.desc': 'Resposta ágil para todas as suas necessidades de transporte.',
 
-  // Partners
-  'partners.title': 'Nossos Parceiros',
-
   // Services
   'services.label': 'O que fazemos',
   'services.title': 'Nossos Serviços',
