@@ -26,7 +26,7 @@ export default defineConfig({
       workbox: {
         navigateFallback: undefined,
         globDirectory: 'dist/client',
-        globPatterns: ['**/*.{css,js,html,svg,png,ico,txt}'],
+        globPatterns: ['**/*.{css,js,html,svg,png,ico,txt,woff2}'],
       },
     }),
   ],
