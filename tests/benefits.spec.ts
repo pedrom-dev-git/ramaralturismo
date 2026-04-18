@@ -3,7 +3,8 @@ import { test, expect } from "@playwright/test";
 const EXPECTED_BENEFITS = [
   {
     title: "Segurança em primeiro lugar",
-    description: "Veículo vistoriado e regularizado conforme as normas vigentes.",
+    description:
+      "Veículo vistoriado e regularizado conforme as normas vigentes.",
   },
   {
     title: "Pontualidade",
@@ -26,27 +27,37 @@ test.describe("Benefits", () => {
 
   test("exibe o título da seção", async ({ page }) => {
     await expect(
-      page.getByRole("heading", { name: /por que escolher a nossa van/i })
+      page.getByRole("heading", { name: /por que escolher a nossa van/i }),
     ).toBeVisible();
   });
 
   test("renderiza exatamente 4 cards de benefício", async ({ page }) => {
-    const section = page.locator("section").filter({ hasText: /por que escolher a nossa van/i });
+    const section = page
+      .locator("section")
+      .filter({ hasText: /por que escolher a nossa van/i });
     const cards = section.locator(".grid > div");
     await expect(cards).toHaveCount(4);
   });
 
   for (const benefit of EXPECTED_BENEFITS) {
     // getByRole("heading") é preciso: só casa o <h3>, não o div pai
-    test(`input: página carregada → output: card "${benefit.title}" visível`, async ({ page }) => {
-      const section = page.locator("section").filter({ hasText: /por que escolher a nossa van/i });
+    test(`input: página carregada → output: card "${benefit.title}" visível`, async ({
+      page,
+    }) => {
+      const section = page
+        .locator("section")
+        .filter({ hasText: /por que escolher a nossa van/i });
       await expect(
-        section.getByRole("heading", { name: benefit.title, exact: true })
+        section.getByRole("heading", { name: benefit.title, exact: true }),
       ).toBeVisible();
     });
 
-    test(`input: página carregada → output: descrição de "${benefit.title}" visível`, async ({ page }) => {
-      const section = page.locator("section").filter({ hasText: /por que escolher a nossa van/i });
+    test(`input: página carregada → output: descrição de "${benefit.title}" visível`, async ({
+      page,
+    }) => {
+      const section = page
+        .locator("section")
+        .filter({ hasText: /por que escolher a nossa van/i });
       await expect(section.getByText(benefit.description)).toBeVisible();
     });
   }

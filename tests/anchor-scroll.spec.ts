@@ -23,7 +23,9 @@ test.describe("Anchor scroll — #hero-form not hidden behind sticky navbar", ()
     await page.waitForTimeout(200);
   });
 
-  test("Hero CTA 'Solicitar Orçamento' scrolls form into view below navbar", async ({ page }) => {
+  test("Hero CTA 'Solicitar Orçamento' scrolls form into view below navbar", async ({
+    page,
+  }) => {
     const heroCta = page
       .locator("section")
       .first()
@@ -37,7 +39,9 @@ test.describe("Anchor scroll — #hero-form not hidden behind sticky navbar", ()
     expect(box!.y).toBeGreaterThanOrEqual(NAVBAR_HEIGHT);
   });
 
-  test("Navbar desktop CTA scrolls form into view below navbar", async ({ page }) => {
+  test("Navbar desktop CTA scrolls form into view below navbar", async ({
+    page,
+  }) => {
     // Desktop CTA is hidden md:inline-flex — use desktop viewport (default)
     const desktopCta = page
       .locator("header")
@@ -53,7 +57,9 @@ test.describe("Anchor scroll — #hero-form not hidden behind sticky navbar", ()
     expect(box!.y).toBeGreaterThanOrEqual(NAVBAR_HEIGHT);
   });
 
-  test("Navbar mobile CTA scrolls form into view below navbar", async ({ page }) => {
+  test("Navbar mobile CTA scrolls form into view below navbar", async ({
+    page,
+  }) => {
     await page.setViewportSize({ width: 375, height: 812 });
     await page.goto("/");
     await page.evaluate(() => window.scrollTo(0, 800));

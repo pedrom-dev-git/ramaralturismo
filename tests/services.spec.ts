@@ -18,27 +18,37 @@ test.describe("Services", () => {
 
   test("exibe o título 'Nossos Serviços'", async ({ page }) => {
     await expect(
-      page.getByRole("heading", { name: /nossos serviços/i })
+      page.getByRole("heading", { name: /nossos serviços/i }),
     ).toBeVisible();
   });
 
   test("renderiza exatamente 2 cards de serviço", async ({ page }) => {
-    const section = page.locator("section").filter({ hasText: "Nossos Serviços" });
+    const section = page
+      .locator("section")
+      .filter({ hasText: "Nossos Serviços" });
     const grid = section.locator(".grid > div");
     await expect(grid).toHaveCount(2);
   });
 
   for (const service of EXPECTED_SERVICES) {
     // Usa getByRole("heading") para evitar strict mode com options do <select> do Hero
-    test(`input: página carregada → output: card "${service.title}" visível`, async ({ page }) => {
-      const section = page.locator("section").filter({ hasText: "Nossos Serviços" });
+    test(`input: página carregada → output: card "${service.title}" visível`, async ({
+      page,
+    }) => {
+      const section = page
+        .locator("section")
+        .filter({ hasText: "Nossos Serviços" });
       await expect(
-        section.getByRole("heading", { name: service.title, exact: true })
+        section.getByRole("heading", { name: service.title, exact: true }),
       ).toBeVisible();
     });
 
-    test(`input: página carregada → output: descrição de "${service.title}" visível`, async ({ page }) => {
-      const section = page.locator("section").filter({ hasText: "Nossos Serviços" });
+    test(`input: página carregada → output: descrição de "${service.title}" visível`, async ({
+      page,
+    }) => {
+      const section = page
+        .locator("section")
+        .filter({ hasText: "Nossos Serviços" });
       await expect(section.getByText(service.description)).toBeVisible();
     });
   }
@@ -47,7 +57,9 @@ test.describe("Services", () => {
     await expect(page.getByRole("link", { name: /ver todos/i })).toBeVisible();
   });
 
-  test("botão 'Ver todos' está estilizado como outlined (tem classe border)", async ({ page }) => {
+  test("botão 'Ver todos' está estilizado como outlined (tem classe border)", async ({
+    page,
+  }) => {
     const btn = page.getByRole("link", { name: /ver todos/i });
     await expect(btn).toHaveClass(/border/);
   });

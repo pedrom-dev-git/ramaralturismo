@@ -15,7 +15,7 @@ function buildAlternates(currentPath: string): string {
   return pages
     .map(
       (p) =>
-        `      <xhtml:link rel="alternate" hreflang="${p.lang}" href="${SITE}${p.path}"/>`
+        `      <xhtml:link rel="alternate" hreflang="${p.lang}" href="${SITE}${p.path}"/>`,
     )
     .join("\n");
 }

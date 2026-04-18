@@ -14,7 +14,9 @@ test.describe("NewsCarousel", () => {
   });
 
   test("exibe o título 'Feature News'", async ({ page }) => {
-    await expect(page.getByRole("heading", { name: "Feature News" })).toBeVisible();
+    await expect(
+      page.getByRole("heading", { name: "Feature News" }),
+    ).toBeVisible();
   });
 
   test("a seção tem fundo escuro (bg-dark)", async ({ page }) => {
@@ -29,11 +31,17 @@ test.describe("NewsCarousel", () => {
   });
 
   for (const item of EXPECTED_NEWS) {
-    test(`input: página carregada → output: card "${item.title}" no DOM`, async ({ page }) => {
-      await expect(page.locator('#novidades').getByText(item.title)).toBeVisible();
+    test(`input: página carregada → output: card "${item.title}" no DOM`, async ({
+      page,
+    }) => {
+      await expect(
+        page.locator("#novidades").getByText(item.title),
+      ).toBeVisible();
     });
 
-    test(`input: página carregada → output: subtítulo "${item.subtitle}" visível`, async ({ page }) => {
+    test(`input: página carregada → output: subtítulo "${item.subtitle}" visível`, async ({
+      page,
+    }) => {
       await expect(page.getByText(item.subtitle)).toBeVisible();
     });
   }
@@ -43,7 +51,9 @@ test.describe("NewsCarousel", () => {
     await expect(page.locator(".news-next")).toBeVisible();
   });
 
-  test("input: clique em next → output: swiper avança (active slide muda)", async ({ page }) => {
+  test("input: clique em next → output: swiper avança (active slide muda)", async ({
+    page,
+  }) => {
     const getActiveIndex = () =>
       page.evaluate(() => {
         const el = document.querySelector(".news-swiper") as any;
@@ -57,7 +67,9 @@ test.describe("NewsCarousel", () => {
     expect(after).toBeGreaterThan(before);
   });
 
-  test("input: clique em prev após next → output: swiper volta ao slide anterior", async ({ page }) => {
+  test("input: clique em prev após next → output: swiper volta ao slide anterior", async ({
+    page,
+  }) => {
     const getActiveIndex = () =>
       page.evaluate(() => {
         const el = document.querySelector(".news-swiper") as any;
