@@ -16,11 +16,33 @@ const {
 
 const htmlLang = getHtmlLang(locale);
 const siteUrl = 'https://ramaral.com.br';
+const canonicalUrl = Astro.url.href;
+const ogImageUrl = new URL('/og-cover.jpg', Astro.site).href;
+
+const localBusinessSchema = {
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "name": "R. Amaral Turismo",
+  "telephone": "+55 48 99950-3368",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Tijucas",
+    "addressRegion": "SC",
+    "addressCountry": "BR",
+  },
+  "areaServed": {
+    "@type": "State",
+    "name": "Santa Catarina",
+  },
+  "url": "https://ramaral.com.br",
+};
 
 import "../styles/global.css";
 import "@fontsource/inter/400.css";
 import "@fontsource/inter/600.css";
 import "@fontsource/inter/700.css";
+// Preload hint: resolved by Vite to a hashed asset URL at build time
+import interLatin400Url from "@fontsource/inter/files/inter-latin-400-normal.woff2?url";
 ---
 
 <!doctype html>
@@ -31,10 +53,19 @@ import "@fontsource/inter/700.css";
     <title>{title}</title>
     <meta name="description" content={description} />
 
+    <!-- Canonical -->
+    <link rel="canonical" href={canonicalUrl} />
+
     <!-- Open Graph -->
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonicalUrl} />
+    <meta property="og:image" content={ogImageUrl} />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:image" content={ogImageUrl} />
 
     <!-- hreflang alternates -->
     <link rel="alternate" hreflang="pt-BR" href={`${siteUrl}/`} />
@@ -45,7 +76,11 @@ import "@fontsource/inter/700.css";
     <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 
-    <!-- Inter font: self-hosted via Fontsource (imported in frontmatter) -->
+    <!-- Schema.org LocalBusiness -->
+    <script type="application/ld+json" set:html={JSON.stringify(localBusinessSchema)} />
+
+    <!-- Inter font: preload hint for latin-400 (most critical subset) -->
+    <link rel="preload" href={interLatin400Url} as="font" type="font/woff2" crossorigin />
 
   </head>
   <body class="font-sans text-dark-gray bg-white">
