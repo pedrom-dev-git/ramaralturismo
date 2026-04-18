@@ -78,11 +78,11 @@ class TestPayload(unittest.TestCase):
         # ID 53 len 03 value 986 (BRL ISO 4217)
         self.assertIn("5303986", self.payload)
 
-    def test_payload_omits_62_when_txid_is_placeholder(self):
-        # txid "***" / empty -> field 62 omitted (some bank apps reject "***").
-        # Last 8 chars are "6304" + CRC; right before that should be merchant city (60),
-        # never "6207..." additional data block.
-        self.assertNotIn("62070503***", self.payload)
+    def test_payload_includes_62_when_txid_is_placeholder(self):
+        # txid "***" -> field 62 present with "***" as Reference Label.
+        # BCB requires field 62 even for static payloads (post-2022 bank apps
+        # reject QR codes without it).
+        self.assertIn("62070503***", self.payload)
 
     def test_payload_includes_62_when_txid_is_real(self):
         p = pix_emv.build_payload(

@@ -8,6 +8,8 @@
 \usepackage[T1]{fontenc}
 \usepackage[portuguese]{babel}
 \usepackage{lmodern}
+\usepackage[defaultsans]{opensans}
+\renewcommand{\familydefault}{\sfdefault}
 \usepackage{graphicx}
 \usepackage{xcolor}
 \usepackage{tikz}
@@ -109,7 +111,7 @@
     \textcolor{white}{\Huge\bfseries\empresaFantasia}%
   }
   \\[4mm]
-  {\color{white}\small\bfseries CONTATO \& PAGAMENTO}
+  {\color{corDk}\small\bfseries CONTATO \& PAGAMENTO}
 \end{center}
 
 \vspace{1.6cm}
@@ -217,21 +219,21 @@
 \begin{center}
   \begin{tcolorbox}[
     enhanced,
-    colback=white!10,
-    colframe=white!60,
-    boxrule=0.8pt,
+    colback=corPrim,
+    colframe=corPrim,
+    boxrule=0pt,
     arc=4mm,
     width=0.35\linewidth,
     left=3mm,right=3mm,top=2mm,bottom=2mm,
     halign=center,
     hyperlink={home},
   ]
-    {\bfseries\color{white} $\leftarrow$ Voltar}
+    {\bfseries\color{white} \faArrowLeft\space Voltar}
   \end{tcolorbox}
 \end{center}
 
 \vfill
-\begin{center}\footnotesize\color{white!60}
+\begin{center}\footnotesize\color{white!80}
   \empresaSite
 \end{center}
 \vspace{0.4cm}

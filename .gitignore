@@ -70,3 +70,11 @@ pnpm-debug.log*
 
 # PWA dev
 dev-dist/
+
+# Claude Code local settings (per-machine)
+.claude/settings.local.json
+
+# Assets pesados versionados fora do git
+assets/images/map-patterns/
+assets/images/map-variations/
+assets/images/map-variations.zip

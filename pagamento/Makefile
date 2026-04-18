@@ -38,8 +38,9 @@ scripts/pix_payload.txt scripts/pix_payload.tex: scripts/pix_emv.py data/empresa
 	@echo "✓ payload PIX gerado (.txt + .tex)"
 
 scripts/qrcode.png: scripts/pix_payload.txt
-	@qrencode -o scripts/qrcode.png -l H -s 10 -m 2 "$$(cat scripts/pix_payload.txt)"
-	@echo "✓ QR PNG gerado (qrencode, level H)"
+	@qrencode -o scripts/qrcode.png -l H -s 30 -m 2 "$$(cat scripts/pix_payload.txt)"
+	@mogrify -alpha off -background white -flatten scripts/qrcode.png
+	@echo "✓ QR PNG gerado (qrencode, level H, 1470px, sem alpha)"
 
 test: all
 	@echo "▶ Testing PIX EMV generator (pytest stdlib)..."

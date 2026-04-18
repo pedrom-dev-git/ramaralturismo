@@ -65,10 +65,10 @@ def build_payload(
     mai = tlv("00", "BR.GOV.BCB.PIX") + tlv("01", pix_key)
 
     # ID 62 — Additional Data Field Template (Reference Label / txid).
-    # Optional in static payloads. Some bank apps reject "***" as txid value,
-    # so we omit 62 entirely when txid is empty or "***".
-    include_add = bool(txid) and txid != "***"
-    add = tlv("05", txid) if include_add else ""
+    # BCB requires field 62 even for static payloads (post-2022 bank apps
+    # reject QR codes without it). Use "***" as txid placeholder for
+    # reusable static payloads per BCB convention.
+    add = tlv("05", txid) if txid else ""
 
     body = (
         tlv("00", "01")              # Payload Format Indicator
