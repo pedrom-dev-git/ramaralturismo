@@ -1,9 +1,9 @@
 import { test, expect } from "@playwright/test";
 
 const LOCALES = [
-  { path: "/", label: "pt-BR" },
-  { path: "/en/", label: "en" },
-  { path: "/es/", label: "es" },
+  { path: "/", label: "pt-BR", ogLocale: "pt_BR" },
+  { path: "/en/", label: "en", ogLocale: "en_US" },
+  { path: "/es/", label: "es", ogLocale: "es_ES" },
 ];
 
 for (const locale of LOCALES) {
@@ -12,17 +12,47 @@ for (const locale of LOCALES) {
       await page.goto(locale.path);
     });
 
-    test("has og:title meta tag", async ({ page }) => {
-      await expect(page.locator('meta[property="og:title"]')).toHaveAttribute(
-        "content",
-        /.+/
-      );
+    test("has og:locale with correct value", async ({ page }) => {
+      const ogLocaleEl = page.locator('meta[property="og:locale"]');
+      await expect(ogLocaleEl).toHaveCount(1);
+      await expect(ogLocaleEl).toHaveAttribute("content", locale.ogLocale);
     });
 
-    test("has og:description meta tag", async ({ page }) => {
-      await expect(
-        page.locator('meta[property="og:description"]')
-      ).toHaveAttribute("content", /.+/);
+    test("has og:locale:alternate for the other 2 locales", async ({
+      page,
+    }) => {
+      const alternates = page.locator('meta[property="og:locale:alternate"]');
+      await expect(alternates).toHaveCount(2);
+    });
+
+    test("has og:title that matches <title> and is not empty/placeholder", async ({
+      page,
+    }) => {
+      const pageTitle = await page.title();
+      expect(pageTitle.length).toBeGreaterThan(5);
+      expect(pageTitle).toMatch(/R\. Amaral/i);
+
+      const ogTitleContent = await page
+        .locator('meta[property="og:title"]')
+        .getAttribute("content");
+      expect(ogTitleContent).not.toBeNull();
+      expect(ogTitleContent!.length).toBeGreaterThan(5);
+      // og:title must match or be closely related to <title>
+      expect(ogTitleContent).toMatch(/R\. Amaral/i);
+    });
+
+    test("has og:description that is non-empty and not generic placeholder", async ({
+      page,
+    }) => {
+      const ogDesc = await page
+        .locator('meta[property="og:description"]')
+        .getAttribute("content");
+      expect(ogDesc).not.toBeNull();
+      expect(ogDesc!.length).toBeGreaterThan(10);
+      // Must not be a bare placeholder like "description" or empty
+      expect(ogDesc).not.toMatch(/^description$/i);
+      // Must contain something meaningful about transport/turismo
+      expect(ogDesc).toMatch(/transport|turismo|travel|viag|traslado/i);
     });
 
     test("has og:url meta tag pointing to current URL", async ({ page }) => {
@@ -53,9 +83,10 @@ for (const locale of LOCALES) {
     });
 
     test("has twitter:card meta tag", async ({ page }) => {
-      await expect(
-        page.locator('meta[name="twitter:card"]')
-      ).toHaveAttribute("content", "summary_large_image");
+      await expect(page.locator('meta[name="twitter:card"]')).toHaveAttribute(
+        "content",
+        "summary_large_image",
+      );
     });
 
     test("has twitter:image meta tag with absolute URL", async ({ page }) => {
