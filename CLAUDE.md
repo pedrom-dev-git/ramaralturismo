@@ -78,3 +78,28 @@ Definidos em `src/styles/global.css` via `@theme`. Usar classes Tailwind, não h
 - Playwright auto-inicia dev server (`reuseExistingServer: true`, `baseURL: http://localhost:4321`)
 - Assets: `assets/images/{hero,gallery,icons,logos}`, `assets/fonts/`, `assets/videos/`
 - Referência de design: `ASSETS.md` (Figma spec), `figma/figma-page-1.jpeg`
+
+## Analytics
+
+Stack: **Cloudflare Web Analytics** (cookieless, LGPD-safe). Sem GA4, sem Plausible.
+
+- **Token**: env var `PUBLIC_CF_ANALYTICS_TOKEN` no Worker (nunca commitar)
+- **Render condicional**: se `PUBLIC_CF_ANALYTICS_TOKEN` ausente → script omitido. Seguro em local dev e CI sem configuração adicional.
+- **Ativar**: `pnpm wrangler secret put PUBLIC_CF_ANALYTICS_TOKEN` → cola valor do dashboard CF → re-deploy
+- **Desativar**: remova a var no dashboard CF → re-deploy
+- **Dashboard**: https://dash.cloudflare.com/<account>/web-analytics
+- **Exemplo de env local**: `.env.example` na raiz do projeto
+- **Conversion tracking customizado**: Sprint 7 Worker-side — não via front-end
+
+## Performance Baseline
+
+Baseline medido em 2026-04-18 (pré-Sprint 3 push):
+
+| URL  | Perf | A11y | BP  | SEO |
+|------|------|------|-----|-----|
+| `/`    | 99   | 84   | 100 | 100 |
+| `/en/` | 99   | 84   | 100 | 100 |
+| `/es/` | 100  | 84   | 100 | 100 |
+
+Detalhes e quick wins identificados em `docs/perf-baseline.md`.
+Re-medir após cada sprint publicada (comando documentado no arquivo).
