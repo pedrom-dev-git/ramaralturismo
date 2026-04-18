@@ -9,11 +9,9 @@ interface Props {
 const { locale = 'pt-BR' } = Astro.props;
 
 const links = [
-  { label: "Home", href: "#" },
-  { label: "Destinos", href: "#destinos" },
-  { label: "Blog", href: "#blog" },
-  { label: "Novidades", href: "#novidades" },
-  { label: "Contato", href: "#contato" },
+  { label: t(locale, 'nav.home'), href: "#" },
+  { label: t(locale, 'nav.destinos'), href: "#destinos" },
+  { label: t(locale, 'nav.contato'), href: "#contato" },
 ];
 ---
 
@@ -56,7 +54,7 @@ const links = [
       <button
         id="menu-toggle"
         class="flex flex-col h-12 w-12 rounded-lg justify-center items-center cursor-pointer group md:hidden"
-        aria-label="Abrir menu"
+        aria-label={t(locale, 'nav.menuLabel')}
       >
         <span aria-hidden="true" class="h-0.5 w-6 my-1 rounded-full bg-dark-gray transition-transform duration-200 group-[.expanded]:rotate-45 group-[.expanded]:translate-y-2.5"></span>
         <span aria-hidden="true" class="h-0.5 w-6 my-1 rounded-full bg-dark-gray transition-opacity duration-200 group-[.expanded]:opacity-0"></span>

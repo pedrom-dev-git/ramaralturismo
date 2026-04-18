@@ -7,6 +7,17 @@ interface Props {
 
 const { locale = 'pt-BR' } = Astro.props;
 const whatsappNumber = "5548999503368";
+
+// i18n strings passed to client script
+const i18nOrigin = t(locale, 'hero.origem');
+const i18nDestino = t(locale, 'hero.destino');
+const i18nPassageiros = t(locale, 'hero.passageiroPlaceholder');
+const i18nSelectSchool = t(locale, 'hero.selectSchool');
+const i18nCtaWhatsapp = t(locale, 'hero.ctaWhatsapp');
+const i18nMsgTurismo = t(locale, 'hero.msg.turismo');
+const i18nMsgEscolar = t(locale, 'hero.msg.escolar');
+const i18nMsgCorporativo = t(locale, 'hero.msg.corporativo');
+const i18nMsgDefault = t(locale, 'hero.msg.default');
 ---
 
 <section class="relative md:-mt-[76px] not-prose">
@@ -69,22 +80,22 @@ const whatsappNumber = "5548999503368";
             <div id="tipo-toggle" class="flex rounded-full bg-light-gray p-1 max-w-lg mx-auto w-full" role="radiogroup" aria-label="Tipo de Serviço">
               <label class="flex-1 text-center cursor-pointer">
                 <input type="radio" name="tipo" value="turismo" checked class="sr-only" />
-                <span class="block px-3 py-2.5 text-xs md:text-sm font-semibold rounded-full transition-all bg-primary text-white shadow-sm">Turismo e Viagens</span>
+                <span class="block px-3 py-2.5 text-xs md:text-sm font-semibold rounded-full transition-all bg-primary text-white shadow-sm">{t(locale, 'hero.tipo.turismo')}</span>
               </label>
               <label class="flex-1 text-center cursor-pointer">
                 <input type="radio" name="tipo" value="escolar" class="sr-only" />
-                <span class="block px-3 py-2.5 text-xs md:text-sm font-semibold rounded-full transition-all text-medium-gray">Transporte Escolar</span>
+                <span class="block px-3 py-2.5 text-xs md:text-sm font-semibold rounded-full transition-all text-medium-gray">{t(locale, 'hero.tipo.escolar')}</span>
               </label>
               <label class="flex-1 text-center cursor-pointer">
                 <input type="radio" name="tipo" value="corporativo" class="sr-only" />
-                <span class="block px-3 py-2.5 text-xs md:text-sm font-semibold rounded-full transition-all text-medium-gray">Corporativo</span>
+                <span class="block px-3 py-2.5 text-xs md:text-sm font-semibold rounded-full transition-all text-medium-gray">{t(locale, 'hero.tipo.corporativo')}</span>
               </label>
             </div>
 
             <!-- Linha datas (turismo) -->
             <div class="flex flex-col md:flex-row gap-4">
               <div id="data-ini-wrapper" class="flex-1 flex flex-col gap-1.5">
-                <label for="data-ini-display" class="text-xs font-medium text-medium-gray px-1">Data de ida</label>
+                <label for="data-ini-display" class="text-xs font-medium text-medium-gray px-1">{t(locale, 'hero.dataIda')}</label>
                 <input
                   id="data-ini-display"
                   type="text"
@@ -96,7 +107,7 @@ const whatsappNumber = "5548999503368";
               </div>
 
               <div id="data-fim-wrapper" class="flex-1 flex flex-col gap-1.5">
-                <label for="data-fim-display" class="text-xs font-medium text-medium-gray px-1">Data de volta</label>
+                <label for="data-fim-display" class="text-xs font-medium text-medium-gray px-1">{t(locale, 'hero.dataVolta')}</label>
                 <input
                   id="data-fim-display"
                   type="text"
@@ -115,7 +126,7 @@ const whatsappNumber = "5548999503368";
                   type="text"
                   name="origem"
                   id="origem-input"
-                  placeholder="Origem"
+                  placeholder={t(locale, 'hero.origem')}
                   autocomplete="off"
                   required
                   class="w-full border border-gray-200 rounded-lg px-4 py-3 text-sm focus:border-primary focus:ring-1 focus:ring-primary/20 transition-colors"
@@ -131,7 +142,7 @@ const whatsappNumber = "5548999503368";
                   type="text"
                   name="destino"
                   id="destino-input"
-                  placeholder="Destino"
+                  placeholder={t(locale, 'hero.destino')}
                   autocomplete="off"
                   required
                   class="w-full border border-gray-200 rounded-lg px-4 py-3 text-sm focus:border-primary focus:ring-1 focus:ring-primary/20 transition-colors"
@@ -148,7 +159,7 @@ const whatsappNumber = "5548999503368";
                   type="number"
                   name="quantidade"
                   min="1"
-                  placeholder="Nº de passageiros"
+                  placeholder={t(locale, 'hero.passageiroPlaceholder')}
                   class="w-full border border-gray-200 rounded-lg px-4 py-3 text-sm bg-white focus:border-primary focus:ring-1 focus:ring-primary/20 transition-colors"
                 />
               </div>
@@ -159,7 +170,7 @@ const whatsappNumber = "5548999503368";
                   id="escola-select"
                   class="w-full border border-gray-200 rounded-lg px-4 py-3 text-sm bg-white focus:border-primary focus:ring-1 focus:ring-primary/20 transition-colors"
                 >
-                  <option value="">Selecione a escola</option>
+                  <option value="">{t(locale, 'hero.selectSchool')}</option>
                   <option value="Escola Planeta">Escola Planeta</option>
                   <option value="Premium Brilho do Sol">Premium Brilho do Sol</option>
                   <option value="Alexandre Termes">Alexandre Termes</option>
@@ -174,7 +185,7 @@ const whatsappNumber = "5548999503368";
               <button
                 type="submit"
                 class="bg-green-500 hover:bg-green-600 text-white w-full py-3.5 rounded-full md:w-auto md:px-8 flex items-center justify-center shrink-0 self-end transition-colors gap-2 font-semibold text-sm border border-green-500"
-                aria-label="Solicitar orçamento no WhatsApp"
+                aria-label={t(locale, 'hero.ctaWhatsapp')}
               >
                 <svg class="w-5 h-5" aria-hidden="true" viewBox="0 0 24 24" fill="currentColor">
                   <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
@@ -190,7 +201,7 @@ const whatsappNumber = "5548999503368";
   </div>
 </section>
 
-<script define:vars={{ whatsappNumber }}>
+<script define:vars={{ whatsappNumber, i18nMsgTurismo, i18nMsgEscolar, i18nMsgCorporativo, i18nMsgDefault }}>
   const tipoRadios = document.querySelectorAll("input[name='tipo']");
   const tipoToggle = document.getElementById("tipo-toggle");
   const dataIniWrapper = document.getElementById("data-ini-wrapper");
@@ -437,6 +448,15 @@ const whatsappNumber = "5548999503368";
   // Inicializar estado (turismo é default)
   applyTipoState();
 
+  // ── tInterp: replace {var} placeholders in translated strings ────
+  function tInterp(template, vars) {
+    let str = template;
+    for (const [k, v] of Object.entries(vars)) {
+      str = str.replaceAll(`{${k}}`, v);
+    }
+    return str;
+  }
+
   // ── Submit → WhatsApp ─────────────────────────────────────────────
 
   document.getElementById("hero-form")?.addEventListener("submit", (e) => {
@@ -449,18 +469,29 @@ const whatsappNumber = "5548999503368";
 
     let msg;
     if (isTurismo) {
-      const destino = form.destino.value;
-      msg = `Olá! Gostaria de solicitar um orçamento de turismo.\n\nServiço: Turismo e Viagens\nOrigem: ${origem}\nDestino: ${destino}\nData de ida: ${formatDateBR(form.data_ini.value)}\nData de volta: ${formatDateBR(form.data_fim.value)}`;
+      msg = tInterp(i18nMsgTurismo, {
+        origem,
+        destino: form.destino.value,
+        dataIda: formatDateBR(form.data_ini.value),
+        dataVolta: formatDateBR(form.data_fim.value),
+      });
     } else if (isEscolar) {
-      const escola = form.escola.value;
-      msg = `Olá! Gostaria de solicitar um orçamento de transporte escolar.\n\nServiço: Transporte Escolar\nOrigem: ${origem}\nEscola: ${escola}`;
+      msg = tInterp(i18nMsgEscolar, {
+        origem,
+        escola: form.escola.value,
+      });
     } else if (tipo === "corporativo") {
-      const destino = form.destino.value;
-      const quantidade = quantidadeInput.value;
-      msg = `Olá! Gostaria de solicitar um orçamento para transporte corporativo.\n\nOrigem: ${origem}\nDestino: ${destino}\nPassageiros: ${quantidade}`;
+      msg = tInterp(i18nMsgCorporativo, {
+        origem,
+        destino: form.destino.value,
+        quantidade: quantidadeInput.value,
+      });
     } else {
-      const destino = form.destino.value;
-      msg = `Olá! Gostaria de solicitar um orçamento.\n\nServiço: ${tipo}\nOrigem: ${origem}\nDestino: ${destino}`;
+      msg = tInterp(i18nMsgDefault, {
+        tipo,
+        origem,
+        destino: form.destino.value,
+      });
     }
 
     window.open(`https://wa.me/${whatsappNumber}?text=${encodeURIComponent(msg)}`, "_blank");

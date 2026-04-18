@@ -8,11 +8,9 @@ interface Props {
 const { locale = 'pt-BR' } = Astro.props;
 
 const links = [
-  { label: "Home", href: "#" },
-  { label: "Destinos", href: "#destinos" },
-  { label: "Blog", href: "#blog" },
-  { label: "Novidades", href: "#novidades" },
-  { label: "Contato", href: "#contato" },
+  { label: t(locale, 'nav.home'), href: "#" },
+  { label: t(locale, 'nav.destinos'), href: "#destinos" },
+  { label: t(locale, 'nav.contato'), href: "#contato" },
 ];
 ---
 

@@ -8,13 +8,17 @@ test.describe("Footer", () => {
   test("exibe o nome da empresa no footer", async ({ page }) => {
     const footer = page.locator("footer");
     // Logo da empresa como imagem com alt="R. Amaral"
-    await expect(footer.getByRole("img", { name: "R. Amaral", exact: true })).toBeVisible();
+    await expect(
+      footer.getByRole("img", { name: "R. Amaral", exact: true }),
+    ).toBeVisible();
   });
 
   test("exibe a descrição da empresa", async ({ page }) => {
     // Escopa ao footer — a frase similar existe na seção Hero também
     const footer = page.locator("footer");
-    await expect(footer.getByText(/Atendimento personalizado para transporte escolar/)).toBeVisible();
+    await expect(
+      footer.getByText(/Atendimento personalizado para transporte escolar/),
+    ).toBeVisible();
   });
 
   test("exibe link de telefone com href correto", async ({ page }) => {
@@ -28,34 +32,52 @@ test.describe("Footer", () => {
     const footer = page.locator("footer");
     const emailLink = footer.getByRole("link", { name: /contato@ramaral/ });
     await expect(emailLink).toBeVisible();
-    await expect(emailLink).toHaveAttribute("href", "mailto:contato@ramaral.com.br");
+    await expect(emailLink).toHaveAttribute(
+      "href",
+      "mailto:contato@ramaral.com.br",
+    );
   });
 
   test("exibe a localização 'Santa Catarina, Brasil'", async ({ page }) => {
     await expect(page.getByText("Santa Catarina, Brasil")).toBeVisible();
   });
 
-  test("exibe os links de redes sociais (Instagram, Facebook, WhatsApp)", async ({ page }) => {
+  test("exibe os links de redes sociais (Instagram, Facebook, WhatsApp)", async ({
+    page,
+  }) => {
     const footer = page.locator("footer");
     await expect(footer.getByRole("link", { name: "Instagram" })).toBeVisible();
     await expect(footer.getByRole("link", { name: "Facebook" })).toBeVisible();
     await expect(footer.getByRole("link", { name: "WhatsApp" })).toBeVisible();
   });
 
-  test("link WhatsApp do footer aponta para o número correto", async ({ page }) => {
+  test("link WhatsApp do footer aponta para o número correto", async ({
+    page,
+  }) => {
     const footer = page.locator("footer");
     const waLink = footer.getByRole("link", { name: "WhatsApp" });
     await expect(waLink).toHaveAttribute("href", "https://wa.me/5548999503368");
   });
 
-  test("exibe os 5 links de navegação no footer", async ({ page }) => {
-    // Escopa à <ul> de navegação dentro do footer para não capturar os links da navbar
-    const footerNav = page.locator("footer ul");
-    await expect(footerNav.getByRole("link", { name: "Home", exact: true })).toBeVisible();
-    await expect(footerNav.getByRole("link", { name: "Destinos", exact: true })).toBeVisible();
-    await expect(footerNav.getByRole("link", { name: "Blog", exact: true })).toBeVisible();
-    await expect(footerNav.getByRole("link", { name: "Novidades", exact: true })).toBeVisible();
-    await expect(footerNav.getByRole("link", { name: "Contato", exact: true })).toBeVisible();
+  test("exibe os 3 links de navegação no footer (Blog/Novidades removidos)", async ({ page }) => {
+    // Escopa à primeira <ul> de navegação dentro do footer
+    const footerNav = page.locator("footer ul").first();
+    await expect(
+      footerNav.getByRole("link", { name: "Home", exact: true }),
+    ).toBeVisible();
+    await expect(
+      footerNav.getByRole("link", { name: "Destinos", exact: true }),
+    ).toBeVisible();
+    await expect(
+      footerNav.getByRole("link", { name: "Contato", exact: true }),
+    ).toBeVisible();
+    // Blog/Novidades removed (broken anchors — decision Rei Q1 2026-04-18)
+    await expect(
+      footerNav.getByRole("link", { name: "Blog", exact: true }),
+    ).not.toBeAttached();
+    await expect(
+      footerNav.getByRole("link", { name: "Novidades", exact: true }),
+    ).not.toBeAttached();
   });
 
   test("exibe o copyright com o ano 2026", async ({ page }) => {
