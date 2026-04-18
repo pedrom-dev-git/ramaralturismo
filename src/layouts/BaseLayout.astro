@@ -1,6 +1,6 @@
 ---
 import type { Locale } from '../i18n';
-import { getHtmlLang } from '../i18n';
+import { getHtmlLang, t } from '../i18n';
 
 interface Props {
   title?: string;
@@ -16,6 +16,17 @@ const {
 
 const htmlLang = getHtmlLang(locale);
 const siteUrl = 'https://ramaral.com.br';
+
+// og:locale values per locale
+const ogLocaleMap: Record<string, string> = {
+  'pt-BR': 'pt_BR',
+  'en': 'en_US',
+  'es': 'es_ES',
+};
+const ogLocale = ogLocaleMap[locale] ?? 'pt_BR';
+const ogAlternates = Object.entries(ogLocaleMap)
+  .filter(([l]) => l !== locale)
+  .map(([, v]) => v);
 const canonicalUrl = Astro.url.href;
 const ogImageUrl = new URL('/og-cover.jpg', Astro.site).href;
 
@@ -62,6 +73,10 @@ import interLatin400Url from "@fontsource/inter/files/inter-latin-400-normal.wof
     <meta property="og:type" content="website" />
     <meta property="og:url" content={canonicalUrl} />
     <meta property="og:image" content={ogImageUrl} />
+    <meta property="og:locale" content={ogLocale} />
+    {ogAlternates.map((alt) => (
+      <meta property="og:locale:alternate" content={alt} />
+    ))}
 
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image" />
@@ -84,6 +99,12 @@ import interLatin400Url from "@fontsource/inter/files/inter-latin-400-normal.wof
 
   </head>
   <body class="font-sans text-dark-gray bg-white">
+    <a
+      href="#main"
+      class="sr-only focus:not-sr-only absolute top-2 left-2 bg-primary text-white p-2 rounded z-50 focus:outline-none"
+    >
+      {t(locale, 'a11y.skipLink')}
+    </a>
     <slot />
   </body>
 </html>

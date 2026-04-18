@@ -15,8 +15,10 @@ const { locale = 'pt-BR' } = Astro.props;
 ---
 
 <Navbar locale={locale} />
-<Hero locale={locale} />
-<Benefits locale={locale} />
-<Services locale={locale} />
-<NewsCarousel locale={locale} />
+<main id="main">
+  <Hero locale={locale} />
+  <Benefits locale={locale} />
+  <Services locale={locale} />
+  <NewsCarousel locale={locale} />
+</main>
 <Footer locale={locale} />
