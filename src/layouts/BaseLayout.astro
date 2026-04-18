@@ -54,6 +54,10 @@ import "@fontsource/inter/600.css";
 import "@fontsource/inter/700.css";
 // Preload hint: resolved by Vite to a hashed asset URL at build time
 import interLatin400Url from "@fontsource/inter/files/inter-latin-400-normal.woff2?url";
+
+// Cloudflare Web Analytics — cookieless, LGPD-safe. Token via PUBLIC_CF_ANALYTICS_TOKEN env var.
+// If absent (local dev / CI), beacon is omitted entirely — no cookies, no requests.
+const cfToken = import.meta.env.PUBLIC_CF_ANALYTICS_TOKEN;
 ---
 
 <!doctype html>
@@ -106,5 +110,12 @@ import interLatin400Url from "@fontsource/inter/files/inter-latin-400-normal.wof
       {t(locale, 'a11y.skipLink')}
     </a>
     <slot />
+    {cfToken && (
+      <script
+        defer
+        src="https://static.cloudflareinsights.com/beacon.min.js"
+        data-cf-beacon={JSON.stringify({ token: cfToken })}
+      ></script>
+    )}
   </body>
 </html>
