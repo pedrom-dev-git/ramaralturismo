@@ -2,10 +2,12 @@
 import { defineConfig } from 'astro/config';
 import tailwindcss from '@tailwindcss/vite';
 import AstroPWA from '@vite-pwa/astro';
+import cloudflare from '@astrojs/cloudflare';
 
 // https://astro.build/config
 export default defineConfig({
   site: 'https://ramaral.com.br',
+  adapter: cloudflare(),
   integrations: [
     AstroPWA({
       registerType: 'autoUpdate',
@@ -23,6 +25,7 @@ export default defineConfig({
       },
       workbox: {
         navigateFallback: undefined,
+        globDirectory: 'dist/client',
         globPatterns: ['**/*.{css,js,html,svg,png,ico,txt}'],
       },
     }),

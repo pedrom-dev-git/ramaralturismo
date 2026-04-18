@@ -36,9 +36,12 @@ jobs:
       - run: pnpm install --frozen-lockfile
       - run: pnpm build
 
-      - name: Deploy to Cloudflare Pages
-        uses: cloudflare/wrangler-action@v3
+      - name: Verify worker artifact
+        run: test -f dist/server/entry.mjs || (echo "Missing dist/server/entry.mjs — Astro Cloudflare adapter did not produce worker entrypoint" && exit 1)
+
+      - name: Deploy to Cloudflare Workers
+        uses: cloudflare/wrangler-action@9acf94ace14e7dc412b076f2c5c20b8ce93c79cd # v3
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          command: pages deploy dist --project-name=ramaralturismo
+          command: deploy
