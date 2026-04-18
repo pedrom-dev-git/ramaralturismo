@@ -3,26 +3,49 @@ interface Props {
   title: string;
   description: string;
   gradient: string;
+  learnMore?: string;
   icon?: string;
 }
 
-const { title, description, gradient, icon } = Astro.props;
+const { title, description, gradient, learnMore = "saiba mais", icon } =
+  Astro.props;
 ---
 
-<div class="group relative rounded-xl overflow-hidden shadow-lg h-72 transition-shadow hover:shadow-2xl">
+<div
+  class="group relative rounded-xl overflow-hidden shadow-lg h-72 transition-shadow hover:shadow-2xl"
+>
   <div class={`absolute inset-0 ${gradient}`}></div>
-  <div class="absolute inset-0 bg-black/20 group-hover:bg-black/30 transition-colors duration-300"></div>
+  <div
+    class="absolute inset-0 bg-black/20 group-hover:bg-black/30 transition-colors duration-300"
+  >
+  </div>
   <div class="relative h-full flex flex-col justify-end p-8 text-white">
-    {icon && (
-      <div class="w-12 h-12 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center mb-4">
-        <Fragment set:html={icon} />
-      </div>
-    )}
+    {
+      icon && (
+        <div class="w-12 h-12 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center mb-4">
+          <Fragment set:html={icon} />
+        </div>
+      )
+    }
     <h3 class="text-xl font-bold mb-2">{title}</h3>
     <p class="text-white/80 text-sm mb-4">{description}</p>
-    <a href="#" class="inline-flex items-center gap-1 text-sm font-semibold hover:gap-2 transition-all">
-      Saiba mais
-      <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+    <a
+      href="#"
+      class="inline-flex items-center gap-1 text-sm font-semibold hover:gap-2 transition-all"
+    >
+      {learnMore}
+      <svg
+        class="w-4 h-4"
+        aria-hidden="true"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        viewBox="0 0 24 24"
+        ><path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg
+      >
     </a>
   </div>
 </div>

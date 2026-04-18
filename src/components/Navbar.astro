@@ -1,6 +1,6 @@
 ---
 import LanguageSwitcher from './LanguageSwitcher.astro';
-import type { Locale } from '../i18n';
+import { t, type Locale } from '../i18n';
 
 interface Props {
   locale?: Locale;
@@ -49,7 +49,7 @@ const links = [
         href="#hero-form"
         class="hidden md:inline-flex items-center gap-2 bg-primary hover:bg-primary/90 text-white text-sm font-semibold py-2.5 px-6 rounded-full transition-colors"
       >
-        Solicitar Orçamento
+        {t(locale, 'hero.cta')}
       </a>
 
       <!-- Hamburger (animated) -->
@@ -87,7 +87,7 @@ const links = [
           href="#hero-form"
           class="flex items-center justify-center gap-2 bg-primary hover:bg-primary/90 text-white font-semibold py-3 px-6 rounded-full transition-colors"
         >
-          Solicitar Orçamento
+          {t(locale, 'hero.cta')}
         </a>
       </li>
     </ul>

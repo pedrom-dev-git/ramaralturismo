@@ -11,6 +11,8 @@ export default {
   'hero.title': 'Sua Jornada Começa Aqui!',
   'hero.subtitle': 'Atendimento personalizado para transporte escolar e viagens em grupo.',
   'hero.cta': 'Solicitar Orçamento',
+  'hero.ctaServices': 'Nossos Serviços',
+  'hero.formHeading': 'Faça seu orçamento agora',
   'hero.tipo.turismo': 'Turismo e Viagens',
   'hero.tipo.escolar': 'Transporte Escolar',
   'hero.tipo.corporativo': 'Corporativo',
@@ -30,6 +32,8 @@ export default {
 
   // Benefits
   'benefits.title': 'Por que escolher a nossa van?',
+  'benefits.label': 'Vantagens',
+  'benefits.subtitle': 'Qualidade e compromisso em cada viagem que realizamos.',
   'benefits.safety.title': 'Segurança em primeiro lugar',
   'benefits.safety.desc': 'Veículo vistoriado e regularizado conforme as normas vigentes.',
   'benefits.punctuality.title': 'Pontualidade',
@@ -43,12 +47,14 @@ export default {
   'partners.title': 'Nossos Parceiros',
 
   // Services
+  'services.label': 'O que fazemos',
   'services.title': 'Nossos Serviços',
+  'services.subtitle': 'Soluções de transporte para cada necessidade.',
   'services.school.title': 'Transporte Escolar',
   'services.school.desc': 'Segurança e pontualidade para o dia a dia do seu filho.',
   'services.tourism.title': 'Turismo e Viagens',
   'services.tourism.desc': 'Conforto e praticidade para viagens em grupo.',
-  'services.seeAll': 'See all',
+  'services.seeAll': 'Ver todos',
   'services.learnMore': 'saiba mais',
 
   // News
@@ -59,6 +65,7 @@ export default {
   'footer.nav': 'Navegação',
   'footer.contact': 'Contato',
   'footer.copyright': '© 2026 R. Amaral Turismo. Todos os direitos reservados.',
+  'footer.address': 'Santa Catarina, Brasil',
 
   // WhatsApp
   'whatsapp.label': 'Fale conosco no WhatsApp',

@@ -46,15 +46,15 @@ const whatsappNumber = "5548999503368";
             href="#hero-form"
             class="inline-flex items-center justify-center gap-2 bg-primary hover:bg-primary/90 text-white font-semibold py-3.5 px-8 rounded-full border border-primary transition duration-150 ease-in-out"
           >
-            Solicitar Orçamento
-            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
+            {t(locale, 'hero.cta')}
+            <svg class="w-4 h-4" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
           </a>
           <a
             href="#servicos"
             class="inline-flex items-center justify-center gap-2 border-2 border-gray-300 hover:border-primary text-dark-gray hover:text-primary font-semibold py-3.5 px-8 rounded-full transition duration-150 ease-in-out"
           >
-            Nossos Serviços
-            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
+            {t(locale, 'hero.ctaServices')}
+            <svg class="w-4 h-4" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
           </a>
         </div>
       </div>
@@ -62,7 +62,7 @@ const whatsappNumber = "5548999503368";
       <!-- Quote form card -->
       <div class="max-w-4xl mx-auto">
         <div class="bg-white rounded-xl shadow-xl p-6 md:p-10 border border-gray-100">
-          <h2 class="text-lg font-bold text-dark-gray mb-6 text-center">Faça seu orçamento agora</h2>
+          <h2 class="text-lg font-bold text-dark-gray mb-6 text-center">{t(locale, 'hero.formHeading')}</h2>
 
           <form id="hero-form" class="flex flex-col gap-5">
             <!-- Toggle pills: Tipo de Serviço -->
@@ -176,11 +176,11 @@ const whatsappNumber = "5548999503368";
                 class="bg-green-500 hover:bg-green-600 text-white w-full py-3.5 rounded-full md:w-auto md:px-8 flex items-center justify-center shrink-0 self-end transition-colors gap-2 font-semibold text-sm border border-green-500"
                 aria-label="Solicitar orçamento no WhatsApp"
               >
-                <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
+                <svg class="w-5 h-5" aria-hidden="true" viewBox="0 0 24 24" fill="currentColor">
                   <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
                   <path d="M12 0C5.373 0 0 5.373 0 12c0 2.12.553 4.11 1.519 5.838L.057 23.616l5.932-1.556A11.94 11.94 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818c-1.94 0-3.79-.508-5.417-1.466l-.388-.231-4.025 1.055 1.074-3.922-.253-.402A9.778 9.778 0 012.182 12 9.818 9.818 0 0112 2.182 9.818 9.818 0 0121.818 12 9.818 9.818 0 0112 21.818z"/>
                 </svg>
-                <span>Solicitar Orçamento</span>
+                <span>{t(locale, 'hero.cta')}</span>
               </button>
             </div>
           </form>

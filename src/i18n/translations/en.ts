@@ -11,6 +11,8 @@ export default {
   'hero.title': 'Explore Brazil with comfort and safety',
   'hero.subtitle': 'School transport and personalized tourism in Santa Catarina',
   'hero.cta': 'Request a Quote',
+  'hero.ctaServices': 'Our Services',
+  'hero.formHeading': 'Get your quote now',
   'hero.tipo.turismo': 'Tourism',
   'hero.tipo.escolar': 'School',
   'hero.tipo.corporativo': 'Corporate',
@@ -33,6 +35,8 @@ export default {
 
   // Benefits
   'benefits.title': 'Why choose our van?',
+  'benefits.label': 'Advantages',
+  'benefits.subtitle': 'Quality and commitment in every trip we make.',
   'benefits.safety.title': 'Safety first',
   'benefits.safety.desc': 'Vehicle inspected and certified according to current regulations.',
   'benefits.punctuality.title': 'Punctuality',
@@ -46,7 +50,9 @@ export default {
   'partners.title': 'Our Partners',
 
   // Services
+  'services.label': 'What we do',
   'services.title': 'Our Services',
+  'services.subtitle': 'Transport solutions for every need.',
   'services.school.title': 'School Transport',
   'services.school.desc': 'Safety and punctuality for your child\'s daily routine.',
   'services.tourism.title': 'Tourism & Travel',
@@ -62,6 +68,7 @@ export default {
   'footer.nav': 'Navigation',
   'footer.contact': 'Contact',
   'footer.copyright': '© 2026 R. Amaral Tourism. All rights reserved.',
+  'footer.address': 'Santa Catarina, Brazil',
 
   // WhatsApp
   'whatsapp.label': 'Chat with us on WhatsApp',

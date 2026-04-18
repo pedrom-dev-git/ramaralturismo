@@ -43,12 +43,12 @@ test.describe("Services", () => {
     });
   }
 
-  test("exibe o botão 'See all'", async ({ page }) => {
-    await expect(page.getByRole("link", { name: /see all/i })).toBeVisible();
+  test("exibe o botão 'Ver todos'", async ({ page }) => {
+    await expect(page.getByRole("link", { name: /ver todos/i })).toBeVisible();
   });
 
-  test("botão 'See all' está estilizado como outlined (tem classe border)", async ({ page }) => {
-    const btn = page.getByRole("link", { name: /see all/i });
+  test("botão 'Ver todos' está estilizado como outlined (tem classe border)", async ({ page }) => {
+    const btn = page.getByRole("link", { name: /ver todos/i });
     await expect(btn).toHaveClass(/border/);
   });
 });
