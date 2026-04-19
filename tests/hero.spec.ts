@@ -91,7 +91,57 @@ test.describe("Hero", () => {
       "input[name='tipo'][value='turismo'] + span",
     );
     await expect(escolarSpan).toHaveClass(/bg-primary/);
-    await expect(turismoSpan).toHaveClass(/bg-white/);
+    await expect(turismoSpan).not.toHaveClass(/bg-white/);
+  });
+
+  test("hero tipo radios keep inactive state transparent", async ({ page }) => {
+    // After cycling through radios, inactive spans must never carry bg-white.
+    // Only the active span should have bg-primary; inactives must not have bg-white
+    // class at all (transparent over the bg-light-gray container is correct).
+
+    // State 2: escolar active — turismo and corporativo must not have bg-white class
+    await selectTipo(page, "escolar");
+    const turismoSpanS2 = page.locator(
+      "input[name='tipo'][value='turismo'] + span",
+    );
+    const corporativoSpanS2 = page.locator(
+      "input[name='tipo'][value='corporativo'] + span",
+    );
+    await expect(turismoSpanS2).not.toHaveClass(/bg-white/);
+    await expect(corporativoSpanS2).not.toHaveClass(/bg-white/);
+    await expect(
+      page.locator("input[name='tipo'][value='escolar'] + span"),
+    ).toHaveClass(/bg-primary/);
+
+    // State 3: corporativo active — turismo and escolar must not have bg-white class
+    await selectTipo(page, "corporativo");
+    const turismoSpanS3 = page.locator(
+      "input[name='tipo'][value='turismo'] + span",
+    );
+    const escolarSpanS3 = page.locator(
+      "input[name='tipo'][value='escolar'] + span",
+    );
+    await expect(turismoSpanS3).not.toHaveClass(/bg-white/);
+    await expect(escolarSpanS3).not.toHaveClass(/bg-white/);
+    await expect(
+      page.locator("input[name='tipo'][value='corporativo'] + span"),
+    ).toHaveClass(/bg-primary/);
+
+    // State 4: turismo active again — bg-primary must resolve correctly (no bg-white residue blocking it)
+    await selectTipo(page, "turismo");
+    const turismoSpanS4 = page.locator(
+      "input[name='tipo'][value='turismo'] + span",
+    );
+    const escolarSpanS4 = page.locator(
+      "input[name='tipo'][value='escolar'] + span",
+    );
+    const corporativoSpanS4 = page.locator(
+      "input[name='tipo'][value='corporativo'] + span",
+    );
+    await expect(turismoSpanS4).toHaveClass(/bg-primary/);
+    await expect(turismoSpanS4).not.toHaveClass(/bg-white/);
+    await expect(escolarSpanS4).not.toHaveClass(/bg-white/);
+    await expect(corporativoSpanS4).not.toHaveClass(/bg-white/);
   });
 
   // ---------- Campos obrigatórios ----------
@@ -506,7 +556,7 @@ test.describe("Corporativo tab", () => {
     const turismoSpan = page.locator(
       "input[name='tipo'][value='turismo'] + span",
     );
-    await expect(turismoSpan).toHaveClass(/bg-white/);
+    await expect(turismoSpan).not.toHaveClass(/bg-white/);
   });
 
   test("campo quantidade aparece e datas + escola ficam ocultos", async ({
