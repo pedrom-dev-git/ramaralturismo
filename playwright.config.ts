@@ -37,13 +37,15 @@ export default defineConfig({
     },
     {
       // Server 2: with token — used by project "analytics-beacon"
-      // PUBLIC_ prefix makes it available in import.meta.env (Astro/Vite)
-      command: "pnpm dev --port 4322",
+      // PUBLIC_ prefix makes it available in import.meta.env (Astro/Vite).
+      // Fix: env must be inlined in the shell command string because the
+      // Playwright webServer `env` block does not propagate through the pnpm
+      // wrapper to the astro/vite child process. Confirmed 2026-04-18:
+      // prefixing in the shell delivers the token; webServer.env alone does not.
+      command:
+        "PUBLIC_CF_ANALYTICS_TOKEN=test-token-ci pnpm dev --port 4322",
       url: "http://localhost:4322",
       reuseExistingServer: !process.env.CI,
-      env: {
-        PUBLIC_CF_ANALYTICS_TOKEN: "test-token-ci",
-      },
     },
   ],
 });
