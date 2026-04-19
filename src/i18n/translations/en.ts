@@ -37,6 +37,11 @@ export default {
     "Hello! I would like to request a quote.\n\nService: {tipo}\nOrigin: {origem}\nDestination: {destino}",
   "hero.ctaWhatsapp": "Request a quote on WhatsApp",
   "hero.passageiroPlaceholder": "No. of passengers",
+  "hero.tipoServico": "Service Type",
+  "hero.labelOrigem": "Origin",
+  "hero.labelDestino": "Destination",
+  "hero.labelQuantidade": "Number of passengers",
+  "hero.labelEscola": "School",
 
   // Benefits
   "benefits.title": "Why choose our van?",

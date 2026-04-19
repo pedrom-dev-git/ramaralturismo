@@ -25,6 +25,11 @@ export default {
   "hero.selectSchool": "Selecione a escola",
   "hero.passageiroPlaceholder": "Nº de passageiros",
   "hero.ctaWhatsapp": "Solicitar orçamento no WhatsApp",
+  "hero.tipoServico": "Tipo de Serviço",
+  "hero.labelOrigem": "Origem",
+  "hero.labelDestino": "Destino",
+  "hero.labelQuantidade": "Número de passageiros",
+  "hero.labelEscola": "Escola",
   "hero.msg.turismo":
     "Olá! Gostaria de solicitar um orçamento de turismo.\n\nServiço: Turismo e Viagens\nOrigem: {origem}\nDestino: {destino}\nData de ida: {dataIda}\nData de volta: {dataVolta}",
   "hero.msg.escolar":

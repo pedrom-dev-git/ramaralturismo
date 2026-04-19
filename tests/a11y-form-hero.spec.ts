@@ -125,24 +125,22 @@ for (const path of PAGES) {
         const nodes = Array.from(form.querySelectorAll(interactiveSelector));
         return nodes.map((el: Element) => {
           const input = el as HTMLInputElement;
-          // Collect potential label sources
+          // Explicit label via for attribute
           const labelEl = input.id
             ? form.querySelector(`label[for='${input.id}']`)
             : null;
+          // Implicit label: input is a descendant of a <label>
+          const implicitLabel = input.closest("label");
           const ariaLabel = input.getAttribute("aria-label");
           const ariaLabelledBy = input.getAttribute("aria-labelledby");
-          const ariaHidden = input.getAttribute("aria-hidden");
-          const tabindex = input.getAttribute("tabindex");
           return {
             tag: input.tagName,
             id: input.id || null,
             name: input.getAttribute("name") || null,
             type: input.getAttribute("type") || null,
-            hasLabel: !!labelEl,
+            hasLabel: !!(labelEl || implicitLabel),
             hasAriaLabel: !!ariaLabel,
             hasAriaLabelledBy: !!ariaLabelledBy,
-            ariaHidden,
-            tabindex,
           };
         });
       });

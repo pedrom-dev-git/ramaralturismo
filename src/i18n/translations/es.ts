@@ -37,6 +37,11 @@ export default {
     "¡Hola! Me gustaría solicitar un presupuesto.\n\nServicio: {tipo}\nOrigen: {origem}\nDestino: {destino}",
   "hero.ctaWhatsapp": "Solicitar presupuesto en WhatsApp",
   "hero.passageiroPlaceholder": "Nº de pasajeros",
+  "hero.tipoServico": "Tipo de Servicio",
+  "hero.labelOrigem": "Origen",
+  "hero.labelDestino": "Destino",
+  "hero.labelQuantidade": "Número de pasajeros",
+  "hero.labelEscola": "Escuela",
 
   // Benefits
   "benefits.title": "¿Por qué elegir nuestra van?",

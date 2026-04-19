@@ -14,6 +14,7 @@ const i18nDestino = t(locale, 'hero.destino');
 const i18nPassageiros = t(locale, 'hero.passageiroPlaceholder');
 const i18nSelectSchool = t(locale, 'hero.selectSchool');
 const i18nCtaWhatsapp = t(locale, 'hero.ctaWhatsapp');
+const i18nTipoServico = t(locale, 'hero.tipoServico');
 const i18nMsgTurismo = t(locale, 'hero.msg.turismo');
 const i18nMsgEscolar = t(locale, 'hero.msg.escolar');
 const i18nMsgCorporativo = t(locale, 'hero.msg.corporativo');
@@ -76,21 +77,24 @@ const i18nMsgDefault = t(locale, 'hero.msg.default');
           <h2 class="text-lg font-bold text-dark-gray mb-6 text-center">{t(locale, 'hero.formHeading')}</h2>
 
           <form id="hero-form" class="flex flex-col gap-5">
-            <!-- Toggle pills: Tipo de Serviço -->
-            <div id="tipo-toggle" class="flex rounded-full bg-light-gray p-1 max-w-lg mx-auto w-full" role="radiogroup" aria-label="Tipo de Serviço">
-              <label class="flex-1 text-center cursor-pointer">
-                <input type="radio" name="tipo" value="turismo" checked class="sr-only" />
-                <span class="block px-3 py-2.5 text-xs md:text-sm font-semibold rounded-full transition-all bg-primary text-white shadow-sm">{t(locale, 'hero.tipo.turismo')}</span>
-              </label>
-              <label class="flex-1 text-center cursor-pointer">
-                <input type="radio" name="tipo" value="escolar" class="sr-only" />
-                <span class="block px-3 py-2.5 text-xs md:text-sm font-semibold rounded-full transition-all text-medium-gray">{t(locale, 'hero.tipo.escolar')}</span>
-              </label>
-              <label class="flex-1 text-center cursor-pointer">
-                <input type="radio" name="tipo" value="corporativo" class="sr-only" />
-                <span class="block px-3 py-2.5 text-xs md:text-sm font-semibold rounded-full transition-all text-medium-gray">{t(locale, 'hero.tipo.corporativo')}</span>
-              </label>
-            </div>
+            <!-- Toggle pills: Tipo de Serviço — wrapped in fieldset for WCAG 4.1.2 -->
+            <fieldset class="border-0 p-0 m-0">
+              <legend class="sr-only">{i18nTipoServico}</legend>
+              <div id="tipo-toggle" class="flex rounded-full bg-light-gray p-1 max-w-lg mx-auto w-full" role="radiogroup" aria-label={i18nTipoServico}>
+                <label class="flex-1 text-center cursor-pointer">
+                  <input type="radio" name="tipo" value="turismo" checked class="sr-only" />
+                  <span class="block px-3 py-2.5 text-xs md:text-sm font-semibold rounded-full transition-all bg-primary text-white shadow-sm">{t(locale, 'hero.tipo.turismo')}</span>
+                </label>
+                <label class="flex-1 text-center cursor-pointer">
+                  <input type="radio" name="tipo" value="escolar" class="sr-only" />
+                  <span class="block px-3 py-2.5 text-xs md:text-sm font-semibold rounded-full transition-all text-medium-gray">{t(locale, 'hero.tipo.escolar')}</span>
+                </label>
+                <label class="flex-1 text-center cursor-pointer">
+                  <input type="radio" name="tipo" value="corporativo" class="sr-only" />
+                  <span class="block px-3 py-2.5 text-xs md:text-sm font-semibold rounded-full transition-all text-medium-gray">{t(locale, 'hero.tipo.corporativo')}</span>
+                </label>
+              </div>
+            </fieldset>
 
             <!-- Linha datas (turismo) -->
             <div class="flex flex-col md:flex-row gap-4">
@@ -101,9 +105,10 @@ const i18nMsgDefault = t(locale, 'hero.msg.default');
                   type="text"
                   readonly
                   placeholder="DD/MM/AAAA"
+                  aria-required="true"
                   class="w-full border border-gray-200 rounded-lg px-4 py-3 text-sm cursor-pointer bg-white focus:border-primary focus:ring-1 focus:ring-primary/20 transition-colors"
                 />
-                <input id="data-ini" type="date" name="data_ini" class="sr-only" tabindex="-1" />
+                <input id="data-ini" type="date" name="data_ini" class="sr-only" tabindex="-1" aria-hidden="true" />
               </div>
 
               <div id="data-fim-wrapper" class="flex-1 flex flex-col gap-1.5">
@@ -113,15 +118,17 @@ const i18nMsgDefault = t(locale, 'hero.msg.default');
                   type="text"
                   readonly
                   placeholder="DD/MM/AAAA"
+                  aria-required="true"
                   class="w-full border border-gray-200 rounded-lg px-4 py-3 text-sm cursor-pointer bg-white focus:border-primary focus:ring-1 focus:ring-primary/20 transition-colors"
                 />
-                <input id="data-fim" type="date" name="data_fim" class="sr-only" tabindex="-1" />
+                <input id="data-fim" type="date" name="data_fim" class="sr-only" tabindex="-1" aria-hidden="true" />
               </div>
             </div>
 
             <!-- Linha 2: Origem + Destino + Botão -->
             <div class="flex flex-col md:flex-row gap-4 items-stretch">
               <div class="relative flex-1">
+                <label for="origem-input" class="sr-only">{t(locale, 'hero.labelOrigem')}</label>
                 <input
                   type="text"
                   name="origem"
@@ -138,6 +145,7 @@ const i18nMsgDefault = t(locale, 'hero.msg.default');
               </div>
 
               <div class="relative flex-1" id="destino-text-wrapper">
+                <label for="destino-input" class="sr-only">{t(locale, 'hero.labelDestino')}</label>
                 <input
                   type="text"
                   name="destino"
@@ -154,6 +162,7 @@ const i18nMsgDefault = t(locale, 'hero.msg.default');
               </div>
 
               <div class="relative flex-1 hidden" id="quantidade-wrapper">
+                <label for="quantidade-input" class="sr-only">{t(locale, 'hero.labelQuantidade')}</label>
                 <input
                   id="quantidade-input"
                   type="number"
@@ -165,6 +174,7 @@ const i18nMsgDefault = t(locale, 'hero.msg.default');
               </div>
 
               <div class="relative flex-1 hidden" id="escola-wrapper">
+                <label for="escola-select" class="sr-only">{t(locale, 'hero.labelEscola')}</label>
                 <select
                   name="escola"
                   id="escola-select"
