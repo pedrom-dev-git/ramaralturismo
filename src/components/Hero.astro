@@ -389,11 +389,11 @@ const i18nMsgDefault = t(locale, 'hero.msg.default');
       const radio = label.querySelector("input");
       const span = label.querySelector("span");
       if (radio.checked) {
-        span.classList.remove("text-medium-gray");
+        span.classList.remove("bg-white", "text-medium-gray");
         span.classList.add("bg-primary", "text-white", "shadow-sm");
       } else {
-        span.classList.remove("bg-primary", "text-white", "shadow-sm");
-        span.classList.add("bg-white", "text-medium-gray");
+        span.classList.remove("bg-white", "bg-primary", "text-white", "shadow-sm");
+        span.classList.add("text-medium-gray");
       }
     });
   }
