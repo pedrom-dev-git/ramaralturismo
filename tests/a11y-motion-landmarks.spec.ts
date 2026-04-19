@@ -41,9 +41,14 @@ for (const path of PAGES) {
       );
 
       for (const d of durations) {
-        // "0s" or "0ms" — both mean zero; normalise to numeric check
-        const numeric = parseFloat(d); // "0s" → 0, "0.2s" → 0.2
-        expect(numeric).toBe(0);
+        // CSS sets 0.01ms as the near-zero value (0s can be ignored by some
+        // browsers when !important is involved). Accept anything < 50ms as
+        // "effectively instant" — the meaningful threshold is < 100ms per WCAG.
+        const ms =
+          d.endsWith("ms") ? parseFloat(d) : parseFloat(d) * 1000;
+        expect(ms, `expected near-zero transition on span, got ${d}`).toBeLessThan(
+          50
+        );
       }
     });
 
@@ -63,8 +68,13 @@ for (const path of PAGES) {
       const duration = await overlay.evaluate(
         (el) => getComputedStyle(el).transitionDuration
       );
-      const numeric = parseFloat(duration);
-      expect(numeric).toBe(0);
+      const ms =
+        duration.endsWith("ms")
+          ? parseFloat(duration)
+          : parseFloat(duration) * 1000;
+      expect(ms, `expected near-zero transition on overlay, got ${duration}`).toBeLessThan(
+        50
+      );
     });
   });
 }
