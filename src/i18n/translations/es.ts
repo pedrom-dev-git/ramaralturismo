@@ -74,6 +74,8 @@ export default {
 
   // News
   "news.title": "Últimas Novedades",
+  "news.prev": "Destino anterior",
+  "news.next": "Siguiente destino",
 
   // Footer
   "footer.desc":

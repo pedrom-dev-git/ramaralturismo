@@ -70,6 +70,8 @@ export default {
 
   // News
   "news.title": "Feature News",
+  "news.prev": "Destino anterior",
+  "news.next": "Próximo destino",
 
   // Footer
   "footer.desc":

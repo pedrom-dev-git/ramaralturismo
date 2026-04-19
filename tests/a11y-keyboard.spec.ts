@@ -41,28 +41,34 @@ for (const { name, path } of locales) {
   });
 }
 
-// ── 4.1.2: accessibility snapshot — all role:button nodes must have a name ─
+// ── 4.1.2: all buttons must have an accessible name ─────────────────────
 
-test("pt-BR: accessibility snapshot — no unnamed buttons", async ({ page }) => {
+test("pt-BR: all buttons have non-empty accessible names", async ({ page }) => {
   await page.goto("/");
-  const snapshot = await page.accessibility.snapshot({ interestingOnly: true });
-  expect(snapshot).not.toBeNull();
 
-  function collectUnnamedButtons(
-    node: NonNullable<typeof snapshot>
-  ): string[] {
-    const issues: string[] = [];
-    if (node.role === "button" && (!node.name || node.name.trim() === "")) {
-      issues.push(`unnamed button (children: ${JSON.stringify(node.children?.map((c) => c.name))})`);
+  // Get all button elements
+  const buttons = page.locator("button");
+  const count = await buttons.count();
+  expect(count).toBeGreaterThan(0);
+
+  const unnamedButtons: string[] = [];
+  for (let i = 0; i < count; i++) {
+    const btn = buttons.nth(i);
+    // Accessible name comes from: aria-label > aria-labelledby > visible text content
+    const ariaLabel = await btn.getAttribute("aria-label");
+    const textContent = (await btn.textContent())?.trim() ?? "";
+    const ariaLabelledby = await btn.getAttribute("aria-labelledby");
+
+    if (!ariaLabel && !textContent && !ariaLabelledby) {
+      const outerHtml = await btn.evaluate((el) => el.outerHTML.slice(0, 120));
+      unnamedButtons.push(outerHtml);
     }
-    for (const child of node.children ?? []) {
-      issues.push(...collectUnnamedButtons(child));
-    }
-    return issues;
   }
 
-  const unnamedButtons = collectUnnamedButtons(snapshot!);
-  expect(unnamedButtons, `Unnamed buttons found: ${unnamedButtons.join(", ")}`).toHaveLength(0);
+  expect(
+    unnamedButtons,
+    `Buttons without accessible names:\n${unnamedButtons.join("\n")}`
+  ).toHaveLength(0);
 });
 
 // ── 2.4.3: tab order — skip link is first focusable element ─────────────
