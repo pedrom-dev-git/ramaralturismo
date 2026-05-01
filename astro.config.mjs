@@ -37,7 +37,14 @@ export default defineConfig({
       prefixDefaultLocale: false,
     },
   },
+  build: {
+    inlineStylesheets: "never",
+    assets: "_astro",
+  },
   vite: {
-    plugins: [tailwindcss()]
+    plugins: [tailwindcss()],
+    build: {
+      assetsInlineLimit: 0,
+    },
   }
 });

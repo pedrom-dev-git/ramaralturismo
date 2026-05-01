@@ -211,7 +211,26 @@ const i18nMsgDefault = t(locale, 'hero.msg.default');
   </div>
 </section>
 
-<script define:vars={{ whatsappNumber, i18nMsgTurismo, i18nMsgEscolar, i18nMsgCorporativo, i18nMsgDefault }}>
+<script id="hero-config" type="application/json" is:inline set:html={JSON.stringify({ whatsappNumber, i18nMsgTurismo, i18nMsgEscolar, i18nMsgCorporativo, i18nMsgDefault })}></script>
+
+<script>
+  const __heroCfg = JSON.parse(
+    document.getElementById("hero-config")!.textContent!,
+  ) as {
+    whatsappNumber: string;
+    i18nMsgTurismo: string;
+    i18nMsgEscolar: string;
+    i18nMsgCorporativo: string;
+    i18nMsgDefault: string;
+  };
+  const {
+    whatsappNumber,
+    i18nMsgTurismo,
+    i18nMsgEscolar,
+    i18nMsgCorporativo,
+    i18nMsgDefault,
+  } = __heroCfg;
+
   const tipoRadios = document.querySelectorAll("input[name='tipo']");
   const tipoToggle = document.getElementById("tipo-toggle");
   const dataIniWrapper = document.getElementById("data-ini-wrapper");

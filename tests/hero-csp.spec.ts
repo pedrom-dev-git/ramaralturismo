@@ -18,6 +18,8 @@ for (const path of PATHS) {
               const type = s.type || "";
               if (type === "application/json") return false;
               if (type === "application/ld+json") return false;
+              // Astro Dev Toolbar (dev-only, not present in prod build)
+              if (body.includes("__astro_dev_toolbar__")) return false;
               return true;
             })
             .map((s) => ({
