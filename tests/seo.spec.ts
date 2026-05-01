@@ -59,7 +59,7 @@ for (const locale of LOCALES) {
       const ogUrl = page.locator('meta[property="og:url"]');
       await expect(ogUrl).toHaveCount(1);
       const content = await ogUrl.getAttribute("content");
-      // In dev, Astro.url.href resolves to localhost; in prod, to ramaral.com.br.
+      // In dev, Astro.url.href resolves to localhost; in prod, to ramaralturismo.job-3eb.workers.dev.
       // We validate it is an absolute URL containing the locale path.
       expect(content).toMatch(/^https?:\/\//);
       expect(content).toContain(locale.path);
@@ -76,7 +76,7 @@ for (const locale of LOCALES) {
       const canonical = page.locator('link[rel="canonical"]');
       await expect(canonical).toHaveCount(1);
       const href = await canonical.getAttribute("href");
-      // In dev, Astro.url.href resolves to localhost; in prod, to ramaral.com.br.
+      // In dev, Astro.url.href resolves to localhost; in prod, to ramaralturismo.job-3eb.workers.dev.
       // We validate it is an absolute URL containing the locale path.
       expect(href).toMatch(/^https?:\/\//);
       expect(href).toContain(locale.path);
@@ -107,7 +107,7 @@ for (const locale of LOCALES) {
       expect(schema["telephone"]).toBe("+55 48 99950-3368");
       expect(schema["address"]["addressLocality"]).toBe("Tijucas");
       expect(schema["address"]["addressRegion"]).toBe("SC");
-      expect(schema["url"]).toBe("https://ramaral.com.br");
+      expect(schema["url"]).toBe("https://ramaralturismo.job-3eb.workers.dev");
     });
   });
 }
@@ -125,13 +125,13 @@ test.describe("robots.txt", () => {
     expect(body).toContain("Allow: /");
   });
 
-  test("contains Sitemap directive pointing to ramaral.com.br", async ({
+  test("contains Sitemap directive pointing to ramaralturismo.job-3eb.workers.dev", async ({
     page,
   }) => {
     const response = await page.goto("/robots.txt");
     const body = await response?.text();
     expect(body).toContain("Sitemap:");
-    expect(body).toContain("ramaral.com.br");
+    expect(body).toContain("ramaralturismo.job-3eb.workers.dev");
   });
 });
 
@@ -162,7 +162,7 @@ test.describe("sitemap.xml", () => {
     const body = await response?.text();
     expect(body).toContain("hreflang");
     expect(body).toContain("pt-BR");
-    expect(body).toContain("ramaral.com.br/en/");
-    expect(body).toContain("ramaral.com.br/es/");
+    expect(body).toContain("ramaralturismo.job-3eb.workers.dev/en/");
+    expect(body).toContain("ramaralturismo.job-3eb.workers.dev/es/");
   });
 });
