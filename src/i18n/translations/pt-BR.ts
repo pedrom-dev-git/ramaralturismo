@@ -38,6 +38,9 @@ export default {
     "Olá! Gostaria de solicitar um orçamento para transporte corporativo.\n\nOrigem: {origem}\nDestino: {destino}\nPassageiros: {quantidade}",
   "hero.msg.default":
     "Olá! Gostaria de solicitar um orçamento.\n\nServiço: {tipo}\nOrigem: {origem}\nDestino: {destino}",
+  "hero.corporativo.cta": "Cotação corporativa via WhatsApp",
+  "hero.corporativo.message":
+    "Olá! Gostaria de solicitar um orçamento para fretamento corporativo da minha empresa. Pode me ajudar?",
 
   // Benefits
   "benefits.title": "Por que escolher a nossa van?",

@@ -96,6 +96,8 @@ const i18nMsgDefault = t(locale, 'hero.msg.default');
               </div>
             </fieldset>
 
+            <div id="hero-form-body" class="flex flex-col gap-5">
+
             <!-- Linha datas (turismo) -->
             <div class="flex flex-col md:flex-row gap-4">
               <div id="data-ini-wrapper" class="flex-1 flex flex-col gap-1.5">
@@ -204,6 +206,24 @@ const i18nMsgDefault = t(locale, 'hero.msg.default');
                 <span>{t(locale, 'hero.cta')}</span>
               </button>
             </div>
+
+            </div><!-- /#hero-form-body -->
+
+            <!-- CTA direto WhatsApp para modo corporativo (sem form) -->
+            <a
+              id="corporativo-cta"
+              href={`https://wa.me/${whatsappNumber}?text=${encodeURIComponent(t(locale, 'hero.corporativo.message'))}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="hidden bg-green-700 hover:bg-green-800 text-white text-center py-4 px-8 rounded-full font-semibold transition-colors items-center justify-center gap-2"
+            >
+              <svg class="w-5 h-5" aria-hidden="true" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
+                <path d="M12 0C5.373 0 0 5.373 0 12c0 2.12.553 4.11 1.519 5.838L.057 23.616l5.932-1.556A11.94 11.94 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818c-1.94 0-3.79-.508-5.417-1.466l-.388-.231-4.025 1.055 1.074-3.922-.253-.402A9.778 9.778 0 012.182 12 9.818 9.818 0 0112 2.182 9.818 9.818 0 0121.818 12 9.818 9.818 0 0112 21.818z"/>
+              </svg>
+              <span>{t(locale, 'hero.corporativo.cta')}</span>
+            </a>
+
           </form>
         </div>
       </div>
@@ -246,6 +266,8 @@ const i18nMsgDefault = t(locale, 'hero.msg.default');
   const escolaSelect = document.getElementById("escola-select");
   const quantidadeWrapper = document.getElementById("quantidade-wrapper");
   const quantidadeInput = document.getElementById("quantidade-input");
+  const heroFormBody = document.getElementById("hero-form-body");
+  const corporativoCta = document.getElementById("corporativo-cta");
 
   // ── Autocomplete ──────────────────────────────────────────────────
 
@@ -460,10 +482,17 @@ const i18nMsgDefault = t(locale, 'hero.msg.default');
     escolaSelect.required = isEscolar;
     if (!isEscolar) escolaSelect.value = "";
 
-    // Quantidade: only corporativo
+    // Quantidade: only corporativo (kept for fallback if CTA mode is ever bypassed)
     quantidadeWrapper.classList.toggle("hidden", !isCorporativo);
-    quantidadeInput.required = isCorporativo;
+    quantidadeInput.required = false;
     if (!isCorporativo) quantidadeInput.value = "";
+
+    // Corporativo CTA mode: hide entire form body, show direct WhatsApp link
+    if (heroFormBody && corporativoCta) {
+      heroFormBody.classList.toggle("hidden", isCorporativo);
+      corporativoCta.classList.toggle("hidden", !isCorporativo);
+      corporativoCta.classList.toggle("flex", isCorporativo);
+    }
   }
 
   tipoRadios.forEach((radio) => {

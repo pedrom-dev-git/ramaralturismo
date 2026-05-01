@@ -35,6 +35,9 @@ export default {
     "¡Hola! Me gustaría solicitar un presupuesto de transporte corporativo.\n\nOrigen: {origem}\nDestino: {destino}\nPasajeros: {quantidade}",
   "hero.msg.default":
     "¡Hola! Me gustaría solicitar un presupuesto.\n\nServicio: {tipo}\nOrigen: {origem}\nDestino: {destino}",
+  "hero.corporativo.cta": "Cotización corporativa por WhatsApp",
+  "hero.corporativo.message":
+    "¡Hola! Me gustaría solicitar un presupuesto de transporte corporativo para mi empresa. ¿Pueden ayudarme?",
   "hero.ctaWhatsapp": "Solicitar presupuesto en WhatsApp",
   "hero.passageiroPlaceholder": "Nº de pasajeros",
   "hero.tipoServico": "Tipo de Servicio",

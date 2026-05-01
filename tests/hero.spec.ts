@@ -543,146 +543,47 @@ test.describe("Hero", () => {
   });
 });
 
-test.describe("Corporativo tab", () => {
+test.describe("Corporativo tab — direct WhatsApp CTA", () => {
   test.beforeEach(async ({ page }) => {
     await page.goto("/");
     await selectTipo(page, "corporativo");
   });
 
-  test("pill corporativo fica ativo ao selecionar", async ({ page }) => {
+  test("pill corporativo fica ativo", async ({ page }) => {
     const span = page.locator("input[name='tipo'][value='corporativo'] + span");
     await expect(span).toHaveClass(/bg-primary/);
     await expect(span).toHaveClass(/text-white/);
-    const turismoSpan = page.locator(
-      "input[name='tipo'][value='turismo'] + span",
-    );
-    await expect(turismoSpan).not.toHaveClass(/bg-white/);
   });
 
-  test("campo quantidade aparece e datas + escola ficam ocultos", async ({
+  test("form body fica oculto e CTA WhatsApp aparece", async ({ page }) => {
+    await expect(page.locator("#hero-form-body")).toBeHidden();
+    await expect(page.locator("#corporativo-cta")).toBeVisible();
+  });
+
+  test("CTA aponta para wa.me com mensagem corporativa pré-preenchida", async ({
     page,
   }) => {
-    await expect(page.locator("#quantidade-wrapper")).toBeVisible();
-    await expect(page.locator("#data-ini-wrapper")).toBeHidden();
-    await expect(page.locator("#data-fim-wrapper")).toBeHidden();
-    await expect(page.locator("#escola-wrapper")).toBeHidden();
+    const cta = page.locator("#corporativo-cta");
+    const href = await cta.getAttribute("href");
+    expect(href).toBeTruthy();
+    expect(href).toContain("wa.me/5548999503368");
+    const decoded = decodeURIComponent(href!);
+    expect(decoded.toLowerCase()).toMatch(/corporativ/);
   });
 
-  test("campo destino texto aparece no modo corporativo", async ({ page }) => {
-    await expect(page.locator("#destino-text-wrapper")).toBeVisible();
+  test("CTA target=_blank com rel=noopener", async ({ page }) => {
+    const cta = page.locator("#corporativo-cta");
+    await expect(cta).toHaveAttribute("target", "_blank");
+    const rel = (await cta.getAttribute("rel")) ?? "";
+    expect(rel).toContain("noopener");
   });
 
-  test("quantidade é required em corporativo, não em turismo nem escolar", async ({
+  test("voltar para turismo restaura form body e oculta CTA", async ({
     page,
   }) => {
-    await expect(page.locator("#quantidade-input")).toHaveAttribute(
-      "required",
-      "",
-    );
-
     await selectTipo(page, "turismo");
-    const reqTurismo = await page
-      .locator("#quantidade-input")
-      .getAttribute("required");
-    expect(reqTurismo).toBeNull();
-
-    await selectTipo(page, "escolar");
-    const reqEscolar = await page
-      .locator("#quantidade-input")
-      .getAttribute("required");
-    expect(reqEscolar).toBeNull();
-  });
-
-  test("datas não são required em corporativo", async ({ page }) => {
-    const iniReq = await page.locator("#data-ini").getAttribute("required");
-    const fimReq = await page.locator("#data-fim").getAttribute("required");
-    expect(iniReq).toBeNull();
-    expect(fimReq).toBeNull();
-  });
-
-  test("autocomplete de origem funciona em corporativo", async ({ page }) => {
-    await page.route(
-      "**/api/geocode**",
-      async (route) => {
-        await route.fulfill({
-          status: 200,
-          contentType: "application/json",
-          body: JSON.stringify([
-            { display_name: "São Paulo, São Paulo, Brasil" },
-          ]),
-        });
-      },
-    );
-
-    await page.fill("input[name='origem']", "São");
-    await page.waitForTimeout(500);
-    await expect(page.locator("#origem-dropdown")).toBeVisible();
-    await expect(page.locator("#origem-dropdown button").first()).toContainText(
-      "São Paulo",
-    );
-  });
-
-  test("autocomplete de destino funciona em corporativo", async ({ page }) => {
-    await page.route(
-      "**/api/geocode**",
-      async (route) => {
-        await route.fulfill({
-          status: 200,
-          contentType: "application/json",
-          body: JSON.stringify([
-            { display_name: "Rio de Janeiro, Rio de Janeiro, Brasil" },
-          ]),
-        });
-      },
-    );
-
-    await page.fill("input[name='destino']", "Rio");
-    await page.waitForTimeout(500);
-    await expect(page.locator("#destino-dropdown")).toBeVisible();
-    await expect(
-      page.locator("#destino-dropdown button").first(),
-    ).toContainText("Rio de Janeiro");
-  });
-
-  test("submit corporativo gera URL WhatsApp com origem, destino e passageiros", async ({
-    page,
-  }) => {
-    await page.evaluate(() => {
-      (window as any).__capturedUrl = null;
-      window.open = (url: string) => {
-        (window as any).__capturedUrl = url;
-        return null;
-      };
-    });
-
-    await page.fill("input[name='origem']", "São Paulo");
-    await page.fill("input[name='destino']", "Rio de Janeiro");
-    await page.fill("#quantidade-input", "30");
-    await page.locator("#hero-form button[type='submit']").click();
-
-    const url = await page.evaluate(
-      () => (window as any).__capturedUrl as string,
-    );
-    const decoded = decodeURIComponent(url);
-    expect(decoded).toContain("wa.me/5548999503368");
-    expect(decoded).toContain("São Paulo");
-    expect(decoded).toContain("Rio de Janeiro");
-    expect(decoded).toContain("30");
-    expect(decoded).not.toContain("Data de ida");
-  });
-
-  test("trocar de corporativo para turismo limpa quantidade e remove required", async ({
-    page,
-  }) => {
-    await page.fill("#quantidade-input", "15");
-    await selectTipo(page, "turismo");
-
-    await expect(page.locator("#quantidade-wrapper")).toBeHidden();
-    const req = await page
-      .locator("#quantidade-input")
-      .getAttribute("required");
-    expect(req).toBeNull();
-    await expect(page.locator("#quantidade-input")).toHaveValue("");
+    await expect(page.locator("#hero-form-body")).toBeVisible();
+    await expect(page.locator("#corporativo-cta")).toBeHidden();
   });
 });
 

@@ -35,6 +35,9 @@ export default {
     "Hello! I would like to request a corporate transport quote.\n\nOrigin: {origem}\nDestination: {destino}\nPassengers: {quantidade}",
   "hero.msg.default":
     "Hello! I would like to request a quote.\n\nService: {tipo}\nOrigin: {origem}\nDestination: {destino}",
+  "hero.corporativo.cta": "Corporate quote via WhatsApp",
+  "hero.corporativo.message":
+    "Hello! I would like to request a quote for corporate charter for my company. Can you help me?",
   "hero.ctaWhatsapp": "Request a quote on WhatsApp",
   "hero.passageiroPlaceholder": "No. of passengers",
   "hero.tipoServico": "Service Type",
