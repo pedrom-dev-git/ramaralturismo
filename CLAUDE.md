@@ -14,7 +14,7 @@ Landing page para **R. Amaral**, empresa de transporte e turismo (transporte esc
 ## Comandos
 
 ```bash
-just test turismo       # Playwright E2E (9 specs)
+just test turismo       # Playwright E2E (18 specs)
 just build turismo      # Build Astro SSG
 just lint turismo       # astro check
 just dev turismo        # Dev server (localhost:4321)
