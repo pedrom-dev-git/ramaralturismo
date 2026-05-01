@@ -87,7 +87,10 @@ assets/images/map-variations/
 assets/images/map-variations.zip
 
 # Lighthouse — raw JSON reports (verbose, ~500KB each)
-# Only .lighthouse/baseline-YYYY-MM.json (consolidated) is versioned
-.lighthouse/baseline-pt.json
-.lighthouse/baseline-en.json
-.lighthouse/baseline-es.json
+# Only .lighthouse/baseline-YYYY-MM.json (consolidated summary) stays versioned
+.lighthouse/*.json
+!.lighthouse/baseline-2026-*.json
+
+# Design — assets/references locais (figma/source-of-truth fica fora do git)
+design/assets/
+design/references/

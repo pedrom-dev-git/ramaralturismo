@@ -1,0 +1,32 @@
+# Feudo baseline config — extends builtin ruleset.
+# Docs: https://github.com/gitleaks/gitleaks/blob/master/README.md#configuration
+
+title = "feudo-gitleaks"
+
+[extend]
+useDefault = true
+
+[allowlist]
+description = "feudo-wide false-positive suppressions"
+
+paths = [
+  '''(^|/)\.env\.example$''',
+  '''(^|/)\.env\.sample$''',
+  '''.*-sample\.(toml|yaml|yml|json|env)$''',
+  '''.*\.example\.(toml|yaml|yml|json)$''',
+  '''(^|/)cv-.*\.tex$''',
+  '''(^|/)projeto-cv/.*\.tex$''',
+  '''(^|/)node_modules/''',
+  '''(^|/)\.astro/''',
+  '''(^|/)dist/''',
+  '''(^|/)\.next/''',
+  '''(^|/)target/''',
+  '''(^|/)\.gitleaks\.baseline$''',
+]
+
+regexes = [
+  '''(?i)(your[-_]?api[-_]?key|changeme|placeholder|example[-_]?token|sk-xxxx+)''',
+  '''sk-(proj-)?(fake|test|example)[A-Za-z0-9\-_]*''',
+]
+
+commits = []
