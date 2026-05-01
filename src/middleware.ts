@@ -1,9 +1,15 @@
 import { defineMiddleware } from "astro:middleware";
 
+const isDev = import.meta.env.DEV;
+
+const SCRIPT_SRC = isDev
+  ? "'self' 'unsafe-eval' 'unsafe-inline' static.cloudflareinsights.com"
+  : "'self' static.cloudflareinsights.com";
+
 const CSP = [
   "default-src 'self'",
-  "script-src 'self' static.cloudflareinsights.com",
-  "connect-src 'self' nominatim.openstreetmap.org cloudflareinsights.com",
+  `script-src ${SCRIPT_SRC}`,
+  "connect-src 'self' nominatim.openstreetmap.org cloudflareinsights.com ws: wss:",
   "style-src 'self' 'unsafe-inline'",
   "img-src 'self' data:",
   "font-src 'self' data:",
