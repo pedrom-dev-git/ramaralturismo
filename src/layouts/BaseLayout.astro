@@ -15,7 +15,7 @@ const {
 } = Astro.props;
 
 const htmlLang = getHtmlLang(locale);
-const siteUrl = 'https://ramaralturismo.job-3eb.workers.dev';
+const siteUrl = 'https://ramaral.tur.br';
 
 // og:locale values per locale
 const ogLocaleMap: Record<string, string> = {
@@ -34,18 +34,28 @@ const localBusinessSchema = {
   "@context": "https://schema.org",
   "@type": "LocalBusiness",
   "name": "R. Amaral Turismo",
+  "legalName": "R. Amaral Transporte e Turismo",
+  "taxID": "33.876.985/0001-72",
   "telephone": "+55 48 99950-3368",
+  "email": "contato@ramaral.tur.br",
+  "url": siteUrl,
+  "logo": `${siteUrl}/logo-amaral.svg`,
+  "image": `${siteUrl}/og-cover.jpg`,
   "address": {
     "@type": "PostalAddress",
+    "streetAddress": "Rua Bromélia, 42",
     "addressLocality": "Tijucas",
     "addressRegion": "SC",
+    "postalCode": "88201-516",
     "addressCountry": "BR",
   },
   "areaServed": {
     "@type": "State",
     "name": "Santa Catarina",
   },
-  "url": "https://ramaralturismo.job-3eb.workers.dev",
+  "sameAs": [
+    "https://wa.me/5548999503368",
+  ],
 };
 
 import "../styles/global.css";

@@ -107,19 +107,19 @@ test.describe("i18n", () => {
       await page.goto("/");
       await expect(page.locator('link[hreflang="pt-BR"]')).toHaveAttribute(
         "href",
-        "https://ramaralturismo.job-3eb.workers.dev/",
+        "https://ramaral.tur.br/",
       );
       await expect(page.locator('link[hreflang="en"]')).toHaveAttribute(
         "href",
-        "https://ramaralturismo.job-3eb.workers.dev/en/",
+        "https://ramaral.tur.br/en/",
       );
       await expect(page.locator('link[hreflang="es"]')).toHaveAttribute(
         "href",
-        "https://ramaralturismo.job-3eb.workers.dev/es/",
+        "https://ramaral.tur.br/es/",
       );
       await expect(page.locator('link[hreflang="x-default"]')).toHaveAttribute(
         "href",
-        "https://ramaralturismo.job-3eb.workers.dev/",
+        "https://ramaral.tur.br/",
       );
     });
   });

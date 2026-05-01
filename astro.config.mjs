@@ -6,7 +6,7 @@ import cloudflare from '@astrojs/cloudflare';
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://ramaralturismo.job-3eb.workers.dev',
+  site: 'https://ramaral.tur.br',
   adapter: cloudflare(),
   integrations: [
     AstroPWA({

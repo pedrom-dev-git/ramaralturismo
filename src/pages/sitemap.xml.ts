@@ -1,4 +1,4 @@
-const SITE = "https://ramaralturismo.job-3eb.workers.dev";
+const SITE = "https://ramaral.tur.br";
 
 interface SitemapEntry {
   path: string;

@@ -34,7 +34,7 @@ test.describe("Footer", () => {
     await expect(emailLink).toBeVisible();
     await expect(emailLink).toHaveAttribute(
       "href",
-      "mailto:contato@ramaral.com.br",
+      "mailto:contato@ramaral.tur.br",
     );
   });
 

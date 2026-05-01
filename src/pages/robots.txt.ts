@@ -3,7 +3,7 @@ export async function GET(): Promise<Response> {
     "User-agent: *",
     "Allow: /",
     "",
-    "Sitemap: https://ramaralturismo.job-3eb.workers.dev/sitemap.xml",
+    "Sitemap: https://ramaral.tur.br/sitemap.xml",
   ].join("\n");
 
   return new Response(body, {
