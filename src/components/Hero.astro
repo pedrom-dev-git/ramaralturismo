@@ -277,13 +277,9 @@ const i18nMsgDefault = t(locale, 'hero.msg.default');
       activeIndex = -1;
     }
 
-    async function fetchSuggestions(query) {
-      const url =
-        `https://nominatim.openstreetmap.org/search` +
-        `?q=${encodeURIComponent(query)}&countrycodes=br&format=json&limit=5&accept-language=pt-BR`;
-      const res = await fetch(url, {
-        headers: { "Accept-Language": "pt-BR" },
-      });
+    async function fetchSuggestions(query: string) {
+      const res = await fetch(`/api/geocode?q=${encodeURIComponent(query)}`);
+      if (!res.ok) return [];
       return res.json();
     }
 

@@ -309,7 +309,7 @@ test.describe("Hero", () => {
     page,
   }) => {
     await page.route(
-      "**/nominatim.openstreetmap.org/search**",
+      "**/api/geocode**",
       async (route) => {
         await route.fulfill({
           status: 200,
@@ -332,7 +332,7 @@ test.describe("Hero", () => {
 
   test("clicar fora fecha o dropdown", async ({ page }) => {
     await page.route(
-      "**/nominatim.openstreetmap.org/search**",
+      "**/api/geocode**",
       async (route) => {
         await route.fulfill({
           status: 200,
@@ -454,7 +454,7 @@ test.describe("Hero", () => {
     page,
   }) => {
     await page.route(
-      "**/nominatim.openstreetmap.org/search**",
+      "**/api/geocode**",
       async (route) => {
         await route.fulfill({
           status: 200,
@@ -476,7 +476,7 @@ test.describe("Hero", () => {
 
   test("autocomplete funciona na origem do modo escolar", async ({ page }) => {
     await page.route(
-      "**/nominatim.openstreetmap.org/search**",
+      "**/api/geocode**",
       async (route) => {
         await route.fulfill({
           status: 200,
@@ -520,7 +520,7 @@ test.describe("Hero", () => {
     page,
   }) => {
     await page.route(
-      "**/nominatim.openstreetmap.org/search**",
+      "**/api/geocode**",
       async (route) => {
         await route.fulfill({
           status: 200,
@@ -602,7 +602,7 @@ test.describe("Corporativo tab", () => {
 
   test("autocomplete de origem funciona em corporativo", async ({ page }) => {
     await page.route(
-      "**/nominatim.openstreetmap.org/search**",
+      "**/api/geocode**",
       async (route) => {
         await route.fulfill({
           status: 200,
@@ -624,7 +624,7 @@ test.describe("Corporativo tab", () => {
 
   test("autocomplete de destino funciona em corporativo", async ({ page }) => {
     await page.route(
-      "**/nominatim.openstreetmap.org/search**",
+      "**/api/geocode**",
       async (route) => {
         await route.fulfill({
           status: 200,
@@ -801,7 +801,7 @@ test.describe("Hero mobile (375x812)", () => {
     page,
   }) => {
     await page.route(
-      "**/nominatim.openstreetmap.org/search**",
+      "**/api/geocode**",
       async (route) => {
         await route.fulfill({
           status: 200,
