@@ -28,11 +28,11 @@ export const onRequest = defineMiddleware(async (_context, next) => {
     "Permissions-Policy",
     "geolocation=(), microphone=(), camera=()",
   );
-  if (!isDev) {
-    response.headers.set(
-      "Strict-Transport-Security",
-      "max-age=300; includeSubDomains",
-    );
-  }
+  // HSTS sempre — browsers ignoram em HTTP local (sem efeito em dev),
+  // cacheiam em HTTPS produção. Phase 1 do Oficial parecer 2026-05-01.
+  response.headers.set(
+    "Strict-Transport-Security",
+    "max-age=300; includeSubDomains",
+  );
   return response;
 });
