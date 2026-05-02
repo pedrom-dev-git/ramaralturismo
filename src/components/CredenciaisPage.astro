@@ -1,0 +1,82 @@
+---
+import type { Locale } from "../i18n";
+import { t } from "../i18n";
+
+interface Props {
+  locale?: Locale;
+}
+
+const { locale = "pt-BR" } = Astro.props;
+
+const updatedAt = "2026-05-02";
+
+const credentials = [
+  {
+    title: t(locale, "credenciais.cadastur.title"),
+    desc: t(locale, "credenciais.cadastur.desc"),
+    link: "https://cadastur.turismo.gov.br/hotsite/",
+  },
+  {
+    title: t(locale, "credenciais.antt.title"),
+    desc: t(locale, "credenciais.antt.desc"),
+    link: "https://portal.antt.gov.br/fretamento",
+  },
+  {
+    title: t(locale, "credenciais.sie.title"),
+    desc: t(locale, "credenciais.sie.desc"),
+    link: "https://www.sc.gov.br/servicos/consultar-transportadoras-cadastradas-na-secretaria-de-estado-da-infraestrutura-e-mobilidade-sie",
+  },
+];
+
+const verifyLabel = t(locale, "credenciais.verify");
+const yearsTitle = t(locale, "credenciais.years.title");
+const yearsDesc = t(locale, "credenciais.years.desc");
+const heading = t(locale, "credenciais.heading");
+const subheading = t(locale, "credenciais.subheading");
+const disclaimer = t(locale, "credenciais.disclaimer");
+---
+
+<main id="main">
+  <section class="max-w-4xl mx-auto px-4 sm:px-6 py-16 md:py-20">
+    <div class="text-center mb-12">
+      <h1 class="text-4xl md:text-5xl font-bold text-dark-gray mb-4">
+        {heading}
+      </h1>
+      <p class="text-lg text-medium-gray max-w-2xl mx-auto">{subheading}</p>
+    </div>
+
+    <div class="space-y-6">
+      {
+        credentials.map((cred) => (
+          <article class="bg-white border border-gray-200 rounded-xl p-6 md:p-8 shadow-sm hover:shadow-md transition-shadow">
+            <h2 class="text-xl md:text-2xl font-bold text-primary mb-3">
+              {cred.title}
+            </h2>
+            <p class="text-dark-gray leading-relaxed mb-4">{cred.desc}</p>
+            <a
+              href={cred.link}
+              target="_blank"
+              rel="noopener noreferrer nofollow"
+              class="inline-flex items-center gap-1.5 text-primary hover:text-primary/80 font-semibold text-sm transition-colors"
+            >
+              {verifyLabel} ↗
+            </a>
+          </article>
+        ))
+      }
+
+      <article
+        class="bg-light-gray border border-gray-200 rounded-xl p-6 md:p-8"
+      >
+        <h2 class="text-xl md:text-2xl font-bold text-dark-gray mb-3">
+          {yearsTitle}
+        </h2>
+        <p class="text-dark-gray leading-relaxed">{yearsDesc}</p>
+      </article>
+    </div>
+
+    <p class="text-xs text-medium-gray mt-10 text-center">
+      {disclaimer} {updatedAt}
+    </p>
+  </section>
+</main>

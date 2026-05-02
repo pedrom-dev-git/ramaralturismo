@@ -1,0 +1,17 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Navbar from "../../components/Navbar.astro";
+import CredenciaisPage from "../../components/CredenciaisPage.astro";
+import Footer from "../../components/Footer.astro";
+import { t } from "../../i18n";
+
+const locale = "en";
+const title = t(locale, "credenciais.pageTitle");
+const description = t(locale, "credenciais.pageDesc");
+---
+
+<BaseLayout locale={locale} title={title} description={description}>
+  <Navbar locale={locale} />
+  <CredenciaisPage locale={locale} />
+  <Footer locale={locale} />
+</BaseLayout>
