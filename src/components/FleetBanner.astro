@@ -1,0 +1,95 @@
+---
+import type { Locale } from "../i18n";
+import { t } from "../i18n";
+
+interface Props {
+  locale?: Locale;
+}
+
+const { locale = "pt-BR" } = Astro.props;
+---
+
+<section
+  id="fleet"
+  class="relative overflow-hidden bg-gradient-to-br from-dark to-primary text-white py-16 md:py-20"
+>
+  <!-- decorative blob -->
+  <div
+    aria-hidden="true"
+    class="absolute -top-24 -left-24 w-72 h-72 rounded-full pointer-events-none"
+    style="background: radial-gradient(circle, var(--color-accent) 0%, transparent 70%); opacity: 0.18;"
+  >
+  </div>
+
+  <div
+    class="relative max-w-7xl mx-auto px-4 md:px-6 grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-center"
+  >
+    <img
+      src="/van-amaral.webp"
+      alt={t(locale, "fleet.imageAlt")}
+      width="600"
+      height="450"
+      loading="lazy"
+      decoding="async"
+      class="w-full h-auto max-h-[320px] object-contain order-1 md:order-1 drop-shadow-[0_18px_36px_rgba(0,0,0,0.35)]"
+    />
+
+    <div class="order-2 md:order-2">
+      <h2 class="text-3xl md:text-4xl font-bold leading-tight mb-4">
+        {t(locale, "fleet.title.lead")}{" "}
+        <span class="text-accent">{t(locale, "fleet.title.accent")}</span>
+      </h2>
+      <p class="text-white/85 mb-6 max-w-prose">
+        {t(locale, "fleet.body")}
+      </p>
+      <ul
+        class="flex flex-wrap gap-2.5 list-none p-0"
+        aria-label="Credenciais e dados públicos"
+      >
+        <li
+          class="bg-white/10 border border-white/20 backdrop-blur-sm px-4 py-2 rounded-full text-sm"
+        >
+          {t(locale, "fleet.pill.years")}
+        </li>
+        <li>
+          <a
+            href="https://cadastur.turismo.gov.br/hotsite/"
+            target="_blank"
+            rel="noopener noreferrer nofollow"
+            class="bg-white/10 hover:bg-white/20 border border-white/20 hover:border-white/40 backdrop-blur-sm px-4 py-2 rounded-full text-sm inline-block transition-colors"
+            aria-label={`${t(locale, "fleet.pill.cadastur")} — verificar no portal CADASTUR (Ministério do Turismo)`}
+          >
+            {t(locale, "fleet.pill.cadastur")} ↗
+          </a>
+        </li>
+        <li>
+          <a
+            href="https://portal.antt.gov.br/fretamento"
+            target="_blank"
+            rel="noopener noreferrer nofollow"
+            class="bg-white/10 hover:bg-white/20 border border-white/20 hover:border-white/40 backdrop-blur-sm px-4 py-2 rounded-full text-sm inline-block transition-colors"
+            aria-label={`${t(locale, "fleet.pill.antt")} — verificar no portal ANTT Fretamento`}
+          >
+            {t(locale, "fleet.pill.antt")} ↗
+          </a>
+        </li>
+        <li>
+          <a
+            href="https://www.sc.gov.br/servicos/consultar-transportadoras-cadastradas-na-secretaria-de-estado-da-infraestrutura-e-mobilidade-sie"
+            target="_blank"
+            rel="noopener noreferrer nofollow"
+            class="bg-white/10 hover:bg-white/20 border border-white/20 hover:border-white/40 backdrop-blur-sm px-4 py-2 rounded-full text-sm inline-block transition-colors"
+            aria-label={`${t(locale, "fleet.pill.sie")} — verificar no portal SIE Santa Catarina`}
+          >
+            {t(locale, "fleet.pill.sie")} ↗
+          </a>
+        </li>
+        <li
+          class="bg-white/10 border border-white/20 backdrop-blur-sm px-4 py-2 rounded-full text-sm"
+        >
+          {t(locale, "fleet.pill.region")}
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>

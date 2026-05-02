@@ -24,13 +24,15 @@ body {
 }
 
 @theme {
-  --color-primary: #0138ad;
-  --color-accent: #9d0013;
-  --color-dark: #143e58;
-  --color-light-gray: #f5f5f5;
-  --color-dark-gray: #333333;
-  --color-medium-gray: #666666;
-  --color-light-blue: #dcf0f7;
+  /* Paleta "Mar e Areia" — adotada 2026-05-02 */
+  /* Refs: knowledge-vault/discovery/turismo/redesign-2026-05/paleta-mar-areia.html */
+  --color-primary: #006ca8;       /* azul-mar profundo — logo, nav, CTAs */
+  --color-accent: #c8860a;        /* âmbar areia — accent agora ativo */
+  --color-dark: #0d2b3e;          /* azul-noite — fundos escuros, footer */
+  --color-light-gray: #f7f3ec;    /* areia clara — bg geral (substitui #f5f5f5 cinza puro) */
+  --color-dark-gray: #1a1208;     /* texto primário escuro */
+  --color-medium-gray: #6b6255;   /* texto secundário, mais quente que cinza puro */
+  --color-light-blue: #d4ebf5;    /* hover autocomplete (claro complementar do primary) */
 
   --font-sans: "Inter", sans-serif;
 }

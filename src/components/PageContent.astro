@@ -1,6 +1,7 @@
 ---
 import Navbar from './Navbar.astro';
 import Hero from './Hero.astro';
+import FleetBanner from './FleetBanner.astro';
 import Benefits from './Benefits.astro';
 import Services from './Services.astro';
 import NewsCarousel from './NewsCarousel.astro';
@@ -17,6 +18,7 @@ const { locale = 'pt-BR' } = Astro.props;
 <Navbar locale={locale} />
 <main id="main">
   <Hero locale={locale} />
+  <FleetBanner locale={locale} />
   <Benefits locale={locale} />
   <Services locale={locale} />
   <NewsCarousel locale={locale} />

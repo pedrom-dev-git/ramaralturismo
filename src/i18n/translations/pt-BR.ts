@@ -42,6 +42,38 @@ export default {
   "hero.corporativo.message":
     "Olá! Gostaria de solicitar um orçamento para fretamento corporativo da minha empresa. Pode me ajudar?",
 
+  // Fleet banner (entre Hero e Benefits)
+  "fleet.title.lead": "A frota que",
+  "fleet.title.accent": "chega no horário.",
+  "fleet.body":
+    "Vans com manutenção em dia, motoristas profissionais, ar-condicionado e cinto individual. Sediada em Tijucas, percorrendo o litoral norte e a Serra catarinense.",
+  "fleet.pill.years": "+10 anos de estrada",
+  "fleet.pill.cadastur": "CADASTUR ativo",
+  "fleet.pill.region": "SC litoral & serra",
+  "fleet.pill.antt": "ANTT/TAF 006462",
+  "fleet.pill.sie": "SIE/SC Mobi 2685/c",
+  "fleet.imageAlt": "Van da R. Amaral Turismo",
+
+  // Footer credentials strip
+  "footer.credentials.title": "Credenciamento e registros",
+  "footer.credentials.cta": "Ver detalhes das credenciais",
+
+  // Página /credenciais
+  "credenciais.pageTitle": "Credenciais — R. Amaral Turismo",
+  "credenciais.pageDesc": "Registros e cadastros oficiais da R. Amaral Transporte e Turismo, com links para consulta pública.",
+  "credenciais.heading": "Nossas credenciais",
+  "credenciais.subheading": "Cada cadastro oficial pode ser verificado no portal do órgão emissor. Transparência é parte do serviço.",
+  "credenciais.cadastur.title": "CADASTUR — Cadastro de Prestador de Serviços Turísticos",
+  "credenciais.cadastur.desc": "Cadastro mantido pelo Ministério do Turismo, exigido pela Lei 11.771/2008 para prestadores de serviços turísticos. R. Amaral é cadastrada como transportadora turística com cadastro ativo.",
+  "credenciais.antt.title": "ANTT/TAF 006462 — Termo de Autorização de Fretamento",
+  "credenciais.antt.desc": "Autorização federal da Agência Nacional de Transportes Terrestres para fretamento turístico interestadual de passageiros, conforme Resolução ANTT 4.777/2015.",
+  "credenciais.sie.title": "SIE/SC Mobi 2685/c — Transporte Intermunicipal SC",
+  "credenciais.sie.desc": "Cadastro como transportadora Tipo C no Sistema de Infraestrutura e Mobilidade de Santa Catarina (DETER/SIE), regulado pela Lei estadual 13.539/2005.",
+  "credenciais.years.title": "+10 anos de estrada",
+  "credenciais.years.desc": "Empresa familiar fundada e mantida pela família Amaral, sediada em Tijucas-SC. Frota com manutenção em dia, motoristas profissionais com curso de transporte coletivo.",
+  "credenciais.verify": "Verificar no portal oficial",
+  "credenciais.disclaimer": "Cadastros sujeitos a renovação. Em caso de divergência entre o que está exibido aqui e o portal oficial, prevalece o portal. Última atualização desta página:",
+
   // Benefits
   "benefits.title": "Por que escolher a nossa van?",
   "benefits.label": "Vantagens",
