@@ -163,16 +163,20 @@ for (const path of PAGES) {
       await expect(label).toHaveCount(1);
     });
 
-    // ── Corporativo mode: quantidade accessible name ──────────────────────────
+    // ── Corporativo mode: WhatsApp CTA accessibility ─────────────────────────
+    // Mode switched from form (origem+destino+quantidade) to single CTA-WhatsApp
+    // link for "menos burocracia" UX. Form body is hidden; CTA must be a11y-clean.
 
-    test("quantidade-input is accessible in corporativo mode", async ({
+    test("corporativo mode hides form body and exposes accessible WhatsApp CTA", async ({
       page,
     }) => {
       await selectTipo(page, "corporativo");
-      const label = page.locator("label[for='quantidade-input']");
-      await expect(label).toHaveCount(1);
-      const ctrl = page.locator("#quantidade-input");
-      await expect(ctrl).toBeVisible();
+      const formBody = page.locator("#hero-form-body");
+      await expect(formBody).toBeHidden();
+      const cta = page.locator("#corporativo-cta");
+      await expect(cta).toBeVisible();
+      await expect(cta).toHaveText(/.+/);
+      await expect(cta).toHaveAttribute("href", /wa\.me/);
     });
   });
 }
