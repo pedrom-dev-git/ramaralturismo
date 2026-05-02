@@ -28,5 +28,11 @@ export const onRequest = defineMiddleware(async (_context, next) => {
     "Permissions-Policy",
     "geolocation=(), microphone=(), camera=()",
   );
+  if (!isDev) {
+    response.headers.set(
+      "Strict-Transport-Security",
+      "max-age=300; includeSubDomains",
+    );
+  }
   return response;
 });
