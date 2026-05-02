@@ -1,6 +1,7 @@
 export default {
   // Navbar
   "nav.home": "Home",
+  "nav.frota": "Frota",
   "nav.destinos": "Destinos",
   "nav.contato": "Contato",
   "nav.menuLabel": "Abrir menu",

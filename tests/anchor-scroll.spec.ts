@@ -62,12 +62,16 @@ test.describe("Anchor scroll — #hero-form not hidden behind sticky navbar", ()
   }) => {
     await page.setViewportSize({ width: 375, height: 812 });
     await page.goto("/");
-    await page.evaluate(() => window.scrollTo(0, 800));
-    await page.waitForTimeout(200);
+    await page.waitForLoadState("domcontentloaded");
+    // Force instant scroll (some pages enable scroll-behavior:smooth globally)
+    await page.evaluate(() => {
+      window.scrollTo({ top: 800, behavior: "instant" as ScrollBehavior });
+    });
+    await page.waitForTimeout(400);
 
     // Open mobile menu first
     await page.locator("#menu-toggle").click();
-    await page.waitForTimeout(200);
+    await page.waitForTimeout(400);
 
     // Mobile CTA is inside #mobile-menu
     const mobileCta = page
@@ -75,6 +79,9 @@ test.describe("Anchor scroll — #hero-form not hidden behind sticky navbar", ()
       .getByRole("link", { name: "Solicitar Orçamento" });
 
     await mobileCta.click();
+    // Wait for form to enter viewport before measuring (more robust than
+    // a fixed scrollSettle delay in slow CI runners)
+    await expect(page.locator("#hero-form")).toBeInViewport();
     await waitForScrollSettle(page);
 
     const box = await page.locator("#hero-form").boundingBox();

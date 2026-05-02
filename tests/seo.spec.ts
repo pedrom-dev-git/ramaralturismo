@@ -108,6 +108,8 @@ for (const locale of LOCALES) {
       expect(schema["address"]["addressLocality"]).toBe("Tijucas");
       expect(schema["address"]["addressRegion"]).toBe("SC");
       expect(schema["url"]).toBe("https://ramaral.tur.br");
+      expect(schema["priceRange"]).toBeTruthy();
+      expect(schema["openingHours"]).toBeTruthy();
     });
   });
 }
@@ -150,11 +152,21 @@ test.describe("sitemap.xml", () => {
     expect(body).toContain("</urlset>");
   });
 
-  test("contains at least 3 url entries", async ({ page }) => {
+  test("contains at least 6 url entries (3 home locales + 3 credenciais locales)", async ({
+    page,
+  }) => {
     const response = await page.goto("/sitemap.xml");
     const body = await response?.text();
     const matches = body?.match(/<url>/g);
-    expect(matches?.length).toBeGreaterThanOrEqual(3);
+    expect(matches?.length).toBeGreaterThanOrEqual(6);
+  });
+
+  test("contains /credenciais URLs in all 3 locales", async ({ page }) => {
+    const response = await page.goto("/sitemap.xml");
+    const body = await response?.text();
+    expect(body).toContain("ramaral.tur.br/credenciais/");
+    expect(body).toContain("ramaral.tur.br/en/credenciais/");
+    expect(body).toContain("ramaral.tur.br/es/credenciais/");
   });
 
   test("contains hreflang alternate links", async ({ page }) => {

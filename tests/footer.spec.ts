@@ -59,11 +59,14 @@ test.describe("Footer", () => {
     await expect(waLink).toHaveAttribute("href", "https://wa.me/5548999503368");
   });
 
-  test("exibe os 3 links de navegação no footer (Blog/Novidades removidos)", async ({ page }) => {
+  test("exibe os 4 links de navegação no footer (Home, Frota, Destinos, Contato)", async ({ page }) => {
     // Escopa à primeira <ul> de navegação dentro do footer
     const footerNav = page.locator("footer ul").first();
     await expect(
       footerNav.getByRole("link", { name: "Home", exact: true }),
+    ).toBeVisible();
+    await expect(
+      footerNav.getByRole("link", { name: "Frota", exact: true }),
     ).toBeVisible();
     await expect(
       footerNav.getByRole("link", { name: "Destinos", exact: true }),

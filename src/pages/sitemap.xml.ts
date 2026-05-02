@@ -5,26 +5,53 @@ interface SitemapEntry {
   lang: string;
 }
 
-const pages: SitemapEntry[] = [
-  { path: "/", lang: "pt-BR" },
-  { path: "/en/", lang: "en" },
-  { path: "/es/", lang: "es" },
+interface PageFamily {
+  pt: string;
+  en: string;
+  es: string;
+}
+
+const families: PageFamily[] = [
+  { pt: "/", en: "/en/", es: "/es/" },
+  {
+    pt: "/credenciais/",
+    en: "/en/credenciais/",
+    es: "/es/credenciais/",
+  },
 ];
 
+const pages: SitemapEntry[] = families.flatMap((f) => [
+  { path: f.pt, lang: "pt-BR" },
+  { path: f.en, lang: "en" },
+  { path: f.es, lang: "es" },
+]);
+
 function buildAlternates(currentPath: string): string {
-  return pages
+  const family = families.find(
+    (f) => f.pt === currentPath || f.en === currentPath || f.es === currentPath,
+  );
+  if (!family) return "";
+  const langs: SitemapEntry[] = [
+    { path: family.pt, lang: "pt-BR" },
+    { path: family.en, lang: "en" },
+    { path: family.es, lang: "es" },
+  ];
+  const alternates = langs
     .map(
       (p) =>
         `      <xhtml:link rel="alternate" hreflang="${p.lang}" href="${SITE}${p.path}"/>`,
     )
     .join("\n");
+  return (
+    alternates +
+    `\n      <xhtml:link rel="alternate" hreflang="x-default" href="${SITE}${family.pt}"/>`
+  );
 }
 
 function buildUrlEntry(entry: SitemapEntry): string {
   return `  <url>
     <loc>${SITE}${entry.path}</loc>
 ${buildAlternates(entry.path)}
-    <xhtml:link rel="alternate" hreflang="x-default" href="${SITE}/"/>
   </url>`;
 }
 

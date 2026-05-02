@@ -26,6 +26,9 @@ for (const path of PAGES) {
   test.describe(`a11y-form-hero — ${path}`, () => {
     test.beforeEach(async ({ page }) => {
       await page.goto(path);
+      // Stabilize against HMR/Astro Dev Toolbar reflow (flaky in CI)
+      await page.waitForLoadState("domcontentloaded");
+      await page.locator("#hero-form").waitFor({ state: "attached" });
     });
 
     // ── Radios: fieldset + legend ─────────────────────────────────────────────

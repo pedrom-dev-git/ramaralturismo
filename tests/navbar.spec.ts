@@ -13,15 +13,18 @@ test.describe("Navbar", () => {
     ).toBeVisible();
   });
 
-  test("exibe os 3 links de navegação no desktop (Blog/Novidades removidos)", async ({ page }) => {
+  test("exibe os 4 links de navegação no desktop (Home, Frota, Destinos, Contato)", async ({ page }) => {
     const desktopMenu = page.locator("#main-header nav ul").first();
     await expect(desktopMenu.getByRole("link", { name: "Home" })).toBeVisible();
+    await expect(desktopMenu.getByRole("link", { name: "Frota" })).toBeVisible();
     await expect(
       desktopMenu.getByRole("link", { name: "Destinos" }),
     ).toBeVisible();
     await expect(
       desktopMenu.getByRole("link", { name: "Contato" }),
     ).toBeVisible();
+    const frotaLink = desktopMenu.getByRole("link", { name: "Frota" });
+    await expect(frotaLink).toHaveAttribute("href", "#fleet");
     // Blog/Novidades removed (broken anchors)
     await expect(desktopMenu.getByRole("link", { name: "Blog" })).not.toBeAttached();
     await expect(desktopMenu.getByRole("link", { name: "Novidades" })).not.toBeAttached();
@@ -77,13 +80,16 @@ test.describe("Navbar", () => {
       await expect(mobileMenu).toBeHidden();
     });
 
-    test("menu mobile contém os 3 links de navegação (Blog/Novidades removidos)", async ({ page }) => {
+    test("menu mobile contém os 4 links de navegação (Home, Frota, Destinos, Contato)", async ({ page }) => {
       await page.goto("/");
       await page.getByRole("button", { name: "Abrir menu" }).click();
 
       const mobileMenu = page.locator("#mobile-menu");
       await expect(
         mobileMenu.getByRole("link", { name: "Home" }),
+      ).toBeVisible();
+      await expect(
+        mobileMenu.getByRole("link", { name: "Frota" }),
       ).toBeVisible();
       await expect(
         mobileMenu.getByRole("link", { name: "Destinos" }),
