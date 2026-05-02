@@ -53,5 +53,17 @@ for (const path of PATHS) {
       expect(pp).toMatch(/microphone=\(\)/);
       expect(pp).toMatch(/camera=\(\)/);
     });
+
+    test("Strict-Transport-Security is set in production (Phase 1: max-age=300; includeSubDomains)", async ({
+      request,
+    }) => {
+      const response = await request.get(path);
+      const hsts = response.headers()["strict-transport-security"];
+      expect(hsts).toBeTruthy();
+      expect(hsts).toMatch(/max-age=300/);
+      expect(hsts).toMatch(/includeSubDomains/);
+      // Phase 1 should NOT include preload yet (Oficial parecer 2026-05-01)
+      expect(hsts).not.toMatch(/preload/);
+    });
   });
 }
