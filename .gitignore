@@ -91,6 +91,10 @@ assets/images/map-variations.zip
 .lighthouse/*.json
 !.lighthouse/baseline-2026-*.json
 
+# OG cover image template (source-of-truth for /public/og-cover.jpg generation,
+# regenerated via tests/og-screenshot.spec.ts on demand)
+.og-template/
+
 # Design — assets/references locais (figma/source-of-truth fica fora do git)
 design/assets/
 design/references/
