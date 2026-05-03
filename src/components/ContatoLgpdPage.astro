@@ -1,0 +1,57 @@
+---
+import type { Locale } from "../i18n";
+import { localizedPath, t } from "../i18n";
+
+interface Props {
+  locale?: Locale;
+}
+
+const { locale = "pt-BR" } = Astro.props;
+
+const updatedAt = "2026-05-04";
+const credenciaisHref = localizedPath(locale, "/credenciais");
+---
+
+<main id="main">
+  <section class="max-w-4xl mx-auto px-4 sm:px-6 py-16 md:py-20">
+    <div class="text-center mb-12">
+      <h1 class="text-4xl md:text-5xl font-bold text-dark-gray mb-4">
+        {t(locale, "contatoLgpd.heading")}
+      </h1>
+      <p class="text-lg text-medium-gray max-w-2xl mx-auto">
+        {t(locale, "contatoLgpd.subheading")}
+      </p>
+    </div>
+
+    <div class="space-y-6">
+      <article class="bg-white border border-gray-200 rounded-xl p-6 md:p-8 shadow-sm">
+        <p class="text-dark-gray leading-relaxed">
+          {t(locale, "contatoLgpd.rightsBody")}
+        </p>
+      </article>
+
+      <article class="bg-light-blue border border-gray-200 rounded-xl p-6 md:p-8">
+        <h2 class="text-sm font-semibold text-dark-gray tracking-wide uppercase mb-2">
+          {t(locale, "contatoLgpd.emailLabel")}
+        </h2>
+        <p class="text-2xl md:text-3xl font-bold text-primary mb-3 select-all break-all">
+          dpo@ramaral.tur.br
+        </p>
+        <p class="text-sm text-dark-gray">
+          {t(locale, "contatoLgpd.subjectSuggestion")}
+        </p>
+      </article>
+
+      <a
+        href={credenciaisHref}
+        class="inline-flex items-center gap-1.5 text-primary hover:text-primary/80 font-semibold text-sm transition-colors"
+      >
+        {t(locale, "contatoLgpd.privacyLinkText")} →
+      </a>
+    </div>
+
+    <p class="text-xs text-medium-gray mt-10 text-center">
+      {updatedAt}
+    </p>
+  </section>
+</main>

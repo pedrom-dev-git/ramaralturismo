@@ -135,6 +135,17 @@ export default {
   "news.prev": "Previous destination",
   "news.next": "Next destination",
 
+  // Página /contato-lgpd
+  "contatoLgpd.pageTitle": "LGPD Contact — R. Amaral Turismo",
+  "contatoLgpd.pageDesc": "Channel for data subjects to exercise the rights set out in Brazil's data protection law (LGPD, Law 13.709/2018) with R. Amaral Transporte e Turismo.",
+  "contatoLgpd.heading": "LGPD Contact",
+  "contatoLgpd.subheading": "Channel for data subjects to exercise the rights set out in Brazil's General Data Protection Law (LGPD).",
+  "contatoLgpd.rightsBody": "Under article 18 of the LGPD (Law 13.709/2018), data subjects are entitled to: confirmation of processing, access to their data, correction of incomplete or outdated data, anonymization, blocking or deletion of unnecessary data, portability, deletion of data processed under consent, information about data sharing, and revocation of consent.",
+  "contatoLgpd.emailLabel": "Data protection officer (DPO) e-mail",
+  "contatoLgpd.subjectSuggestion": "Suggested subject: \"LGPD — [type of request]\"",
+  "contatoLgpd.privacyLinkText": "See public records and official credentials",
+  "nav.contatoLgpd": "LGPD Contact",
+
   // Footer
   "footer.desc":
     "Personalized service for school transport and group travel in Santa Catarina.",

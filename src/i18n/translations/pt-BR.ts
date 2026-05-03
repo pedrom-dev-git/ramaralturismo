@@ -137,6 +137,17 @@ export default {
   "news.prev": "Destino anterior",
   "news.next": "Próximo destino",
 
+  // Página /contato-lgpd
+  "contatoLgpd.pageTitle": "Contato LGPD — R. Amaral Turismo",
+  "contatoLgpd.pageDesc": "Canal para titulares de dados pessoais exercerem direitos previstos na LGPD (Lei 13.709/2018) junto à R. Amaral Transporte e Turismo.",
+  "contatoLgpd.heading": "Contato LGPD",
+  "contatoLgpd.subheading": "Canal para titulares de dados exercerem os direitos previstos na Lei Geral de Proteção de Dados.",
+  "contatoLgpd.rightsBody": "Conforme o art. 18 da LGPD (Lei 13.709/2018), o titular dos dados pessoais tem direito a: confirmação da existência de tratamento, acesso aos dados, correção de dados incompletos ou desatualizados, anonimização, bloqueio ou eliminação de dados desnecessários, portabilidade, eliminação dos dados tratados com consentimento, informação sobre compartilhamento, e revogação do consentimento.",
+  "contatoLgpd.emailLabel": "E-mail do encarregado (DPO)",
+  "contatoLgpd.subjectSuggestion": "Assunto sugerido: \"LGPD — [tipo de pedido]\"",
+  "contatoLgpd.privacyLinkText": "Ver dados públicos e credenciais oficiais",
+  "nav.contatoLgpd": "Contato LGPD",
+
   // Footer
   "footer.desc":
     "Atendimento personalizado para transporte escolar e viagens em grupo em Santa Catarina.",

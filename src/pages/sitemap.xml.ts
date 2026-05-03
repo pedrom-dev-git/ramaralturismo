@@ -23,6 +23,11 @@ const families: PageFamily[] = [
     en: "/en/sobre/",
     es: "/es/sobre/",
   },
+  {
+    pt: "/contato-lgpd/",
+    en: "/en/contato-lgpd/",
+    es: "/es/contato-lgpd/",
+  },
 ];
 
 const pages: SitemapEntry[] = families.flatMap((f) => [
