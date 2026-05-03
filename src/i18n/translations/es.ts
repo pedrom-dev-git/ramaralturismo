@@ -148,6 +148,40 @@ export default {
   "contatoLgpd.privacyLinkText": "Ver datos públicos y credenciales oficiales",
   "nav.contatoLgpd": "Contacto LGPD",
 
+  // /privacy (skeleton — DRAFT)
+  "privacy.pageTitle": "Política de Privacidad — R. Amaral Turismo",
+  "privacy.pageDesc":
+    "Política de Privacidad de R. Amaral Transporte e Turismo. Versión en revisión (DRAFT) — sujeta a actualización.",
+  "privacy.heading": "Política de Privacidad",
+  "privacy.draftBanner":
+    "🚧 Versión en revisión (DRAFT) — última actualización: 2026-05-04",
+  "privacy.sectionsTitle": "Secciones de esta política",
+  "privacy.sections.identification": "Identificación del responsable",
+  "privacy.sections.dataCollected": "Datos recogidos",
+  "privacy.sections.purpose": "Finalidad",
+  "privacy.sections.legalBasis": "Bases legales",
+  "privacy.sections.sharing": "Compartición",
+  "privacy.sections.rights": "Derechos del titular",
+  "privacy.sections.retention": "Retención",
+  "privacy.sections.dpoContact": "Contacto DPO",
+  "privacy.contactCta": "Contactar con el responsable de datos",
+
+  // /termos (skeleton — DRAFT)
+  "termos.pageTitle": "Términos de Uso — R. Amaral Turismo",
+  "termos.pageDesc":
+    "Términos de Uso de R. Amaral Transporte e Turismo. Versión en revisión (DRAFT) — sujeta a actualización.",
+  "termos.heading": "Términos de Uso",
+  "termos.draftBanner":
+    "🚧 Versión en revisión (DRAFT) — última actualización: 2026-05-04",
+  "termos.sectionsTitle": "Secciones de estos términos",
+  "termos.sections.operator": "Quién opera el sitio",
+  "termos.sections.serviceNature": "Naturaleza del servicio",
+  "termos.sections.liability": "Limitación de responsabilidad",
+  "termos.sections.intellectualProperty": "Propiedad intelectual",
+  "termos.sections.applicableLaw": "Ley aplicable y jurisdicción",
+  "termos.sections.updates": "Actualización de los términos",
+  "termos.contactCta": "Contactar con el responsable legal",
+
   // Footer
   "footer.desc":
     "Atención personalizada para transporte escolar y viajes en grupo en Santa Catarina.",

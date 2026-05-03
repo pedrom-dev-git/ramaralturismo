@@ -148,6 +148,40 @@ export default {
   "contatoLgpd.privacyLinkText": "Ver dados públicos e credenciais oficiais",
   "nav.contatoLgpd": "Contato LGPD",
 
+  // Página /privacy (skeleton — DRAFT)
+  "privacy.pageTitle": "Política de Privacidade — R. Amaral Turismo",
+  "privacy.pageDesc":
+    "Política de Privacidade da R. Amaral Transporte e Turismo. Versão em revisão (DRAFT) — sujeita a atualização.",
+  "privacy.heading": "Política de Privacidade",
+  "privacy.draftBanner":
+    "🚧 Versão em revisão (DRAFT) — última atualização: 2026-05-04",
+  "privacy.sectionsTitle": "Seções desta política",
+  "privacy.sections.identification": "Identificação do controlador",
+  "privacy.sections.dataCollected": "Dados coletados",
+  "privacy.sections.purpose": "Finalidade",
+  "privacy.sections.legalBasis": "Bases legais",
+  "privacy.sections.sharing": "Compartilhamento",
+  "privacy.sections.rights": "Direitos do titular",
+  "privacy.sections.retention": "Retenção",
+  "privacy.sections.dpoContact": "Contato DPO",
+  "privacy.contactCta": "Falar com o encarregado de dados",
+
+  // Página /termos (skeleton — DRAFT)
+  "termos.pageTitle": "Termos de Uso — R. Amaral Turismo",
+  "termos.pageDesc":
+    "Termos de Uso da R. Amaral Transporte e Turismo. Versão em revisão (DRAFT) — sujeita a atualização.",
+  "termos.heading": "Termos de Uso",
+  "termos.draftBanner":
+    "🚧 Versão em revisão (DRAFT) — última atualização: 2026-05-04",
+  "termos.sectionsTitle": "Seções destes termos",
+  "termos.sections.operator": "Quem opera o site",
+  "termos.sections.serviceNature": "Natureza do serviço",
+  "termos.sections.liability": "Limitação de responsabilidade",
+  "termos.sections.intellectualProperty": "Propriedade intelectual",
+  "termos.sections.applicableLaw": "Lei aplicável e foro",
+  "termos.sections.updates": "Atualização dos termos",
+  "termos.contactCta": "Falar com o responsável legal",
+
   // Footer
   "footer.desc":
     "Atendimento personalizado para transporte escolar e viagens em grupo em Santa Catarina.",

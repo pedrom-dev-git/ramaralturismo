@@ -146,6 +146,40 @@ export default {
   "contatoLgpd.privacyLinkText": "See public records and official credentials",
   "nav.contatoLgpd": "LGPD Contact",
 
+  // /privacy (skeleton — DRAFT)
+  "privacy.pageTitle": "Privacy Policy — R. Amaral Turismo",
+  "privacy.pageDesc":
+    "Privacy Policy of R. Amaral Transporte e Turismo. Draft version under review — subject to updates.",
+  "privacy.heading": "Privacy Policy",
+  "privacy.draftBanner":
+    "🚧 Draft under review (DRAFT) — last updated: 2026-05-04",
+  "privacy.sectionsTitle": "Sections of this policy",
+  "privacy.sections.identification": "Controller identification",
+  "privacy.sections.dataCollected": "Data collected",
+  "privacy.sections.purpose": "Purpose",
+  "privacy.sections.legalBasis": "Legal bases",
+  "privacy.sections.sharing": "Sharing",
+  "privacy.sections.rights": "Data subject rights",
+  "privacy.sections.retention": "Retention",
+  "privacy.sections.dpoContact": "DPO contact",
+  "privacy.contactCta": "Contact the data protection officer",
+
+  // /termos (skeleton — DRAFT)
+  "termos.pageTitle": "Terms of Use — R. Amaral Turismo",
+  "termos.pageDesc":
+    "Terms of Use of R. Amaral Transporte e Turismo. Draft version under review — subject to updates.",
+  "termos.heading": "Terms of Use",
+  "termos.draftBanner":
+    "🚧 Draft under review (DRAFT) — last updated: 2026-05-04",
+  "termos.sectionsTitle": "Sections of these terms",
+  "termos.sections.operator": "Who operates the site",
+  "termos.sections.serviceNature": "Nature of the service",
+  "termos.sections.liability": "Limitation of liability",
+  "termos.sections.intellectualProperty": "Intellectual property",
+  "termos.sections.applicableLaw": "Applicable law and jurisdiction",
+  "termos.sections.updates": "Terms updates",
+  "termos.contactCta": "Contact the legal representative",
+
   // Footer
   "footer.desc":
     "Personalized service for school transport and group travel in Santa Catarina.",
