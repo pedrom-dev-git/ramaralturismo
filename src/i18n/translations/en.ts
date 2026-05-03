@@ -40,9 +40,6 @@ export default {
   "hero.corporativo.cta": "Corporate quote via WhatsApp",
   "hero.corporativo.message":
     "Hello! I would like to request a quote for corporate charter for my company. Can you help me?",
-  "hero.lgpdNotice.text":
-    "By clicking, you contact us via WhatsApp. Read our",
-  "hero.lgpdNotice.policyLinkText": "Privacy Policy",
 
   "fleet.title.lead": "The fleet that",
   "fleet.title.accent": "arrives on time.",
@@ -145,6 +142,11 @@ export default {
   "footer.contact": "Contact",
   "footer.copyright": "© 2026 R. Amaral Tourism. All rights reserved.",
   "footer.address": "Santa Catarina, Brazil",
+  "footer.publicData.title": "Public data",
+  "footer.publicData.cnpjLabel": "CNPJ",
+  "footer.publicData.dpoLabel": "Data Protection Officer (LGPD)",
+  "footer.policies.privacy": "Privacy Policy",
+  "footer.policies.terms": "Terms of Use",
 
   // A11y
   "a11y.skipLink": "Skip to content",

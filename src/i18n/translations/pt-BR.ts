@@ -43,9 +43,6 @@ export default {
   "hero.corporativo.cta": "Cotação corporativa via WhatsApp",
   "hero.corporativo.message":
     "Olá! Gostaria de solicitar um orçamento para fretamento corporativo da minha empresa. Pode me ajudar?",
-  "hero.lgpdNotice.text":
-    "Ao clicar, você nos contata via WhatsApp. Conheça nossa",
-  "hero.lgpdNotice.policyLinkText": "Política de Privacidade",
 
   // Fleet banner (entre Hero e Benefits)
   "fleet.title.lead": "A frota que",
@@ -147,6 +144,11 @@ export default {
   "footer.contact": "Contato",
   "footer.copyright": "© 2026 R. Amaral Turismo. Todos os direitos reservados.",
   "footer.address": "Santa Catarina, Brasil",
+  "footer.publicData.title": "Dados públicos",
+  "footer.publicData.cnpjLabel": "CNPJ",
+  "footer.publicData.dpoLabel": "Encarregado de dados (LGPD)",
+  "footer.policies.privacy": "Política de Privacidade",
+  "footer.policies.terms": "Termos de Uso",
 
   // A11y
   "a11y.skipLink": "Pular para o conteúdo",

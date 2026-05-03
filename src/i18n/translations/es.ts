@@ -40,9 +40,6 @@ export default {
   "hero.corporativo.cta": "Cotización corporativa por WhatsApp",
   "hero.corporativo.message":
     "¡Hola! Me gustaría solicitar un presupuesto de transporte corporativo para mi empresa. ¿Pueden ayudarme?",
-  "hero.lgpdNotice.text":
-    "Al hacer clic, nos contacta vía WhatsApp. Consulte nuestra",
-  "hero.lgpdNotice.policyLinkText": "Política de Privacidad",
 
   "fleet.title.lead": "La flota que",
   "fleet.title.accent": "llega a tiempo.",
@@ -148,6 +145,11 @@ export default {
   "footer.copyright":
     "© 2026 R. Amaral Turismo. Todos los derechos reservados.",
   "footer.address": "Santa Catarina, Brasil",
+  "footer.publicData.title": "Datos públicos",
+  "footer.publicData.cnpjLabel": "CNPJ",
+  "footer.publicData.dpoLabel": "Encargado de datos (LGPD)",
+  "footer.policies.privacy": "Política de Privacidad",
+  "footer.policies.terms": "Términos de Uso",
 
   // A11y
   "a11y.skipLink": "Saltar al contenido",
