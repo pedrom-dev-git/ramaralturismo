@@ -18,6 +18,11 @@ const families: PageFamily[] = [
     en: "/en/credenciais/",
     es: "/es/credenciais/",
   },
+  {
+    pt: "/sobre/",
+    en: "/en/sobre/",
+    es: "/es/sobre/",
+  },
 ];
 
 const pages: SitemapEntry[] = families.flatMap((f) => [

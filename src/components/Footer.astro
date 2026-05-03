@@ -1,5 +1,5 @@
 ---
-import { t, type Locale } from '../i18n';
+import { localizedPath, t, type Locale } from '../i18n';
 
 interface Props {
   locale?: Locale;
@@ -11,6 +11,7 @@ const links = [
   { label: t(locale, 'nav.home'), href: "#" },
   { label: t(locale, 'nav.frota'), href: "#fleet" },
   { label: t(locale, 'nav.destinos'), href: "#destinos" },
+  { label: t(locale, 'nav.sobre'), href: localizedPath(locale, '/sobre') },
   { label: t(locale, 'nav.contato'), href: "#contato" },
 ];
 ---

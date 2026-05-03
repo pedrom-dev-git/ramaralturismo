@@ -1,0 +1,111 @@
+---
+import type { Locale } from "../i18n";
+import { localizedPath, t } from "../i18n";
+
+interface Props {
+  locale?: Locale;
+}
+
+const { locale = "pt-BR" } = Astro.props;
+
+const updatedAt = "2026-05-03";
+
+const sections = [
+  {
+    title: t(locale, "sobre.history.title"),
+    body: t(locale, "sobre.history.body"),
+  },
+  {
+    title: t(locale, "sobre.fleet.title"),
+    body: t(locale, "sobre.fleet.body"),
+  },
+  {
+    title: t(locale, "sobre.mission.title"),
+    body: t(locale, "sobre.mission.body"),
+  },
+  {
+    title: t(locale, "sobre.area.title"),
+    body: t(locale, "sobre.area.body"),
+  },
+];
+
+const publicData = [
+  {
+    label: t(locale, "sobre.publicData.legalName"),
+    value: t(locale, "sobre.publicData.legalNameValue"),
+  },
+  {
+    label: t(locale, "sobre.publicData.cnpj"),
+    value: t(locale, "sobre.publicData.cnpjValue"),
+  },
+  {
+    label: t(locale, "sobre.publicData.address"),
+    value: t(locale, "sobre.publicData.addressValue"),
+  },
+  {
+    label: t(locale, "sobre.publicData.antt"),
+    value: t(locale, "sobre.publicData.anttValue"),
+  },
+  {
+    label: t(locale, "sobre.publicData.sie"),
+    value: t(locale, "sobre.publicData.sieValue"),
+  },
+];
+
+const credenciaisHref = localizedPath(locale, "/credenciais");
+---
+
+<main id="main">
+  <section class="max-w-4xl mx-auto px-4 sm:px-6 py-16 md:py-20">
+    <div class="text-center mb-12">
+      <h1 class="text-4xl md:text-5xl font-bold text-dark-gray mb-4">
+        {t(locale, "sobre.heading")}
+      </h1>
+      <p class="text-lg text-medium-gray max-w-2xl mx-auto">
+        {t(locale, "sobre.subheading")}
+      </p>
+    </div>
+
+    <div class="space-y-6">
+      {
+        sections.map((sec) => (
+          <article class="bg-white border border-gray-200 rounded-xl p-6 md:p-8 shadow-sm">
+            <h2 class="text-xl md:text-2xl font-bold text-primary mb-3">
+              {sec.title}
+            </h2>
+            <p class="text-dark-gray leading-relaxed">{sec.body}</p>
+          </article>
+        ))
+      }
+
+      <article class="bg-light-gray border border-gray-200 rounded-xl p-6 md:p-8">
+        <h2 class="text-xl md:text-2xl font-bold text-dark-gray mb-3">
+          {t(locale, "sobre.publicData.title")}
+        </h2>
+        <p class="text-dark-gray leading-relaxed mb-4">
+          {t(locale, "sobre.publicData.body")}
+        </p>
+        <dl class="grid grid-cols-1 sm:grid-cols-[max-content_1fr] gap-x-6 gap-y-2 text-sm">
+          {
+            publicData.map((row) => (
+              <>
+                <dt class="font-semibold text-dark-gray">{row.label}</dt>
+                <dd class="text-dark-gray">{row.value}</dd>
+              </>
+            ))
+          }
+        </dl>
+        <a
+          href={credenciaisHref}
+          class="inline-flex items-center gap-1.5 mt-5 text-primary hover:text-primary/80 font-semibold text-sm transition-colors"
+        >
+          {t(locale, "sobre.credentialsCta")} →
+        </a>
+      </article>
+    </div>
+
+    <p class="text-xs text-medium-gray mt-10 text-center">
+      {updatedAt}
+    </p>
+  </section>
+</main>
