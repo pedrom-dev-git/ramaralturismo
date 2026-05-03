@@ -110,6 +110,7 @@ for (const locale of LOCALES) {
       expect(schema["url"]).toBe("https://ramaral.tur.br");
       expect(schema["priceRange"]).toBeTruthy();
       expect(schema["openingHours"]).toBeTruthy();
+      expect(schema["email"]).toBe("dpo@ramaral.tur.br");
     });
   });
 }
