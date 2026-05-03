@@ -1,5 +1,38 @@
 # Performance Baseline — R. Amaral Turismo
 
+## Baseline 2026-05-03 (atual)
+
+**Commit**: `62763a8` (pós-sprint redesign+polish + página /sobre trilíngue)
+**Ferramenta**: Lighthouse 13.2.0 via `./scripts/lighthouse-baseline.sh --local`
+**Chrome**: `~/.cache/puppeteer/chrome/linux-131.0.6778.204` (Chrome ≥146 quebra com NO_FCP — ver `~/.claude/.../project_lighthouse_chrome_147_blocked.md`)
+**URL**: `http://127.0.0.1:4322/` (production build via `pnpm preview`, evita anti-bot Cloudflare)
+**JSON consolidado**: `.lighthouse/baseline-2026-05-local.json`
+
+> **Nota**: Modo `--local` mede o bundle production servido localmente (mesmos artefatos que vão pra Cloudflare Pages). Diferenças vs prod externa: zero RTT Cloudflare (FCP/LCP ~50ms otimistas), sem CDN cache (LCP pode ser pior em prod first-paint), HSTS/CSP idênticos.
+
+### Scores
+
+| URL  | Performance | A11y | Best Practices | SEO |
+|------|-------------|------|----------------|-----|
+| `/`  | 99          | 100  | 100            | 100 |
+
+### Core Web Vitals (`/`)
+
+| Métrica | Valor | vs 2026-04-18 |
+|---------|-------|---------------|
+| FCP | 1.6 s | +0.3s |
+| LCP | 1.8 s | +0.5s |
+| TBT | 0 ms | -10ms |
+| CLS | 0.001 | igual |
+| Speed Index | 1.6 s | -1.1s ✓ |
+| TTI | 1.8 s | igual |
+
+### A11y — full pass (100)
+
+Quick wins da Sprint 5a entregaram: `landmark-one-main`, `button-name`, `color-contrast`, `label` todos passando. Nenhum audit a11y pendente.
+
+---
+
 ## Baseline 2026-04-18
 
 **Commit**: `8216a86` (pré-Sprint 3 push — Sprint 3 fechada localmente, ainda não publicada)
@@ -57,18 +90,14 @@ Baseado no baseline e análise do código atual:
 ## Como Re-medir
 
 ```bash
-# A partir de ~/Desktop/projetos/turismo/
-CHROME_PATH=~/.cache/ms-playwright/chromium-1217/chrome-linux64/chrome \
-pnpm dlx lighthouse@latest \
-  https://ramaralturismo.job-3eb.workers.dev/ \
-  --only-categories=performance,accessibility,best-practices,seo \
-  --output=json \
-  --output-path=./.lighthouse/baseline-YYYY-MM.json \
-  --quiet \
-  --chrome-flags="--headless --no-sandbox --disable-dev-shm-usage"
+cd ~/Desktop/projetos/turismo
+./scripts/lighthouse-baseline.sh --local       # production build local (recomendado)
+./scripts/lighthouse-baseline.sh               # contra prod (https://ramaral.tur.br)
+./scripts/lighthouse-baseline.sh --visible     # janela Chrome em foreground
 ```
 
-**Frequência sugerida**: a cada push para produção (Sprint fechada) e após cada sprint de performance (5a, 6, 7).
+Script em `scripts/lighthouse-baseline.sh` auto-detecta Chrome estável (≤145), valida JSON, imprime scores resumidos. Sufixo `-local` no filename quando modo `--local`.
 
-O arquivo `.lighthouse/baseline-2026-04.json` contém os scores consolidados das 3 URLs.
-Os arquivos individuais (`baseline-pt.json`, `baseline-en.json`, `baseline-es.json`) contêm o JSON completo do Lighthouse e estão no `.gitignore` — apenas o consolidado é versionado.
+**Frequência sugerida**: a cada push para produção (Sprint fechada) e após cada sprint de performance.
+
+`.lighthouse/baseline-YYYY-MM*.json` versionado via `.gitignore` (glob `baseline-2026-*.json`). Os runs históricos `baseline-pt/en/es.json` e `sprint5a-*.json` ficam fora do git.
