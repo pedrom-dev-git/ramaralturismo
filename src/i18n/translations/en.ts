@@ -40,6 +40,9 @@ export default {
   "hero.corporativo.cta": "Corporate quote via WhatsApp",
   "hero.corporativo.message":
     "Hello! I would like to request a quote for corporate charter for my company. Can you help me?",
+  "hero.lgpdNotice.text":
+    "By clicking, you contact us via WhatsApp. Read our",
+  "hero.lgpdNotice.policyLinkText": "Privacy Policy",
 
   "fleet.title.lead": "The fleet that",
   "fleet.title.accent": "arrives on time.",

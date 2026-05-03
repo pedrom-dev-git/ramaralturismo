@@ -40,6 +40,9 @@ export default {
   "hero.corporativo.cta": "Cotización corporativa por WhatsApp",
   "hero.corporativo.message":
     "¡Hola! Me gustaría solicitar un presupuesto de transporte corporativo para mi empresa. ¿Pueden ayudarme?",
+  "hero.lgpdNotice.text":
+    "Al hacer clic, nos contacta vía WhatsApp. Consulte nuestra",
+  "hero.lgpdNotice.policyLinkText": "Política de Privacidad",
 
   "fleet.title.lead": "La flota que",
   "fleet.title.accent": "llega a tiempo.",

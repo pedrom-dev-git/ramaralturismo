@@ -1,5 +1,5 @@
 ---
-import { t, type Locale } from '../i18n';
+import { t, localizedPath, type Locale } from '../i18n';
 
 interface Props {
   locale?: Locale;
@@ -207,6 +207,18 @@ const i18nMsgDefault = t(locale, 'hero.msg.default');
               </button>
             </div>
 
+            <p
+              data-testid="hero-lgpd-notice-form"
+              class="text-sm text-medium-gray text-center mt-3"
+            >
+              {t(locale, 'hero.lgpdNotice.text')}{' '}
+              <a
+                href={localizedPath(locale, '/privacy/')}
+                class="underline hover:text-primary"
+              >
+                {t(locale, 'hero.lgpdNotice.policyLinkText')}
+              </a>.
+            </p>
             </div><!-- /#hero-form-body -->
 
             <!-- CTA direto WhatsApp para modo corporativo (sem form) -->
@@ -223,6 +235,20 @@ const i18nMsgDefault = t(locale, 'hero.msg.default');
               </svg>
               <span>{t(locale, 'hero.corporativo.cta')}</span>
             </a>
+
+            <p
+              id="corporativo-lgpd-notice"
+              data-testid="hero-lgpd-notice-corp"
+              class="hidden text-sm text-medium-gray text-center mt-3"
+            >
+              {t(locale, 'hero.lgpdNotice.text')}{' '}
+              <a
+                href={localizedPath(locale, '/privacy/')}
+                class="underline hover:text-primary"
+              >
+                {t(locale, 'hero.lgpdNotice.policyLinkText')}
+              </a>.
+            </p>
 
           </form>
         </div>
@@ -268,6 +294,7 @@ const i18nMsgDefault = t(locale, 'hero.msg.default');
   const quantidadeInput = document.getElementById("quantidade-input");
   const heroFormBody = document.getElementById("hero-form-body");
   const corporativoCta = document.getElementById("corporativo-cta");
+  const corporativoLgpdNotice = document.getElementById("corporativo-lgpd-notice");
 
   // ── Autocomplete ──────────────────────────────────────────────────
 
@@ -492,6 +519,9 @@ const i18nMsgDefault = t(locale, 'hero.msg.default');
       heroFormBody.classList.toggle("hidden", isCorporativo);
       corporativoCta.classList.toggle("hidden", !isCorporativo);
       corporativoCta.classList.toggle("flex", isCorporativo);
+    }
+    if (corporativoLgpdNotice) {
+      corporativoLgpdNotice.classList.toggle("hidden", !isCorporativo);
     }
   }
 
