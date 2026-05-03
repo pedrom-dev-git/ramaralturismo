@@ -28,14 +28,12 @@ test.describe("Footer", () => {
     await expect(phoneLink).toHaveAttribute("href", "tel:+5548999503368");
   });
 
-  test("exibe link de e-mail com href correto", async ({ page }) => {
+  test("não exibe link de e-mail (Cloudflare Email Routing pendente)", async ({
+    page,
+  }) => {
     const footer = page.locator("footer");
-    const emailLink = footer.getByRole("link", { name: /contato@ramaral/ });
-    await expect(emailLink).toBeVisible();
-    await expect(emailLink).toHaveAttribute(
-      "href",
-      "mailto:contato@ramaral.tur.br",
-    );
+    const emailLink = footer.getByRole("link", { name: /@ramaral/ });
+    await expect(emailLink).not.toBeAttached();
   });
 
   test("exibe a localização 'Santa Catarina, Brasil'", async ({ page }) => {
