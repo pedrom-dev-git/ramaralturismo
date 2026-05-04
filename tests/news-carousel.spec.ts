@@ -2,10 +2,10 @@ import { test, expect } from "@playwright/test";
 
 const EXPECTED_NEWS = [
   { title: "Beto Carreiro World", subtitle: "Parque temático — Penha, SC" },
-  { title: "Brasília", subtitle: "Capital federal" },
+  { title: "Rafting", subtitle: "Aventura em grupo" },
   { title: "Uruguai", subtitle: "Excursões internacionais" },
   { title: "Resort águas termais", subtitle: "Sul de Santa Catarina" },
-  { title: "Rafting", subtitle: "Aventura em grupo" },
+  { title: "Brasília", subtitle: "Capital federal" },
 ];
 
 test.describe("NewsCarousel", () => {
