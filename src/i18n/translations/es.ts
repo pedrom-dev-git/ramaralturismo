@@ -11,6 +11,8 @@ export default {
   "hero.title": "Explora Brasil con comodidad y seguridad",
   "hero.subtitle":
     "Transporte escolar y turismo personalizado en Santa Catarina",
+  "hero.tagline":
+    "Fletamento turístico, escolar y corporativo — Santa Catarina, Brasil.",
   "hero.cta": "Solicitar Presupuesto",
   "hero.ctaServices": "Nuestros Servicios",
   "hero.formHeading": "Solicita tu presupuesto ahora",
@@ -150,6 +152,18 @@ export default {
   "contatoLgpd.subjectSuggestion": "Asunto sugerido: \"LGPD — [tipo de solicitud]\"",
   "contatoLgpd.privacyLinkText": "Ver datos públicos y credenciales oficiales",
   "nav.contatoLgpd": "Contacto LGPD",
+
+  // /casos
+  "casos.pageTitle": "Clientes atendidos — R. Amaral Turismo",
+  "casos.pageDesc": "Empresas e instituciones que confiaron en R. Amaral para fletamentos corporativos, escolares y sociales en Santa Catarina, Brasil.",
+  "casos.heading": "Quién ya viajó con nosotros",
+  "casos.subheading": "Empresas e instituciones que confiaron en R. Amaral para fletamentos corporativos, escolares y sociales.",
+  "casos.mcdonalds.title": "McDonald's — Fletamento corporativo",
+  "casos.mcdonalds.body": "Atención regular para desplazamiento de equipos en eventos y capacitaciones. Puntualidad y comodidad para colaboradores.",
+  "casos.apae.title": "APAE — Fletamento social y escolar",
+  "casos.apae.body": "Transporte para actividades educativas y sociales fuera de la rutina, con la sensibilidad y el cuidado que el público de APAE merece.",
+  "casos.cta": "Solicitar un presupuesto",
+  "nav.casos": "Casos",
 
   // /privacy (skeleton — DRAFT)
   "privacy.pageTitle": "Política de Privacidad — R. Amaral Turismo",

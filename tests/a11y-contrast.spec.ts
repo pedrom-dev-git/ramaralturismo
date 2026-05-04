@@ -80,7 +80,7 @@ for (const { path, label } of LOCALES) {
       await page.goto(path);
     });
 
-    test("DESTINOS label contrast ratio >= 4.5 (WCAG AA small text)", async ({
+    test("Destinos heading contrast ratio >= 4.5 (WCAG AA small text)", async ({
       page,
     }) => {
       await expect(page.locator("#novidades")).toBeVisible();
@@ -89,9 +89,9 @@ for (const { path, label } of LOCALES) {
         ({ script }) => {
           // eslint-disable-next-line no-eval
           eval(script);
-          // The <p> "Destinos" label inside the novidades header flex row
+          // The <h2> "Destinos" heading inside the novidades section
           const fgEl = document.querySelector(
-            "#novidades .flex.items-end p:first-child",
+            "#novidades h2",
           ) as HTMLElement | null;
           const bgEl = document.querySelector("#novidades") as HTMLElement | null;
           if (!fgEl || !bgEl) return -1;

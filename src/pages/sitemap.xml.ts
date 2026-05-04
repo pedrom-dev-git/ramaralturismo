@@ -29,6 +29,11 @@ const families: PageFamily[] = [
     es: "/es/contato-lgpd/",
   },
   {
+    pt: "/casos/",
+    en: "/en/casos/",
+    es: "/es/casos/",
+  },
+  {
     pt: "/privacy/",
     en: "/en/privacy/",
     es: "/es/privacy/",

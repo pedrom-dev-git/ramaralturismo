@@ -7,24 +7,44 @@ interface Props {
 
 const { locale = 'pt-BR' } = Astro.props;
 
+// Fotos próprias do arquivo da R. Amaral Turismo (operação familiar).
+// Hospedadas em public/destinos/ — zero atribuição, zero terceiro, CSP strict.
 const news = [
-  { title: "Praia do Rosa", subtitle: "Sul de Santa Catarina", gradient: "from-cyan-600 to-blue-900" },
-  { title: "Balneário Camboriú", subtitle: "Litoral catarinense", gradient: "from-blue-500 to-indigo-900" },
-  { title: "Serra Gaúcha", subtitle: "Rio Grande do Sul", gradient: "from-emerald-600 to-green-900" },
-  { title: "Florianópolis", subtitle: "Ilha da Magia", gradient: "from-teal-500 to-cyan-900" },
-  { title: "Bombinhas", subtitle: "Capital do mergulho", gradient: "from-sky-500 to-blue-800" },
+  {
+    title: "Beto Carreiro World",
+    subtitle: "Parque temático — Penha, SC",
+    img: "/destinos/beto-carreiro.webp",
+  },
+  {
+    title: "Brasília",
+    subtitle: "Capital federal",
+    img: "/destinos/dono-brasilia.webp",
+  },
+  {
+    title: "Uruguai",
+    subtitle: "Excursões internacionais",
+    img: "/destinos/uruguai-mansao.webp",
+  },
+  {
+    title: "Resort águas termais",
+    subtitle: "Sul de Santa Catarina",
+    img: "/destinos/resort-termal.webp",
+  },
+  {
+    title: "Rafting",
+    subtitle: "Aventura em grupo",
+    img: "/destinos/rafting.webp",
+  },
 ];
 ---
 
 <section id="novidades" class="py-12 md:py-16 lg:py-20 bg-dark scroll-mt-[72px]" style="overflow: hidden;">
+  <span id="destinos" class="absolute" aria-hidden="true"></span>
   <div class="max-w-6xl mx-auto px-4 sm:px-6">
     <!-- Section header -->
     <div class="flex items-end justify-between mb-8 md:mb-12">
       <div>
-        <p class="text-base text-white font-bold tracking-wide uppercase mb-2">Destinos</p>
-        <h2 class="text-3xl md:text-4xl font-bold tracking-tighter text-white">
-          {t(locale, 'news.title')}
-        </h2>
+        <h2 class="text-3xl md:text-4xl font-bold tracking-tighter text-white">Destinos</h2>
       </div>
       <div class="flex gap-3">
         <button
@@ -50,13 +70,19 @@ const news = [
       <div class="swiper-wrapper">
         {news.map((item) => (
           <div class="swiper-slide">
-            <div class={`relative rounded-xl overflow-hidden h-72 bg-gradient-to-br ${item.gradient} group transition-shadow hover:shadow-2xl`}>
-              <div class="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors duration-300"></div>
-              <div class="relative h-full flex flex-col justify-end p-6 text-white">
+            <figure class="relative rounded-xl overflow-hidden h-72 bg-gray-800 group transition-shadow hover:shadow-2xl m-0">
+              <img
+                src={item.img}
+                alt={`${item.title} — ${item.subtitle}`}
+                loading="lazy"
+                class="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+              />
+              <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-black/0"></div>
+              <figcaption class="relative h-full flex flex-col justify-end p-6 text-white">
                 <h3 class="text-lg font-bold mb-1">{item.title}</h3>
-                <p class="text-white/60 text-sm">{item.subtitle}</p>
-              </div>
-            </div>
+                <p class="text-white/80 text-sm">{item.subtitle}</p>
+              </figcaption>
+            </figure>
           </div>
         ))}
       </div>

@@ -14,18 +14,26 @@ const sections = [
   {
     title: t(locale, "sobre.history.title"),
     body: t(locale, "sobre.history.body"),
+    img: "/sobre/dono.webp",
+    imgAlt: "Família R. Amaral",
   },
   {
     title: t(locale, "sobre.fleet.title"),
     body: t(locale, "sobre.fleet.body"),
+    img: "/sobre/pai-van-igreja.webp",
+    imgAlt: "Van da R. Amaral em frente a uma igreja",
   },
   {
     title: t(locale, "sobre.mission.title"),
     body: t(locale, "sobre.mission.body"),
+    img: null,
+    imgAlt: null,
   },
   {
     title: t(locale, "sobre.area.title"),
     body: t(locale, "sobre.area.body"),
+    img: null,
+    imgAlt: null,
   },
 ];
 
@@ -69,11 +77,21 @@ const credenciaisHref = localizedPath(locale, "/credenciais");
     <div class="space-y-6">
       {
         sections.map((sec) => (
-          <article class="bg-white border border-gray-200 rounded-xl p-6 md:p-8 shadow-sm">
-            <h2 class="text-xl md:text-2xl font-bold text-primary mb-3">
-              {sec.title}
-            </h2>
-            <p class="text-dark-gray leading-relaxed">{sec.body}</p>
+          <article class="bg-white border border-gray-200 rounded-xl overflow-hidden shadow-sm">
+            {sec.img && (
+              <img
+                src={sec.img}
+                alt={sec.imgAlt}
+                loading="lazy"
+                class="w-full h-56 md:h-64 object-cover"
+              />
+            )}
+            <div class="p-6 md:p-8">
+              <h2 class="text-xl md:text-2xl font-bold text-primary mb-3">
+                {sec.title}
+              </h2>
+              <p class="text-dark-gray leading-relaxed">{sec.body}</p>
+            </div>
           </article>
         ))
       }

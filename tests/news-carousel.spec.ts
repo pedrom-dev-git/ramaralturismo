@@ -1,11 +1,11 @@
 import { test, expect } from "@playwright/test";
 
 const EXPECTED_NEWS = [
-  { title: "Praia do Rosa", subtitle: "Sul de Santa Catarina" },
-  { title: "Balneário Camboriú", subtitle: "Litoral catarinense" },
-  { title: "Serra Gaúcha", subtitle: "Rio Grande do Sul" },
-  { title: "Florianópolis", subtitle: "Ilha da Magia" },
-  { title: "Bombinhas", subtitle: "Capital do mergulho" },
+  { title: "Beto Carreiro World", subtitle: "Parque temático — Penha, SC" },
+  { title: "Brasília", subtitle: "Capital federal" },
+  { title: "Uruguai", subtitle: "Excursões internacionais" },
+  { title: "Resort águas termais", subtitle: "Sul de Santa Catarina" },
+  { title: "Rafting", subtitle: "Aventura em grupo" },
 ];
 
 test.describe("NewsCarousel", () => {
@@ -13,9 +13,9 @@ test.describe("NewsCarousel", () => {
     await page.goto("/");
   });
 
-  test("exibe o título 'Feature News'", async ({ page }) => {
+  test("exibe o título 'Destinos'", async ({ page }) => {
     await expect(
-      page.getByRole("heading", { name: "Feature News" }),
+      page.getByRole("heading", { name: "Destinos" }),
     ).toBeVisible();
   });
 

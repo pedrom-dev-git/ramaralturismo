@@ -11,6 +11,8 @@ export default {
   "hero.title": "Sua Jornada Começa Aqui!",
   "hero.subtitle":
     "Atendimento personalizado para transporte escolar e viagens em grupo.",
+  "hero.tagline":
+    "Fretamento turístico, escolar e corporativo em Santa Catarina.",
   "hero.cta": "Solicitar Orçamento",
   "hero.ctaServices": "Nossos Serviços",
   "hero.formHeading": "Faça seu orçamento agora",
@@ -136,7 +138,7 @@ export default {
   "services.learnMore": "saiba mais",
 
   // News
-  "news.title": "Feature News",
+  "news.title": "Destinos em destaque",
   "news.prev": "Destino anterior",
   "news.next": "Próximo destino",
 
@@ -150,6 +152,18 @@ export default {
   "contatoLgpd.subjectSuggestion": "Assunto sugerido: \"LGPD — [tipo de pedido]\"",
   "contatoLgpd.privacyLinkText": "Ver dados públicos e credenciais oficiais",
   "nav.contatoLgpd": "Contato LGPD",
+
+  // Página /casos
+  "casos.pageTitle": "Casos atendidos — R. Amaral Turismo",
+  "casos.pageDesc": "Empresas e instituições que confiaram na R. Amaral para fretamentos corporativos, escolares e sociais em Santa Catarina.",
+  "casos.heading": "Quem já viajou conosco",
+  "casos.subheading": "Empresas e instituições que confiaram na R. Amaral para fretamentos corporativos, escolares e sociais.",
+  "casos.mcdonalds.title": "McDonald's — Fretamento corporativo",
+  "casos.mcdonalds.body": "Atendimento regular para deslocamento de equipes em eventos e treinamentos. Pontualidade e conforto para colaboradores.",
+  "casos.apae.title": "APAE — Fretamento social e escolar",
+  "casos.apae.body": "Transporte para atividades educacionais e sociais fora da rotina, com a sensibilidade e cuidado que o público da APAE merece.",
+  "casos.cta": "Solicite um orçamento",
+  "nav.casos": "Casos",
 
   // Página /privacy (skeleton — DRAFT)
   "privacy.pageTitle": "Política de Privacidade — R. Amaral Turismo",

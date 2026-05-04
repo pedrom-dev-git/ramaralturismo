@@ -23,21 +23,9 @@ test.describe("Anchor scroll — #hero-form not hidden behind sticky navbar", ()
     await page.waitForTimeout(200);
   });
 
-  test("Hero CTA 'Solicitar Orçamento' scrolls form into view below navbar", async ({
-    page,
-  }) => {
-    const heroCta = page
-      .locator("section")
-      .first()
-      .getByRole("link", { name: "Solicitar Orçamento" });
-
-    await heroCta.click();
-    await waitForScrollSettle(page);
-
-    const box = await page.locator("#hero-form").boundingBox();
-    expect(box).toBeTruthy();
-    expect(box!.y).toBeGreaterThanOrEqual(NAVBAR_HEIGHT);
-  });
+  // Hero CTA "Solicitar Orçamento" foi removido na simplificação do Hero
+  // (2026-05-04). Único CTA agora é o do Navbar (testado abaixo) + WhatsApp
+  // direto via wa.me link no Hero.
 
   test("Navbar desktop CTA scrolls form into view below navbar", async ({
     page,

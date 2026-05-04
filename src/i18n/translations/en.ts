@@ -11,6 +11,8 @@ export default {
   "hero.title": "Explore Brazil with comfort and safety",
   "hero.subtitle":
     "School transport and personalized tourism in Santa Catarina",
+  "hero.tagline":
+    "Tourist, school and corporate charter — based in Santa Catarina, Brazil.",
   "hero.cta": "Request a Quote",
   "hero.ctaServices": "Our Services",
   "hero.formHeading": "Get your quote now",
@@ -134,7 +136,7 @@ export default {
   "services.learnMore": "learn more",
 
   // News
-  "news.title": "Feature News",
+  "news.title": "Featured destinations",
   "news.prev": "Previous destination",
   "news.next": "Next destination",
 
@@ -148,6 +150,18 @@ export default {
   "contatoLgpd.subjectSuggestion": "Suggested subject: \"LGPD — [type of request]\"",
   "contatoLgpd.privacyLinkText": "See public records and official credentials",
   "nav.contatoLgpd": "LGPD Contact",
+
+  // /casos
+  "casos.pageTitle": "Clients we've served — R. Amaral Turismo",
+  "casos.pageDesc": "Companies and institutions that trusted R. Amaral for corporate, school and social charters in Santa Catarina, Brazil.",
+  "casos.heading": "Who's traveled with us",
+  "casos.subheading": "Companies and institutions that trusted R. Amaral for corporate, school and social charters.",
+  "casos.mcdonalds.title": "McDonald's — Corporate charter",
+  "casos.mcdonalds.body": "Regular transport for team displacement during events and training. Punctuality and comfort for employees.",
+  "casos.apae.title": "APAE — Social and school charter",
+  "casos.apae.body": "Transport for educational and social activities outside the routine, with the sensitivity and care APAE's audience deserves.",
+  "casos.cta": "Request a quote",
+  "nav.casos": "Cases",
 
   // /privacy (skeleton — DRAFT)
   "privacy.pageTitle": "Privacy Policy — R. Amaral Turismo",

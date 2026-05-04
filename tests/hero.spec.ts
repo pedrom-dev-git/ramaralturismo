@@ -29,19 +29,17 @@ test.describe("Hero", () => {
     );
   });
 
-  test("exibe o headline principal", async ({ page }) => {
+  test("exibe a tagline principal", async ({ page }) => {
     await expect(
-      page.getByRole("heading", { name: "Sua Jornada Começa Aqui!" }),
+      page.getByRole("heading", {
+        name: "Fretamento turístico, escolar e corporativo em Santa Catarina.",
+      }),
     ).toBeVisible();
   });
 
-  test("exibe o subtítulo descritivo", async ({ page }) => {
+  test("exibe o eyebrow 'R. Amaral Turismo'", async ({ page }) => {
     const hero = page.locator("section").first();
-    await expect(
-      hero.getByText(
-        "Atendimento personalizado para transporte escolar e viagens em grupo.",
-      ),
-    ).toBeVisible();
+    await expect(hero.getByText("R. Amaral Turismo").first()).toBeVisible();
   });
 
   test("exibe os campos do formulário de orçamento", async ({ page }) => {
@@ -347,7 +345,9 @@ test.describe("Hero", () => {
     await expect(page.locator("#origem-dropdown")).toBeVisible();
 
     await page
-      .getByRole("heading", { name: "Sua Jornada Começa Aqui!" })
+      .getByRole("heading", {
+        name: /Fretamento turístico, escolar e corporativo/,
+      })
       .click();
     await page.waitForTimeout(200);
     await expect(page.locator("#origem-dropdown")).toBeHidden();

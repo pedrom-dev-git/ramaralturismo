@@ -13,7 +13,7 @@ test.describe("i18n", () => {
     test("hero heading is in English", async ({ page }) => {
       await expect(
         page.getByRole("heading", {
-          name: "Explore Brazil with comfort and safety",
+          name: /Tourist, school and corporate charter/,
         }),
       ).toBeVisible();
     });
@@ -47,7 +47,7 @@ test.describe("i18n", () => {
     test("hero heading is in Spanish", async ({ page }) => {
       await expect(
         page.getByRole("heading", {
-          name: "Explora Brasil con comodidad y seguridad",
+          name: /Fletamento turístico, escolar y corporativo/,
         }),
       ).toBeVisible();
     });
@@ -133,7 +133,9 @@ test.describe("i18n", () => {
     test("hero heading is in Portuguese", async ({ page }) => {
       await page.goto("/");
       await expect(
-        page.getByRole("heading", { name: "Sua Jornada Começa Aqui!" }),
+        page.getByRole("heading", {
+          name: /Fretamento turístico, escolar e corporativo/,
+        }),
       ).toBeVisible();
     });
   });
@@ -332,36 +334,9 @@ test.describe("i18n", () => {
       await expect(btn).toBeVisible();
     });
 
-    test("pt-BR: 'Nossos Serviços' section link is present", async ({
-      page,
-    }) => {
-      await page.goto("/");
-      const link = page
-        .locator("a[href='#servicos']")
-        .filter({ hasText: /Nossos Serviços/i })
-        .first();
-      await expect(link).toBeVisible();
-    });
-
-    test("en: 'Our Services' section link is present", async ({ page }) => {
-      await page.goto("/en/");
-      const link = page
-        .locator("a[href='#servicos']")
-        .filter({ hasText: /Our Services/i })
-        .first();
-      await expect(link).toBeVisible();
-    });
-
-    test("es: 'Nuestros Servicios' section link is present", async ({
-      page,
-    }) => {
-      await page.goto("/es/");
-      const link = page
-        .locator("a[href='#servicos']")
-        .filter({ hasText: /Nuestros Servicios/i })
-        .first();
-      await expect(link).toBeVisible();
-    });
+    // Hero CTAs "Nossos Serviços" / "Our Services" / "Nuestros Servicios" removidos
+    // na simplificação do Hero (2026-05-04). Section #servicos não tem mais link
+    // no Hero — Section "Services" continua na home, mas acessível só via scroll.
 
     test("pt-BR: quote form heading is in Portuguese", async ({ page }) => {
       await page.goto("/");
