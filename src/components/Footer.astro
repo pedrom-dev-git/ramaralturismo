@@ -7,12 +7,13 @@ interface Props {
 
 const { locale = 'pt-BR' } = Astro.props;
 
+const homePath = localizedPath(locale, '/');
 const links = [
-  { label: t(locale, 'nav.home'), href: "#" },
-  { label: t(locale, 'nav.frota'), href: "#fleet" },
-  { label: t(locale, 'nav.destinos'), href: "#destinos" },
+  { label: t(locale, 'nav.home'), href: homePath },
+  { label: t(locale, 'nav.frota'), href: `${homePath}#fleet` },
+  { label: t(locale, 'nav.destinos'), href: `${homePath}#destinos` },
   { label: t(locale, 'nav.sobre'), href: localizedPath(locale, '/sobre') },
-  { label: t(locale, 'nav.contato'), href: "#contato" },
+  { label: t(locale, 'nav.contato'), href: `${homePath}#contato` },
 ];
 ---
 
