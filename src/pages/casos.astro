@@ -1,0 +1,17 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Navbar from "../components/Navbar.astro";
+import CasosPage from "../components/CasosPage.astro";
+import Footer from "../components/Footer.astro";
+import { t } from "../i18n";
+
+const locale = "pt-BR";
+const title = t(locale, "casos.pageTitle");
+const description = t(locale, "casos.pageDesc");
+---
+
+<BaseLayout locale={locale} title={title} description={description}>
+  <Navbar locale={locale} />
+  <CasosPage locale={locale} />
+  <Footer locale={locale} />
+</BaseLayout>
