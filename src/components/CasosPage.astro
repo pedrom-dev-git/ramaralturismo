@@ -9,11 +9,6 @@ interface Props {
 const { locale = "pt-BR" } = Astro.props;
 
 const homePath = localizedPath(locale, "/");
-const mcGallery = [
-  "/casos/mc-corporativo-1.webp",
-  "/casos/mc-corporativo-2.webp",
-  "/casos/mc-corporativo-3.webp",
-];
 ---
 
 <main id="main">
@@ -29,16 +24,12 @@ const mcGallery = [
 
     <div class="space-y-8">
       <article class="bg-white border border-gray-200 rounded-xl overflow-hidden shadow-sm">
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-1">
-          {mcGallery.map((src, i) => (
-            <img
-              src={src}
-              alt={`McDonald's — fretamento corporativo ${i + 1}`}
-              loading="lazy"
-              class="w-full h-48 md:h-64 object-cover"
-            />
-          ))}
-        </div>
+        <img
+          src="/casos/mc-corporativo-2.webp"
+          alt="McDonald's — fretamento corporativo"
+          loading="lazy"
+          class="w-full h-64 md:h-80 object-cover"
+        />
         <div class="p-6 md:p-8">
           <h2 class="text-xl md:text-2xl font-bold text-primary mb-3">
             {t(locale, "casos.mcdonalds.title")}

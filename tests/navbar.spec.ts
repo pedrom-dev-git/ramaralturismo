@@ -13,12 +13,15 @@ test.describe("Navbar", () => {
     ).toBeVisible();
   });
 
-  test("exibe os 5 links de navegação no desktop (Home, Frota, Destinos, Sobre, Contato)", async ({ page }) => {
+  test("exibe os 6 links de navegação no desktop (Home, Frota, Destinos, Casos, Sobre, Contato)", async ({ page }) => {
     const desktopMenu = page.locator("#main-header nav ul").first();
     await expect(desktopMenu.getByRole("link", { name: "Home" })).toBeVisible();
     await expect(desktopMenu.getByRole("link", { name: "Frota" })).toBeVisible();
     await expect(
       desktopMenu.getByRole("link", { name: "Destinos" }),
+    ).toBeVisible();
+    await expect(
+      desktopMenu.getByRole("link", { name: "Casos" }),
     ).toBeVisible();
     await expect(
       desktopMenu.getByRole("link", { name: "Sobre" }),

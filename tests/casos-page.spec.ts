@@ -24,10 +24,12 @@ for (const { path, heading, footerLabel } of LOCALES) {
       await expect(page.locator("main")).toContainText("APAE");
     });
 
-    test(`McDonald's gallery shows 3 images`, async ({ page }) => {
+    test(`McDonald's case shows the corporativo-2 image`, async ({ page }) => {
       await page.goto(path);
-      const gallery = page.locator('main img[src^="/casos/mc-corporativo-"]');
-      await expect(gallery).toHaveCount(3);
+      const img = page.locator(
+        'main img[src="/casos/mc-corporativo-2.webp"]',
+      );
+      await expect(img).toBeVisible();
     });
 
     test(`page is reachable from footer link`, async ({ page }) => {
