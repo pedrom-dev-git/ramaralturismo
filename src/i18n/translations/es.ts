@@ -127,14 +127,18 @@ export default {
 
   // Services
   "services.label": "Lo que hacemos",
-  "services.title": "Nuestros Servicios",
+  "services.title": "Tres viajes, la misma van.",
   "services.subtitle": "Soluciones de transporte para cada necesidad.",
+  "services.narrative":
+    "Llevo a tu hijo a la escuela por la mañana, hago excursiones familiares los fines de semana, y traslado al equipo de la empresa al evento. Misma revisión, misma puntualidad, mismo conductor al que llamas por su nombre.",
   "services.school.title": "Transporte Escolar",
   "services.school.desc":
     "Seguridad y puntualidad para el día a día de tu hijo.",
   "services.tourism.title": "Turismo y Viajes",
   "services.tourism.desc": "Comodidad y practicidad para viajes en grupo.",
-  "services.seeAll": "Ver todos",
+  "services.corporate.title": "Fletamento Corporativo",
+  "services.corporate.desc": "Traslado de equipos y eventos con puntualidad y facturación.",
+  "services.seeAll": "Ver casos",
   "services.learnMore": "saber más",
 
   // News

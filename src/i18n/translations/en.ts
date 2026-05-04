@@ -125,14 +125,18 @@ export default {
 
   // Services
   "services.label": "What we do",
-  "services.title": "Our Services",
+  "services.title": "Three trips, one van.",
   "services.subtitle": "Transport solutions for every need.",
+  "services.narrative":
+    "I drive your kid to school in the morning, take the family on weekend trips, and pick up the company team for events. Same inspection, same punctuality, same driver you know by name.",
   "services.school.title": "School Transport",
   "services.school.desc":
     "Safety and punctuality for your child's daily routine.",
   "services.tourism.title": "Tourism & Travel",
   "services.tourism.desc": "Comfort and convenience for group trips.",
-  "services.seeAll": "See all",
+  "services.corporate.title": "Corporate Charter",
+  "services.corporate.desc": "Team transport and events with punctuality and invoicing.",
+  "services.seeAll": "See cases",
   "services.learnMore": "learn more",
 
   // News
